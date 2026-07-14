@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Marco Ríos — mentorías 1:1 de producción musical. Reserva tu sesión.">
 <meta property="og:title" content="Marco Ríos · Mentorías de producción musical">
-<meta property="og:description" content="Sesiones 1:1 con un productor. Reserva tu sesión.">
 <meta property="og:type" content="website">
 <title>Marco Ríos · Mentorías — 3 propuestas de landing</title>
 
@@ -295,6 +294,25 @@
   #p4 .final h2{ font-weight:400; font-size:clamp(34px,5.6vw,64px); line-height:1.12; text-wrap:balance }
   #p4 footer{ text-align:center; padding:8vh 0 12vh; font-family:ui-monospace,'SF Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--soft) }
   @media (max-width:640px){ #p4 .note{ grid-template-columns:1fr; gap:8px } #p4 .note .idx{ padding-top:0 } }
+
+  /* ---------- Imágenes reales (versión final / sitio) ---------- */
+  .photo{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  /* P1 — retrato de estudio en B&N con velo dorado */
+  #p1 .heroimg{ overflow:hidden; background:#0e0e0c; }
+  #p1 .heroimg::before{ display:none; }
+  #p1 .heroimg .photo{ filter:grayscale(1) contrast(1.06) brightness(.8); }
+  #p1 .heroimg::after{ content:""; position:absolute; inset:0; background:linear-gradient(200deg,rgba(201,169,106,.16),transparent 52%,rgba(10,10,10,.55)); pointer-events:none; }
+  /* P2 — foto cálida en el marco */
+  #p2 .frame{ overflow:hidden; }
+  #p2 .frame .photo{ filter:contrast(1.04) saturate(1.03) brightness(.9); }
+  #p2 .frame::after{ background:linear-gradient(180deg,rgba(245,215,126,.08),transparent 42%,rgba(6,6,6,.5)); opacity:1; }
+  /* P3 — banda de foto (neón) */
+  #p3 .p3band{ position:relative; height:44vh; max-height:420px; min-height:260px; border-top:1px solid var(--line); overflow:hidden; }
+  #p3 .p3band .photo{ filter:brightness(.72) saturate(1.15); }
+  #p3 .p3band::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,var(--bg),transparent 26%,var(--bg)); }
+  /* P4 — plancha minimal clara (Rubin) */
+  #p4 .p4plate{ position:relative; height:76vh; max-height:640px; min-height:340px; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  #p4 .p4plate .photo{ object-position:center; }
 </style>
 
 </head>
@@ -322,8 +340,7 @@
         </div>
       </div>
       <div class="heroimg">
-        <span class="imgnote">Retrato B&amp;N en estudio — reemplazar</span>
-        <span class="imgnote">4:5</span>
+        <img class="photo" src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&q=80&auto=format" alt="Estudio de producción de Marco Ríos" loading="lazy">
       </div>
     </div></header>
 
@@ -401,7 +418,7 @@
     </div></div>
 
     <div class="band"><div class="wrap split">
-      <div class="frame"><span class="imgnote">Foto en consola, luz cálida — reemplazar</span></div>
+      <div class="frame"><img class="photo" src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1200&q=80&auto=format" alt="En vivo" loading="lazy"></div>
       <div>
         <p class="eyebrow">La mentoría</p>
         <h2>No es un curso.<br><span class="gold">Es acceso.</span></h2>
@@ -459,6 +476,8 @@
       </div>
     </div></div>
 
+    <div class="p3band"><img class="photo" src="https://images.unsplash.com/photo-1544785349-c4a5301826fd?w=1600&q=80&auto=format" alt="Sesión de estudio" loading="lazy"></div>
+
     <div class="sec" id="p3-book"><div class="wrap">
       <div class="sechead"><p class="tag">// planes</p><h2>Elige y agendá.</h2></div>
       <div class="plans">
@@ -485,6 +504,8 @@
       <p>El trabajo del productor no es agregar. Es quitar lo que estorba hasta que aparece lo esencial. Eso es lo que hacemos, juntos, en una sesión.</p>
       <a class="link" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Reservar una sesión</a>
     </div></header>
+
+    <div class="p4plate"><img class="photo" src="https://images.unsplash.com/photo-1524230572899-a752b3835840?w=1200&q=80&auto=format" alt="Espacio de estudio" loading="lazy"></div>
 
     <div class="sec"><div class="col">
       <div class="note"><div class="idx">01</div><div><h3>Escuchar</h3><p>Antes de tocar nada, escuchamos. La mayoría de las respuestas ya están en tu tema; solo hay que dejar de taparlas.</p></div></div>
