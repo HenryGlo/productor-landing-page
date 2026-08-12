@@ -153,6 +153,67 @@
   .cta.solid:hover{ background:transparent; color:#fff }
   @media (max-width:900px){ .plans{ grid-template-columns:1fr } }
 
+  /* nota secundaria (masterclass grupal) */
+  .side-note{
+    margin-top:26px; border:1px solid var(--line); border-left:4px solid var(--ink);
+    padding:22px 26px; display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;
+  }
+  .side-note .kicker{
+    flex:none; font-size:11px; font-weight:800; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--mute); padding-top:3px;
+  }
+  .side-note p{ flex:1 1 320px; font-size:15px; line-height:1.65; color:#3d3d3d }
+  .side-note p b{ color:var(--ink) }
+
+  /* ---------------- PRO 90 ---------------- */
+  .pro90{ background:var(--ink); color:var(--paper); padding:56px 44px; margin-top:70px }
+  .pro90 .eyebrow{
+    font-size:11px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; color:#7c7c7c;
+  }
+  .pro90 h3{
+    font-stretch:110%; font-weight:900; font-size:clamp(30px,5.4vw,54px);
+    letter-spacing:-.03em; line-height:.95; margin:14px 0 18px;
+  }
+  .pro90 .lede{ max-width:56ch; font-size:16px; line-height:1.7; color:#b6b6b6 }
+  .pro90 .price-row{
+    display:flex; align-items:flex-end; gap:34px; flex-wrap:wrap;
+    margin:34px 0 10px; padding-top:30px; border-top:1px solid var(--line-dk);
+  }
+  .pro90 .price{ display:flex; flex-direction:column; gap:6px }
+  .pro90 .price .from{ font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#7c7c7c }
+  .pro90 .price .amt{
+    font-stretch:110%; font-weight:900; font-size:clamp(40px,7vw,64px);
+    letter-spacing:-.03em; line-height:1; font-variant-numeric:tabular-nums;
+  }
+  .pro90 .price .amt small{ font-size:16px; font-weight:700; color:#b6b6b6; letter-spacing:0 }
+  .pro90 .terms{ display:flex; flex-direction:column; gap:8px; padding-bottom:6px }
+  .pro90 .terms span{ font-size:14px; color:#b6b6b6 }
+  .pro90 .terms .save{ color:#fff; font-weight:800 }
+  .pro90 .terms .save em{ font-style:normal; border-bottom:2px solid #fff }
+
+  .months{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-dk);
+    border:1px solid var(--line-dk); margin-top:34px }
+  .month{ background:var(--ink); padding:28px 24px; display:flex; flex-direction:column; gap:12px }
+  .month .n{ font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#7c7c7c }
+  .month .t{ font-stretch:110%; font-weight:900; font-size:20px; letter-spacing:-.01em; line-height:1.15 }
+  .month ul{ list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin-top:4px }
+  .month li{ font-size:12px; font-weight:700; letter-spacing:.04em; color:#c9c9c9;
+    border:1px solid var(--line-dk); padding:6px 12px; border-radius:999px }
+
+  .pro90 .detail{ margin-top:30px; font-size:15px; line-height:1.75; color:#b6b6b6; max-width:78ch }
+  .pro90 .detail b{ color:#fff }
+  .gift{ margin-top:30px; border:2px solid #fff; padding:24px 26px; display:flex; gap:20px;
+    align-items:baseline; flex-wrap:wrap }
+  .gift .g-lbl{ font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#fff; flex:none }
+  .gift .g-txt{ flex:1 1 300px; font-size:15px; line-height:1.6; color:#b6b6b6 }
+  .gift .g-txt b{ color:#fff }
+  .pro90 .cta{ margin-top:34px; align-self:flex-start; display:inline-block; width:auto }
+
+  @media (max-width:900px){
+    .months{ grid-template-columns:1fr }
+    .pro90{ padding:40px 24px }
+  }
+
   /* ---------------- Contact ---------------- */
   .contact-mail{
     display:inline-block; font-stretch:110%; font-weight:900; font-style:italic;
@@ -363,39 +424,93 @@
 <section class="section" id="sessions">
   <div class="wrap">
     <h2 class="display reveal"><span class="sub">// Mentorías 1:1</span>Sessions</h2>
-    <p class="sessions-lede reveal d1">Unas pocas horas al mes, del otro lado del vidrio contigo. Traes tu track, salís con el próximo. Producción real, feedback directo.</p>
+    <p class="sessions-lede reveal d1">Tres niveles de acceso para que el artista elija según su momento creativo: una canción puntual, un intensivo o el proceso completo.</p>
     <div class="plans reveal d2">
       <div class="plan">
-        <div class="pt">Mentoría 1:1</div>
-        <div class="pp">$80<small> /60 min</small></div>
+        <div class="tag">Producción puntual</div>
+        <div class="pt">Track Session</div>
+        <div class="pp">$280</div>
         <ul>
-          <li>Sesión individual por video</li>
-          <li>Feedback de un track</li>
-          <li>Grabación de la sesión</li>
+          <li>2 sesiones musicales</li>
+          <li>Dirección de producción</li>
+          <li>Mix &amp; master limitado</li>
+          <li>Cupos mensuales</li>
         </ul>
-        <a class="cta" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Agendar</a>
-      </div>
-      <div class="plan feat">
-        <div class="tag">Más elegido</div>
-        <div class="pt">Pack 4 Mentorías</div>
-        <div class="pp">$280<small> /4 sesiones</small></div>
-        <ul>
-          <li>Todo lo del 1:1, ×4</li>
-          <li>Seguimiento entre sesiones</li>
-          <li>Plan de release completo</li>
-        </ul>
-        <a class="cta solid" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Agendar</a>
+        <a class="cta" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Reservar sesión</a>
       </div>
       <div class="plan">
-        <div class="pt">Grupal</div>
-        <div class="pp">$35<small> /persona</small></div>
+        <div class="tag">Intensivo creativo 1:1</div>
+        <div class="pt">Focus 4</div>
+        <div class="pp">$480</div>
         <ul>
-          <li>Grupo reducido (hasta 6)</li>
-          <li>Casos reales en vivo</li>
-          <li>Q&amp;A abierto</li>
+          <li>4 semanas, 4 sesiones privadas</li>
+          <li>Diagnóstico inicial</li>
+          <li>Ejercicios entre sesiones</li>
+          <li>Ruta rápida para una necesidad concreta</li>
         </ul>
-        <a class="cta" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Agendar</a>
+        <a class="cta" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Aplicar a Focus 4</a>
       </div>
+      <div class="plan feat">
+        <div class="tag">Acompañamiento artístico 1:1</div>
+        <div class="pt">PRO90</div>
+        <div class="pp">Desde $600<small> /mes</small></div>
+        <ul>
+          <li>90 días, 12 sesiones privadas</li>
+          <li>Seguimiento semanal</li>
+          <li>Dirección artística y composición</li>
+          <li>Producción y preparación de lanzamiento</li>
+        </ul>
+        <a class="cta solid" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Solicitar evaluación</a>
+      </div>
+    </div>
+
+    <aside class="side-note reveal d3">
+      <span class="kicker">Entrada secundaria</span>
+      <p><b>Masterclass grupal:</b> cápsulas de 3 horas sobre identidad, composición, producción y autogestión. <b>$90 por persona</b> / lista de espera.</p>
+    </aside>
+
+    <div class="pro90 reveal">
+      <span class="eyebrow">Programa principal</span>
+      <h3>PRO 90: experiencia completa</h3>
+      <p class="lede">El acompañamiento más profundo: 90 días de trabajo continuo para pasar de la idea al lanzamiento con dirección artística y musical.</p>
+
+      <div class="price-row">
+        <div class="price">
+          <span class="from">Desde</span>
+          <span class="amt">$600<small> /mes</small></span>
+        </div>
+        <div class="terms">
+          <span>3 cuotas mensuales de $600</span>
+          <span class="save">Pago completo: $1.600 · <em>ahorro de $200</em></span>
+        </div>
+      </div>
+
+      <div class="months">
+        <div class="month">
+          <span class="n">Mes 1</span>
+          <span class="t">Identidad + diagnóstico</span>
+          <ul><li>ADN creativo</li><li>Repertorio</li><li>Bloqueos</li><li>Ruta inicial</li></ul>
+        </div>
+        <div class="month">
+          <span class="n">Mes 2</span>
+          <span class="t">Composición + producción</span>
+          <ul><li>Estructura</li><li>Letra</li><li>Beat</li><li>Grabación guía</li></ul>
+        </div>
+        <div class="month">
+          <span class="n">Mes 3</span>
+          <span class="t">Cierre + lanzamiento</span>
+          <ul><li>Mezcla/master</li><li>Metadata</li><li>Arte</li><li>Continuidad</li></ul>
+        </div>
+      </div>
+
+      <p class="detail"><b>12 sesiones privadas</b> + actividades entre sesiones + correo semanal + dirección artística y musical + <b>2-3 producciones</b> estimadas según etapa del artista.</p>
+
+      <div class="gift">
+        <span class="g-lbl">Incluye · Regalo digital PRO</span>
+        <span class="g-txt"><b>Kit de artista:</b> plantillas, checklists y mapa de 90 días.</span>
+      </div>
+
+      <a class="cta solid" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Solicitar evaluación</a>
     </div>
   </div>
 </section>
