@@ -132,9 +132,46 @@
     text-shadow:0 2px 14px rgba(0,0,0,.8);
   }
 
-  /* ---------------- Home ---------------- */
-  .home{ padding:calc(var(--nav-h) + 84px) 0 72px; background:var(--paper) }
-  .home .logo-lockup{ width:min(100%,880px); margin-bottom:40px }
+  /* ---------------- Fotografías: b&n que vuelve a color al pasar el cursor ---------------- */
+  .plate img, .bleed img, .mod-split figure img, .about-grid img, .duo img{
+    transition:filter .55s cubic-bezier(.2,.7,.2,1);
+  }
+  @media (hover:hover){
+    .plate figure:hover img,
+    .bleed:hover img,
+    .mod-split figure:hover img,
+    .about-grid img:hover,
+    .duo figure:hover img{ filter:grayscale(0) contrast(1.02) }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .plate img, .bleed img, .mod-split figure img, .about-grid img, .duo img{ transition:none }
+  }
+
+  /* ---------------- Home / Hero banner ---------------- */
+  .hero{ padding:calc(var(--nav-h) + 8vh) 0 0; background:var(--paper) }
+  /* wordmark gigante a todo el ancho, con el logo oficial de la marca */
+  .hero .wordmark{
+    width:100vw; margin-left:calc(50% - 50vw); padding:0 40px;
+    animation:riseIn 1s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero .wordmark img{ width:100%; height:auto }
+  .hero .tagline{
+    display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    margin-top:34px; padding-bottom:34px; border-bottom:2px solid var(--ink);
+    font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gray);
+  }
+  .hero .tagline b{ color:var(--ink) }
+  /* Foto full-bleed con marco negro */
+  .plate{ background:var(--ink); padding:30px 40px 40px }
+  .plate figure{ position:relative; aspect-ratio:16/9; overflow:hidden }
+  .plate img{ width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06) }
+  .plate .cap{
+    position:absolute; left:20px; bottom:18px; color:#fff; z-index:2;
+    font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;
+    text-shadow:0 2px 12px rgba(0,0,0,.6);
+  }
+
+  .home{ padding:96px 0 72px; background:var(--paper) }
   .home h1{
     font-stretch:110%; font-weight:900; font-size:clamp(28px,3.9vw,50px);
     line-height:1.06; letter-spacing:-.025em; max-width:20ch;
@@ -349,7 +386,6 @@
   .about-grid img{ width:100%; filter:grayscale(1) contrast(1.08) }
   .about-copy p{ font-size:16.5px; line-height:1.75; color:#b9b9b9; margin-top:18px }
   .about-copy p b{ color:#fff }
-  .unstoppable{ margin-top:38px; max-width:340px; opacity:.95 }
 
   .contact-mail{
     display:inline-block; font-stretch:110%; font-weight:900;
@@ -368,11 +404,19 @@
   }
   .foot img{ height:18px; width:auto; opacity:.75 }
 
-  /* ---------------- Aparición sobria (sin animaciones de decibeles) ---------------- */
-  .reveal{ opacity:0; transition:opacity .5s ease }
-  .reveal.in{ opacity:1 }
+  /* ---------------- Animaciones de entrada (se quitaron solo las de decibeles) ---------------- */
+  .reveal{
+    opacity:0; transform:translateY(30px);
+    transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in{ opacity:1; transform:none }
+  .reveal.d1{ transition-delay:.08s } .reveal.d2{ transition-delay:.16s } .reveal.d3{ transition-delay:.24s }
+
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(40px) } to{ opacity:1; transform:none } }
+
   @media (prefers-reduced-motion:reduce){
-    .reveal{ opacity:1; transition:none }
+    .reveal{ opacity:1; transform:none; transition:none }
+    .hero .wordmark{ animation:none }
     html{ scroll-behavior:auto }
   }
 
@@ -385,7 +429,11 @@
     header.nav nav a{ font-size:10.5px; letter-spacing:.08em }
     header.nav .brand img{ height:20px }
     .block{ padding:70px 0 }
-    .home{ padding:calc(var(--nav-h) + 52px) 0 56px }
+    .home{ padding:64px 0 56px }
+    .hero{ padding:calc(var(--nav-h) + 5vh) 0 0 }
+    .hero .wordmark{ padding:0 22px }
+    .hero .tagline{ font-size:11px; letter-spacing:.1em }
+    .plate{ padding:16px 16px 22px }
     .bleed .cap{ left:22px }
   }
   @media (max-width:720px){
@@ -416,25 +464,33 @@
 
 <!-- ==================== 1 · HOME ==================== -->
 <main>
-<section class="home" id="home">
+<section class="hero" id="home">
+  <div class="wordmark">
+    <img src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE" fetchpriority="high">
+  </div>
   <div class="wrap">
-    <img class="logo-lockup reveal" src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE" width="880" fetchpriority="high">
-    <h1 class="reveal">Producción musical y <em>dirección artística</em> para artistas que van en serio.</h1>
-    <p class="sub reveal">Pedro Querales · Oldtape. Del demo al lanzamiento: sesiones de producción, mezcla y master, y un acompañamiento 1:1 que ordena tu identidad, tu repertorio y tu ruta de salida.</p>
-    <div class="btn-row reveal">
-      <a class="btn btn--solid" href="#aplicar">Solicitar evaluación 1:1</a>
-      <a class="btn" href="#music">Escuchar la obra</a>
+    <div class="tagline reveal d1">
+      <span><b>Productor</b> · Beats · Mezcla</span>
+      <span>Producción · Mix &amp; Master · 1:1</span>
     </div>
+  </div>
+  <div class="plate reveal d2">
+    <figure>
+      <span class="cap">Oldtape Studio · 2026</span>
+      <img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" fetchpriority="high">
+    </figure>
   </div>
 </section>
 
-<div class="bleed">
-  <img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" width="1800" height="1200" fetchpriority="high">
-  <span class="cap">Oldtape Studio</span>
-</div>
-
-<section class="home" style="padding-top:72px">
+<section class="home">
   <div class="wrap">
+    <h1 class="reveal">Producción musical y <em>dirección artística</em> para artistas que van en serio.</h1>
+    <p class="sub reveal d1">Pedro Querales · Oldtape. Del demo al lanzamiento: sesiones de producción, mezcla y master, y un acompañamiento 1:1 que ordena tu identidad, tu repertorio y tu ruta de salida.</p>
+    <div class="btn-row reveal d2">
+      <a class="btn btn--solid" href="#aplicar">Solicitar evaluación 1:1</a>
+      <a class="btn" href="#music">Escuchar la obra</a>
+    </div>
+
     <div class="authority reveal">
       <div>
         <div class="k">Catálogo propio</div>
@@ -781,7 +837,6 @@
         <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 4px">Quién está<br>del otro lado</h2>
         <p><b>Oldtape es el proyecto de Pedro Querales:</b> productor, compositor y director artístico. Un catálogo propio, un estudio y años de oficio puestos al servicio de artistas que quieren dejar de improvisar su carrera.</p>
         <p>La forma de trabajo es simple: primero entender al artista, después construir la música y por último preparar la salida. Nada se deja suelto y nada depende de la inspiración del día.</p>
-        <img class="unstoppable" src="assets/brand/unstoppable-blanco.jpg" alt="Unstoppable" loading="lazy">
       </div>
     </div>
 
