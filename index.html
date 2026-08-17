@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="OLDTAPE — Pedro Querales. Producción musical, mezcla y master, y acompañamiento artístico 1:1 para artistas que van en serio.">
+<meta name="description" content="OLDTAPE — Pedro Querales. Música con dirección y propósito: producción musical, mezcla y master, y acompañamiento artístico 1:1.">
 <title>OLDTAPE — Producción musical y acompañamiento artístico</title>
 
 <link rel="canonical" href="https://oldtapemusic.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="OLDTAPE — Producción musical y acompañamiento artístico">
-<meta property="og:description" content="Sesiones de producción, mezcla y master, y acompañamiento artístico 1:1. Del demo al lanzamiento.">
+<meta property="og:description" content="Producción musical y acompañamiento artístico para convertir una idea en una obra terminada y lista para salir al mundo.">
 <meta property="og:url" content="https://oldtapemusic.com/">
 <meta property="og:image" content="https://oldtapemusic.com/assets/img/home-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,6 +35,9 @@
     --gray:#747474;
     --blue:#161733;
     --rust:#914926;
+    /* Acento de interacción — Pantone 16-0836 TCX "Rich Gold" */
+    --gold:#C5B078;
+    --gold-dk:#A8925C;   /* variante para texto dorado sobre fondo claro (contraste AA) */
 
     --gray-soft:#f2f2f2;
     --gray-text:#5c5c5c;
@@ -94,23 +97,23 @@
     font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
     border:2px solid #fff; color:#fff; padding:11px 20px; transition:.18s;
   }
-  header.nav .nav-cta:hover{ background:#fff; color:var(--ink) }
+  header.nav .nav-cta:hover{ background:var(--gold); border-color:var(--gold); color:var(--ink) }
   header.nav .nav-cta:active{ background:var(--blue); border-color:var(--blue); color:#fff }
   @media (max-width:1040px){ header.nav .nav-cta{ display:none } }
 
-  /* ---------------- Botones (azul de marca al clickear) ---------------- */
+  /* ---------------- Botones (dorado al pasar, azul de marca al clickear) ---------------- */
   .btn{
     display:inline-block; cursor:pointer; text-align:center;
     font-family:inherit; font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
     padding:17px 30px; border:2px solid currentColor; background:transparent; color:inherit;
     transition:background-color .18s, color .18s, border-color .18s, transform .08s;
   }
-  .btn:hover{ background:var(--gray); border-color:var(--gray); color:#fff }
+  .btn:hover{ background:var(--gold); border-color:var(--gold); color:var(--ink) }
   .btn:active{ background:var(--blue); border-color:var(--blue); color:#fff; transform:translateY(1px) }
   .btn.is-blue{ background:var(--blue); border-color:var(--blue); color:#fff }
   .btn--solid{ background:var(--ink); border-color:var(--ink); color:var(--paper) }
   .dark .btn--solid{ background:var(--paper); border-color:var(--paper); color:var(--ink) }
-  .btn--solid:hover{ background:var(--gray); border-color:var(--gray); color:#fff }
+  .btn--solid:hover{ background:var(--gold); border-color:var(--gold); color:var(--ink) }
   .btn-row{ display:flex; gap:16px; flex-wrap:wrap; margin-top:34px }
 
   /* ---------------- Bloques planos ---------------- */
@@ -199,13 +202,6 @@
   }
   @media (max-width:820px){ .duo{ grid-template-columns:1fr } }
 
-  .spgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px }
-  .spcard .top{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; min-height:50px }
-  .spcard .lbl{ font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#9a9a9a }
-  .spcard .lbl b{ display:block; font-size:22px; letter-spacing:-.01em; text-transform:none; color:#fff; margin-top:4px }
-  .spcard .spot{ width:22px; height:22px; color:#fff; flex:none }
-  .spcard iframe{ border:0; border-radius:12px; width:100%; height:352px; display:block; background:#121212 }
-  @media (max-width:900px){ .spgrid{ grid-template-columns:1fr } }
 
   .credits{
     display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
@@ -236,9 +232,11 @@
     font-size:12px; font-weight:700; letter-spacing:.04em; color:#c9c9c9;
     border:1px solid var(--line-dk); padding:8px 14px; border-radius:999px;
   }
+  .mod-close{ margin-top:22px; padding-top:20px; border-top:1px solid var(--line-dk) }
+  .mod-close b{ color:#fff; font-weight:800 }
   @media (max-width:900px){ .mod-split{ grid-template-columns:1fr; gap:32px; margin-bottom:64px } }
 
-  /* ---------------- Music · módulo 2: reproductor multiplataforma ---------------- */
+  /* ---------------- Music · módulo 2: selección principal de Spotify ---------------- */
   .player{ border:2px solid var(--line-dk); margin-bottom:96px }
   .player-head{
     display:flex; align-items:flex-end; justify-content:space-between; gap:28px; flex-wrap:wrap;
@@ -249,26 +247,13 @@
     letter-spacing:-.02em; text-transform:uppercase; margin-top:12px;
   }
   .player-head .hint{ font-size:14px; line-height:1.6; color:#9a9a9a; max-width:44ch; margin-top:10px }
-  .tabs{ display:flex; gap:0; flex-wrap:wrap }
-  .tab{
-    font-family:inherit; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
-    color:#b4b4b4; background:transparent; border:2px solid var(--line-dk); border-right-width:0;
-    padding:14px 22px; cursor:pointer; display:flex; align-items:center; gap:9px;
-    transition:background-color .18s, color .18s, border-color .18s;
-  }
-  .tab:last-child{ border-right-width:2px }
-  .tab svg{ width:16px; height:16px; flex:none }
-  .tab:hover{ color:#fff; background:rgba(255,255,255,.06) }
-  .tab[aria-selected="true"]{ background:var(--blue); border-color:var(--blue); color:#fff }
-  .tab[aria-selected="true"]+.tab{ border-left-color:var(--blue) }
   .player-body{ padding:28px 32px 32px }
-  .player-body iframe{ border:0; border-radius:12px; width:100%; height:420px; display:block; background:#121212 }
-  .player-body .apple-frame{ height:450px }
+  /* alto pensado para que se vean ~10 temas sin scroll interno */
+  .player-body iframe{ border:0; border-radius:12px; width:100%; height:860px; display:block; background:#121212 }
   @media (max-width:820px){
     .player-head{ padding:24px 20px 0 }
     .player-body{ padding:20px }
-    .player-body iframe{ height:380px }
-    .tab{ padding:12px 16px; font-size:11px }
+    .player-body iframe{ height:560px }
   }
 
   /* ---------------- Ofertas ---------------- */
@@ -290,8 +275,30 @@
   .dark .offer li{ color:#b9b9b9 }
   .offer li::before{ content:""; position:absolute; left:0; top:9px; width:9px; height:2px; background:var(--blue) }
   .dark .offer li::before{ background:#fff }
+  .offer .offer-lead{ font-size:15px; line-height:1.6; color:var(--gray-text); margin-top:14px }
+  .dark .offer .offer-lead{ color:#b9b9b9 }
+  .offer .offer-lead+ul{ margin-top:14px }
   .offer .btn{ margin-top:auto; align-self:flex-start }
   @media (max-width:820px){ .offers{ grid-template-columns:1fr } }
+
+  /* Cierre de sección */
+  .closer{ margin-top:64px; padding-top:34px; border-top:2px solid var(--ink) }
+  .dark .closer{ border-top-color:#fff }
+  .closer h3{
+    font-stretch:110%; font-weight:900; font-size:clamp(22px,3vw,32px);
+    letter-spacing:-.02em; text-transform:uppercase; line-height:1.05;
+  }
+  .closer p{ font-size:clamp(16px,1.5vw,19px); line-height:1.7; color:var(--gray-text); margin-top:12px; max-width:60ch }
+  .dark .closer p{ color:#b9b9b9 }
+
+  /* Acento dorado en tarjetas de oferta al pasar el cursor */
+  @media (hover:hover){
+    .offer{ transition:box-shadow .2s, background-color .2s }
+    .offer:hover{ box-shadow:inset 0 0 0 2px var(--gold) }
+    .offer:hover .price{ color:var(--gold-dk) }
+    .dark .offer:hover .price{ color:var(--gold) }
+    .offer:hover li::before{ background:var(--gold) }
+  }
 
   .note{
     margin-top:26px; border:1px solid var(--line); border-left:5px solid var(--blue);
@@ -336,6 +343,21 @@
   .gift .g-lbl{ flex:none; font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#fff }
   .gift .g-txt{ flex:1 1 300px; font-size:15px; line-height:1.6; color:#b9b9b9 }
   .gift .g-txt b{ color:#fff }
+
+  /* Acento dorado del PRO90 al pasar el cursor */
+  @media (hover:hover){
+    .pro90{ transition:border-color .22s }
+    .pro90 .amt,.pro90 .save,.pro90 .save em,.gift,.gift .g-lbl,.month li{
+      transition:color .22s, border-color .22s;
+    }
+    .pro90:hover{ border-color:var(--gold) }
+    .pro90:hover .amt{ color:var(--gold) }
+    .pro90:hover .terms .save{ color:var(--gold) }
+    .pro90:hover .terms .save em{ border-bottom-color:var(--gold) }
+    .pro90:hover .gift{ border-color:var(--gold) }
+    .pro90:hover .gift .g-lbl{ color:var(--gold) }
+    .pro90:hover .month li{ border-color:rgba(197,176,120,.42) }
+  }
 
   /* ---------------- Recorrido ---------------- */
   .flow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:44px; align-items:center }
@@ -484,25 +506,25 @@
 
 <section class="home">
   <div class="wrap">
-    <h1 class="reveal">Producción musical y <em>dirección artística</em> para artistas que van en serio.</h1>
-    <p class="sub reveal d1">Pedro Querales · Oldtape. Del demo al lanzamiento: sesiones de producción, mezcla y master, y un acompañamiento 1:1 que ordena tu identidad, tu repertorio y tu ruta de salida.</p>
+    <h1 class="reveal">Música con <em>dirección</em> y propósito.</h1>
+    <p class="sub reveal d1">Pedro Querales · Oldtape. Producción musical y acompañamiento artístico para quienes quieren convertir una idea en una obra terminada y lista para salir al mundo.</p>
     <div class="btn-row reveal d2">
-      <a class="btn btn--solid" href="#aplicar">Solicitar evaluación 1:1</a>
+      <a class="btn btn--solid" href="#aplicar">Solicitar evaluación</a>
       <a class="btn" href="#music">Escuchar la obra</a>
     </div>
 
     <div class="authority reveal">
       <div>
-        <div class="k">Catálogo propio</div>
-        <p class="v">Obra publicada, regalías y contratos activos. No se enseña teoría: se trabaja sobre música que ya salió al mundo.</p>
+        <div class="k">Obra real</div>
+        <p class="v">Catálogo publicado, regalías y contratos activos: proyectos que ya viven fuera del estudio.</p>
       </div>
       <div>
-        <div class="k">Estudio y oficio</div>
-        <p class="v">Producción, composición, grabación, mezcla y master bajo una misma dirección artística.</p>
+        <div class="k">Oficio + dirección</div>
+        <p class="v">Producción, composición, grabación, mezcla y master bajo una misma visión.</p>
       </div>
       <div>
-        <div class="k">Formación 1:1</div>
-        <p class="v">Experiencia formando artistas en procesos privados, con seguimiento semanal y entregables reales.</p>
+        <div class="k">1:1</div>
+        <p class="v">Procesos privados para artistas que necesitan claridad, criterio y movimiento.</p>
       </div>
     </div>
   </div>
@@ -514,11 +536,10 @@
     <div class="block-head">
       <span class="eyebrow">01 · La obra</span>
       <h2 class="display">Music</h2>
-      <p class="lede">Producción, composición y dirección sonora. Escucha antes de leer: el catálogo es la carta de presentación.</p>
+      <p class="lede">Antes de explicar lo que hago, prefiero que lo escuches. La obra es la carta de presentación.</p>
     </div>
 
-    <!-- Módulo 1 — imagen grande + qué hago y cómo lo hago
-         TEXTOS PROVISIONALES: reemplazar por los de la carpeta de Drive -->
+    <!-- Módulo 1 — imagen grande + qué hago y cómo lo hago -->
     <div class="mod-split reveal">
       <figure>
         <img src="assets/img/music-dj.jpg" alt="Oldtape en cabina" loading="lazy">
@@ -526,32 +547,48 @@
       </figure>
       <div class="mod-copy">
         <span class="eyebrow">Qué hago y cómo lo hago</span>
-        <h3>La música primero,<br>el resto después</h3>
-        <p><b>Produzco, compongo y dirijo proyectos musicales de principio a fin.</b> No trabajo por encargo suelto: entro en el proceso del artista, entiendo qué quiere decir y recién ahí construyo el sonido que lo sostiene.</p>
-        <p>Cada canción pasa por el mismo recorrido: idea, estructura, producción, grabación, mezcla y master. Nada queda librado a la inspiración del día, y nada sale del estudio sin estar listo para publicarse.</p>
+        <h3>La música primero.<br>Todo lo demás se construye desde ahí.</h3>
+        <p><b>Produzco, compongo y dirijo proyectos musicales desde la idea hasta su versión final.</b></p>
+        <p>Primero entiendo qué quiere decir el artista. Después construimos el sonido, la estructura y las decisiones que hacen que esa música tenga identidad.</p>
         <ul class="mod-list">
-          <li>Producción</li>
+          <li>Idea</li>
           <li>Composición</li>
-          <li>Arreglos</li>
+          <li>Producción</li>
           <li>Grabación</li>
           <li>Mezcla</li>
           <li>Master</li>
-          <li>Dirección artística</li>
+          <li>Dirección</li>
         </ul>
+        <p class="mod-close"><b>Un mismo proceso. Una misma dirección. Una obra que puede sostenerse fuera del estudio.</b></p>
       </div>
     </div>
 
-    <!-- Módulo 2 — reproductor multiplataforma (Spotify · Apple Music · YouTube) -->
+    <!-- Módulo 2 — selección principal de Spotify
+         ────────────────────────────────────────────────────────────────
+         PARA MOSTRAR LOS TEMAS PRINCIPALES DEL PERFIL OFICIAL:
+         reemplazar el src del iframe por el embed de ARTISTA:
+           https://open.spotify.com/embed/artist/<ID_ARTISTA>?utm_source=generator&theme=0
+         El <ID_ARTISTA> se saca desde el perfil de Oldtape en Spotify:
+           Compartir → Copiar enlace del artista → el ID va después de /artist/
+         Mientras tanto queda "This Is Oldtape", la selección oficial que
+         Spotify genera para el perfil del artista.
+         ──────────────────────────────────────────────────────────────── -->
     <div class="player reveal">
       <div class="player-head">
         <div>
           <span class="eyebrow">Escuchar</span>
-          <h3>El catálogo, en tu plataforma</h3>
-          <p class="hint">Elegí dónde escuchás habitualmente. La música es la misma; cambia solo el reproductor.</p>
+          <h3>Lo principal, en Spotify</h3>
+          <p class="hint">La selección oficial del perfil de Oldtape.</p>
         </div>
-        <div class="tabs" role="tablist" aria-label="Elegir plataforma"></div>
       </div>
-      <div class="player-body" id="player-body"></div>
+      <div class="player-body">
+        <iframe class="sp-main"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1oR1u0?utm_source=generator&theme=0"
+                loading="lazy"
+                allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allowfullscreen
+                title="Selección principal de Oldtape en Spotify"></iframe>
+      </div>
     </div>
   </div>
 
@@ -561,36 +598,6 @@
   </div>
 
   <div class="wrap" style="padding-top:96px">
-    <!-- Módulo 3 — catálogo destacado + créditos -->
-    <span class="eyebrow">Destacado</span>
-    <div class="spgrid" style="margin-top:24px">
-
-      <article class="spcard reveal">
-        <div class="top">
-          <div class="lbl">This is<b>Oldtape</b></div>
-          <svg class="spot" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
-        </div>
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1oR1u0?utm_source=generator&theme=0" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="This is Oldtape"></iframe>
-      </article>
-
-      <article class="spcard reveal d1">
-        <div class="top">
-          <div class="lbl">Radio<b>Oldtape</b></div>
-          <svg class="spot" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
-        </div>
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1E4zgvdcN2KXP6?utm_source=generator&theme=0" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Radio Oldtape"></iframe>
-      </article>
-
-      <article class="spcard reveal d2">
-        <div class="top">
-          <div class="lbl">Álbum<b>Ciudad Caribbean</b></div>
-          <svg class="spot" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
-        </div>
-        <iframe src="https://open.spotify.com/embed/album/4YxTDdc0UiJqDo0ERr9jV2?utm_source=generator&theme=0" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Ciudad Caribbean"></iframe>
-      </article>
-
-    </div>
-
     <div class="credits reveal">
       <div>
         <div class="k">Créditos</div>
@@ -610,7 +617,7 @@
     <div class="block-head">
       <span class="eyebrow">02 · Servicios de estudio</span>
       <h2 class="display">Sesiones</h2>
-      <p class="lede">Producción musical, mezcla y master. Traes una idea o un demo y sales con una canción terminada, con dirección de producción real detrás.</p>
+      <p class="lede">Soluciones puntuales para avanzar. Traes una idea o un demo y sales con una canción terminada, con dirección de producción real detrás.</p>
     </div>
   </div>
 </section>
@@ -627,6 +634,7 @@
         <span class="tag">Producción puntual</span>
         <h3 class="name">Track Session</h3>
         <div class="price">$280</div>
+        <p class="offer-lead">Un trabajo enfocado en llevar una idea, demo o canción al siguiente nivel.</p>
         <ul>
           <li>2 sesiones musicales de trabajo</li>
           <li>Dirección de producción</li>
@@ -640,6 +648,7 @@
         <span class="tag">Mezcla y master</span>
         <h3 class="name">Mix &amp; Master</h3>
         <div class="price">A medida</div>
+        <p class="offer-lead">Tu canción ya existe. Ahora necesita profundidad, balance y una versión final que esté a la altura.</p>
         <ul>
           <li>Revisión técnica del material</li>
           <li>Mezcla con criterio artístico</li>
@@ -652,10 +661,15 @@
 
     <aside class="note reveal">
       <span class="kicker">Entrada secundaria</span>
-      <p><b>Masterclass grupal:</b> cápsulas de 3 horas sobre identidad, composición, producción y autogestión. <b>$90 por persona</b> · se trabaja por lista de espera.</p>
+      <p><b>Masterclass grupal:</b> encuentros intensivos para trabajar identidad, composición, producción y autogestión con otros artistas. <b>$90 por persona</b> · cupos por lista de espera.</p>
     </aside>
     <div class="btn-row">
-      <a class="btn" href="#aplicar" data-oferta="Masterclass grupal">Entrar a la lista de espera</a>
+      <a class="btn" href="#aplicar" data-oferta="Masterclass grupal">Entrar a la lista</a>
+    </div>
+
+    <div class="closer reveal">
+      <h3>A veces no necesitas empezar de cero.</h3>
+      <p>Necesitas el oído correcto, una decisión clara y alguien que te ayude a terminar.</p>
     </div>
   </div>
 </section>
@@ -665,8 +679,8 @@
   <div class="wrap">
     <div class="block-head">
       <span class="eyebrow">03 · Oferta exclusiva</span>
-      <h2 class="display">Acompañamiento<br>artístico 1:1</h2>
-      <p class="lede">Esto no es una sesión suelta: es un proceso privado y con cupo limitado. Se entra por evaluación, para asegurar que el momento del artista y el programa coincidan.</p>
+      <h2 class="display">No es solo hacer música.<br>Es saber qué hacer con ella.</h2>
+      <p class="lede">El acompañamiento 1:1 está pensado para artistas que quieren dejar de avanzar a prueba y error. Trabajamos sobre tu música, tu identidad, tus decisiones y tu próxima etapa. Es un proceso privado y con cupo limitado: se entra por evaluación.</p>
     </div>
 
     <div class="offers one reveal">
@@ -674,20 +688,21 @@
         <span class="tag">Intensivo creativo 1:1</span>
         <h3 class="name">Focus 4</h3>
         <div class="price">$480</div>
+        <p class="offer-lead">4 semanas para destrabar una decisión, ordenar una idea o resolver un punto crítico de tu proyecto.</p>
         <ul>
           <li>4 semanas · 4 sesiones privadas</li>
           <li>Diagnóstico inicial del punto de partida</li>
           <li>Ejercicios y actividades entre sesiones</li>
           <li>Ruta rápida para resolver una necesidad concreta</li>
         </ul>
-        <a class="btn" href="#aplicar" data-oferta="Focus 4">Aplicar al intensivo</a>
+        <a class="btn" href="#aplicar" data-oferta="Focus 4">Aplicar al 1:1</a>
       </article>
     </div>
 
     <div class="pro90 reveal">
       <span class="eyebrow">Programa principal</span>
       <h3>PRO 90: experiencia completa</h3>
-      <p class="lede">90 días de trabajo continuo para pasar de la idea al lanzamiento, con dirección artística y musical semana a semana.</p>
+      <p class="lede">90 días para mover tu proyecto de verdad: de la idea al lanzamiento, con dirección artística y musical semana a semana.</p>
 
       <div class="price-row">
         <div>
@@ -719,17 +734,17 @@
       </div>
 
       <p class="lede" style="margin-top:28px;max-width:80ch">
-        <b style="color:#fff">12 sesiones privadas</b> + actividades entre sesiones + correo semanal + dirección artística y musical +
+        <b style="color:#fff">12 sesiones privadas</b> + dirección artística y musical + actividades entre sesiones + seguimiento semanal +
         <b style="color:#fff">2-3 producciones</b> estimadas según la etapa del artista.
       </p>
 
       <div class="gift">
         <span class="g-lbl">Incluye · Regalo digital PRO</span>
-        <span class="g-txt"><b>Kit de artista:</b> plantillas, checklists y mapa de 90 días.</span>
+        <span class="g-txt"><b>PRO Artist Kit:</b> plantillas, checklists y mapa personal de 90 días.</span>
       </div>
 
       <div class="btn-row">
-        <a class="btn btn--solid" href="#aplicar" data-oferta="PRO90">Solicitar evaluación</a>
+        <a class="btn btn--solid" href="#aplicar" data-oferta="PRO90">Aplicar al 1:1</a>
       </div>
     </div>
   </div>
@@ -746,8 +761,8 @@
     <div class="form-grid">
       <div>
         <span class="eyebrow">Aplicación</span>
-        <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 20px">Solicitar<br>evaluación</h2>
-        <p class="lede">Cuéntanos en qué punto estás. Revisamos cada solicitud y respondemos con la modalidad recomendada, disponibilidad y siguiente paso.</p>
+        <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 20px">Empecemos por entender dónde estás.</h2>
+        <p class="lede">Cuéntanos qué estás construyendo, qué te está frenando y qué quieres conseguir. Revisamos cada solicitud personalmente y te recomendamos el proceso que tenga más sentido para tu momento.</p>
 
         <div class="flow" aria-label="Recorrido de conversión">
           <span class="on">Solicitud</span><i>→</i>
@@ -759,8 +774,8 @@
         </div>
 
         <ul class="aside-list">
-          <li><b>Cupos limitados</b>Cada mes se abre un número reducido de procesos para sostener la calidad del seguimiento.</li>
-          <li><b>Sin compromiso</b>La evaluación no obliga a contratar: sirve para saber si este es tu momento.</li>
+          <li><b>Cupos limitados</b>Trabajamos con un número reducido de artistas para cuidar la profundidad de cada proceso.</li>
+          <li><b>Sin compromiso</b>Aplicar no te obliga a contratar. Primero vemos si existe un buen punto de encuentro.</li>
         </ul>
       </div>
 
@@ -811,8 +826,8 @@
         </div>
 
         <div class="field">
-          <label for="a-momento">¿En qué momento estás? *</label>
-          <textarea id="a-momento" name="mensaje" required placeholder="Qué tienes hecho, qué te está frenando y qué te gustaría lograr en los próximos 90 días."></textarea>
+          <label for="a-momento">¿Dónde estás hoy y qué quieres lograr en los próximos 90 días? *</label>
+          <textarea id="a-momento" name="mensaje" required placeholder="Qué estás construyendo, qué te está frenando y qué quieres conseguir."></textarea>
         </div>
 
         <label class="consent">
@@ -905,80 +920,6 @@
    ============================================================ */
 const PF_ENDPOINT = ""; // p.ej. "https://pquerales.perfectflow.cloud/api/leads"
 const PF_FALLBACK_MAIL = "hola@oldtapemusic.com";
-
-/* ============================================================
-   Reproductor multiplataforma (Spotify · Apple Music · YouTube)
-   Para activar una plataforma, pegá su URL de EMBED en `embed`.
-   Las que queden vacías no muestran pestaña, así nunca se ve rota.
-
-   Dónde sacar cada URL de embed:
-   · Spotify      → botón Compartir → Insertar → copiar el src del iframe
-                    (formato: https://open.spotify.com/embed/artist|album|playlist/ID)
-   · Apple Music  → https://embed.music.apple.com/<pais>/artist|album/<slug>/<id>
-                    (se arma cambiando "music.apple.com" por "embed.music.apple.com")
-   · YouTube      → playlist:  https://www.youtube.com/embed/videoseries?list=<ID_PLAYLIST>
-                    canal:     crear una playlist con lo mejor y usar ese ID
-   ============================================================ */
-const PLATAFORMAS = [
-  {
-    id: 'spotify',
-    nombre: 'Spotify',
-    embed: 'https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1oR1u0?utm_source=generator&theme=0',
-    icono: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>'
-  },
-  {
-    id: 'apple',
-    nombre: 'Apple Music',
-    embed: '', // ← pendiente: enlace de Apple Music de Oldtape
-    icono: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.79-3.33.79-.69 0-1.75-.77-2.87-.75-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.29-.88-2.31-3.5zM14.9 5.6c.6-.74 1.01-1.76.9-2.78-.87.04-1.93.58-2.56 1.31-.56.65-1.05 1.7-.92 2.7.97.08 1.96-.49 2.58-1.23z"/></svg>'
-  },
-  {
-    id: 'youtube',
-    nombre: 'YouTube',
-    embed: '', // ← pendiente: ID de playlist o canal de Oldtape
-    icono: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.9a3 3 0 00-2.12-2.13C19.5 4.25 12 4.25 12 4.25s-7.5 0-9.38.52A3 3 0 00.5 6.9C0 8.79 0 12 0 12s0 3.21.5 5.1a3 3 0 002.12 2.13c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3 3 0 002.12-2.13C24 15.21 24 12 24 12s0-3.21-.5-5.1zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>'
-  }
-];
-
-(function reproductorMultiplataforma(){
-  const tabs = document.querySelector('.player .tabs');
-  const body = document.getElementById('player-body');
-  if (!tabs || !body) return;
-
-  const activas = PLATAFORMAS.filter(p => p.embed);
-  if (!activas.length) { document.querySelector('.player')?.remove(); return; }
-
-  // Con una sola plataforma activa no hace falta mostrar pestañas
-  if (activas.length === 1) tabs.style.display = 'none';
-
-  function mostrar(p){
-    const frame = document.createElement('iframe');
-    frame.src = p.embed;
-    frame.title = 'Oldtape en ' + p.nombre;
-    frame.loading = 'lazy';
-    frame.allow = 'clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-    frame.allowFullscreen = true;
-    if (p.id === 'apple') frame.className = 'apple-frame';
-    body.replaceChildren(frame);
-  }
-
-  activas.forEach((p, i) => {
-    const b = document.createElement('button');
-    b.className = 'tab';
-    b.type = 'button';
-    b.setAttribute('role', 'tab');
-    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    b.innerHTML = p.icono + '<span>' + p.nombre + '</span>';
-    b.addEventListener('click', () => {
-      tabs.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', 'false'));
-      b.setAttribute('aria-selected', 'true');
-      mostrar(p);
-    });
-    tabs.appendChild(b);
-  });
-
-  mostrar(activas[0]);
-})();
 
 /* ---- Nav activo por sección ---- */
 const links = document.querySelectorAll('header.nav nav a[data-sec]');
