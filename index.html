@@ -360,6 +360,7 @@
   }
 
   /* ---------------- Recorrido ---------------- */
+  [hidden]{ display:none !important }
   .flow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:44px; align-items:center }
   .flow span{
     font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
@@ -416,9 +417,13 @@
   }
   .contact-mail:hover{ color:var(--gray) }
   .contact-mail:active{ color:#fff }
-  .socials{ display:flex; gap:32px; flex-wrap:wrap; margin-top:36px }
-  .socials a{ font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#b4b4b4; transition:color .18s }
-  .socials a:hover{ color:#fff }
+  .socials{ display:flex; gap:22px; flex-wrap:wrap; margin-top:36px }
+  .socials a{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; color:#b4b4b4; transition:color .18s, background-color .18s;
+  }
+  .socials a svg{ width:24px; height:24px; display:block }
+  .socials a:hover{ color:var(--gold) }
   .foot{
     display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
     margin-top:80px; padding-top:30px; border-top:1px solid var(--line-dk);
@@ -493,7 +498,7 @@
   <div class="wrap">
     <div class="tagline reveal d1">
       <span><b>Productor</b> · Beats · Mezcla</span>
-      <span>Producción · Mix &amp; Master · 1:1</span>
+      <span>Producción · Mezcla · Master</span>
     </div>
   </div>
   <div class="plate reveal d2">
@@ -577,8 +582,8 @@
       <div class="player-head">
         <div>
           <span class="eyebrow">Escuchar</span>
-          <h3>Lo principal, en Spotify</h3>
-          <p class="hint">La selección oficial del perfil de Oldtape.</p>
+          <h3>Top de Spotify</h3>
+          <p class="hint">Los temas más escuchados del perfil de Oldtape.</p>
         </div>
       </div>
       <div class="player-body">
@@ -644,18 +649,20 @@
         <a class="btn" href="#aplicar" data-oferta="Track Session">Reservar sesión</a>
       </article>
 
+      <!-- Mix & Master se retiró: Pedro lo considera el mismo servicio que Track Session.
+           En su lugar va el plan a medida para artistas de disquera. -->
       <article class="offer">
-        <span class="tag">Mezcla y master</span>
-        <h3 class="name">Mix &amp; Master</h3>
+        <span class="tag">Proyectos de disquera</span>
+        <h3 class="name">Plan a medida</h3>
         <div class="price">A medida</div>
-        <p class="offer-lead">Tu canción ya existe. Ahora necesita profundidad, balance y una versión final que esté a la altura.</p>
+        <p class="offer-lead">Para artistas con sello o equipo detrás, donde el alcance, los tiempos y las entregas se definen proyecto por proyecto.</p>
         <ul>
-          <li>Revisión técnica del material</li>
-          <li>Mezcla con criterio artístico</li>
-          <li>Master listo para distribución</li>
+          <li>Alcance y cronograma acordados</li>
+          <li>Producción y dirección artística</li>
+          <li>Entregas listas para distribución</li>
           <li>Presupuesto según formato y cantidad</li>
         </ul>
-        <a class="btn" href="#aplicar" data-oferta="Mix &amp; Master">Pedir presupuesto</a>
+        <a class="btn" href="#aplicar" data-oferta="Plan a medida">Pedir presupuesto</a>
       </article>
     </div>
 
@@ -764,7 +771,10 @@
         <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 20px">Empecemos por entender dónde estás.</h2>
         <p class="lede">Cuéntanos qué estás construyendo, qué te está frenando y qué quieres conseguir. Revisamos cada solicitud personalmente y te recomendamos el proceso que tenga más sentido para tu momento.</p>
 
-        <div class="flow" aria-label="Recorrido de conversión">
+        <!-- Flujo interno de CRM: oculto al público por pedido de Pedro.
+             Se conserva el marcado por si más adelante se quiere una versión
+             de cara al cliente. Para volver a mostrarlo, quitar el hidden. -->
+        <div class="flow" aria-label="Recorrido de conversión" hidden>
           <span class="on">Solicitud</span><i>→</i>
           <span>Evaluación</span><i>→</i>
           <span>Modalidad recomendada</span><i>→</i>
@@ -819,7 +829,7 @@
             <option>PRO90</option>
             <option>Focus 4</option>
             <option>Track Session</option>
-            <option>Mix &amp; Master</option>
+            <option>Plan a medida</option>
             <option>Masterclass grupal</option>
             <option>Todavía no lo sé</option>
           </select>
@@ -860,11 +870,20 @@
         <span class="eyebrow">Contacto</span>
         <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 24px">Hablemos</h2>
         <a class="contact-mail" href="mailto:hola@oldtapemusic.com">hola@oldtapemusic.com</a>
+        <!-- Solo logos. Falta pegar la URL real de cada perfil en el href. -->
         <div class="socials">
-          <a href="#" target="_blank" rel="noopener">Instagram</a>
-          <a href="#" target="_blank" rel="noopener">Spotify</a>
-          <a href="#" target="_blank" rel="noopener">YouTube</a>
-          <a href="#" target="_blank" rel="noopener">TikTok</a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en Spotify" title="Spotify">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en YouTube" title="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.9a3 3 0 00-2.12-2.13C19.5 4.25 12 4.25 12 4.25s-7.5 0-9.38.52A3 3 0 00.5 6.9C0 8.79 0 12 0 12s0 3.21.5 5.1a3 3 0 002.12 2.13c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3 3 0 002.12-2.13C24 15.21 24 12 24 12s0-3.21-.5-5.1zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en TikTok" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5 2.59 2.59 0 01-2.59-2.59 2.59 2.59 0 013.36-2.47V9.7a5.68 5.68 0 00-.77-.05A5.69 5.69 0 004.17 15.3 5.69 5.69 0 009.86 21a5.69 5.69 0 005.69-5.69V9.01a7.35 7.35 0 004.3 1.38V7.3a4.29 4.29 0 01-3.25-1.48z"/></svg>
+          </a>
         </div>
         <div class="btn-row">
           <a class="btn" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
@@ -904,7 +923,7 @@
     </div>
 
     <div class="foot">
-      <span><img src="assets/brand/isotipo-blanco.png" alt=""> © OLDTAPE · Pedro Querales</span>
+      <span>© OLDTAPE · Pedro Querales</span>
       <span>oldtapemusic.com</span>
     </div>
   </div>
@@ -1030,5 +1049,19 @@ document.querySelectorAll('form.pf').forEach(form => {
 });
 </script>
 
+<!-- Powered by LandingHub -->
+<style>
+.lh-powered{background:#12062A;padding:16px;text-align:center;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1}
+.lh-powered a{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-size:13px;font-weight:500;opacity:.8;transition:opacity .2s ease}
+.lh-powered a:hover{opacity:1}
+.lh-powered svg{width:18px;height:18px;display:block;flex:none}
+.lh-powered strong{font-weight:700}
+</style>
+<div class="lh-powered">
+  <a href="https://landinghub.codeflakes.io/" target="_blank" rel="noopener" aria-label="Powered by LandingHub">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#6B21E8"/><text x="16" y="24" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="21" fill="#fff">H</text></svg>
+    <span>Powered by <strong>LandingHub</strong></span>
+  </a>
+</div>
 </body>
 </html>
