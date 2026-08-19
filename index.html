@@ -12,7 +12,15 @@
 <meta property="og:description" content="Producción musical y acompañamiento artístico para convertir una idea en una obra terminada y lista para salir al mundo.">
 <meta property="og:url" content="https://oldtapemusic.com/">
 <meta property="og:image" content="https://oldtapemusic.com/assets/img/home-hero.jpg">
+<meta property="og:site_name" content="OLDTAPE">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image:alt" content="Pedro Querales en el estudio Oldtape">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OLDTAPE — Producción musical y acompañamiento artístico">
+<meta name="twitter:description" content="Música con dirección y propósito: producción musical, mezcla y master, y acompañamiento artístico 1:1 con Pedro Querales.">
+<meta name="twitter:image" content="https://oldtapemusic.com/assets/img/home-hero.jpg">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Pedro Querales">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.ico" sizes="16x16 32x32 48x48">
@@ -424,6 +432,22 @@
   }
   .socials a svg{ width:24px; height:24px; display:block }
   .socials a:hover{ color:var(--gold) }
+
+  /* --- Compartir --- */
+  .share{ margin-top:34px }
+  .share .share-lbl{
+    font-size:11px; font-weight:800; letter-spacing:.24em; text-transform:uppercase;
+    color:#9a9a9a; display:block; margin-bottom:14px;
+  }
+  .share-row{ display:flex; gap:10px; flex-wrap:wrap }
+  .share-row a, .share-row button{
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    font:inherit; font-size:13px; font-weight:700; letter-spacing:.02em;
+    color:#e6e6e6; background:transparent; border:1px solid var(--line-dk);
+    border-radius:999px; padding:9px 16px; transition:color .18s, border-color .18s;
+  }
+  .share-row a svg, .share-row button svg{ width:16px; height:16px; display:block; fill:currentColor }
+  .share-row a:hover, .share-row button:hover{ color:var(--gold); border-color:var(--gold) }
   .foot{
     display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
     margin-top:80px; padding-top:30px; border-top:1px solid var(--line-dk);
@@ -470,6 +494,110 @@
     .home h1{ font-stretch:100% }
   }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://oldtapemusic.com/#website",
+      "url": "https://oldtapemusic.com/",
+      "name": "OLDTAPE",
+      "inLanguage": "es",
+      "publisher": { "@id": "https://oldtapemusic.com/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://oldtapemusic.com/#webpage",
+      "url": "https://oldtapemusic.com/",
+      "name": "OLDTAPE \u2014 Producci\u00f3n musical y acompa\u00f1amiento art\u00edstico",
+      "description": "M\u00fasica con direcci\u00f3n y prop\u00f3sito: producci\u00f3n musical, mezcla y master, y acompa\u00f1amiento art\u00edstico 1:1.",
+      "isPartOf": { "@id": "https://oldtapemusic.com/#website" },
+      "inLanguage": "es",
+      "primaryImageOfPage": "https://oldtapemusic.com/assets/img/home-hero.jpg"
+    },
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://oldtapemusic.com/#organization",
+      "name": "OLDTAPE",
+      "alternateName": "Oldtape Studio",
+      "url": "https://oldtapemusic.com/",
+      "logo": "https://oldtapemusic.com/apple-touch-icon.png",
+      "image": "https://oldtapemusic.com/assets/img/home-hero.jpg",
+      "email": "hola@oldtapemusic.com",
+      "description": "Estudio de producci\u00f3n musical y acompa\u00f1amiento art\u00edstico dirigido por Pedro Querales.",
+      "founder": { "@id": "https://oldtapemusic.com/#pedro" },
+      "sameAs": [
+        "https://www.instagram.com/oldtapeoficial/",
+        "https://open.spotify.com/artist/2rMNgpqzircdgLQo0thnOf",
+        "https://www.youtube.com/channel/UCVqee-trTtYHOwFXebnNq2g",
+        "https://www.tiktok.com/@oldtapeoficial"
+      ],
+      "areaServed": "Worldwide",
+      "knowsLanguage": "es",
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Track Session",
+          "category": "Producci\u00f3n musical",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Track Session",
+            "serviceType": "Producci\u00f3n, grabaci\u00f3n, mezcla y master de un tema"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Focus 4",
+          "category": "Acompa\u00f1amiento art\u00edstico 1:1",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Focus 4",
+            "serviceType": "Acompa\u00f1amiento art\u00edstico 1:1"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "PRO 90",
+          "category": "Acompa\u00f1amiento art\u00edstico 1:1",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "PRO 90",
+            "serviceType": "Programa de acompa\u00f1amiento art\u00edstico de 90 d\u00edas"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Masterclass grupal",
+          "price": "90",
+          "priceCurrency": "USD",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Masterclass grupal",
+            "serviceType": "Formaci\u00f3n grupal para artistas"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://oldtapemusic.com/#pedro",
+      "name": "Pedro Querales",
+      "sameAs": [
+        "https://www.instagram.com/oldtapeoficial/",
+        "https://open.spotify.com/artist/2rMNgpqzircdgLQo0thnOf",
+        "https://www.youtube.com/channel/UCVqee-trTtYHOwFXebnNq2g",
+        "https://www.tiktok.com/@oldtapeoficial"
+      ],
+      "jobTitle": "Productor musical, compositor y director art\u00edstico",
+      "worksFor": { "@id": "https://oldtapemusic.com/#organization" },
+      "url": "https://oldtapemusic.com/",
+      "image": "https://oldtapemusic.com/assets/img/sobre-retrato.jpg"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -512,9 +640,9 @@
 <section class="home">
   <div class="wrap">
     <h1 class="reveal">Música con <em>dirección</em> y propósito.</h1>
-    <p class="sub reveal d1">Pedro Querales · Oldtape. Producción musical y acompañamiento artístico para quienes quieren convertir una idea en una obra terminada y lista para salir al mundo.</p>
+    <p class="sub reveal d1">Pedro Querales · Oldtape. Producción musical y acompañamiento artístico para hacer música con dirección y propósito: convertir una idea en una obra terminada y lista para salir al mundo.</p>
     <div class="btn-row reveal d2">
-      <a class="btn btn--solid" href="#aplicar">Solicitar evaluación</a>
+      <a class="btn btn--solid" href="#aplicar">Empezar mi evaluación</a>
       <a class="btn" href="#music">Escuchar la obra</a>
     </div>
 
@@ -525,7 +653,7 @@
       </div>
       <div>
         <div class="k">Oficio + dirección</div>
-        <p class="v">Producción, composición, grabación, mezcla y master bajo una misma visión.</p>
+        <p class="v">Producción, composición, grabación, mezcla y master bajo una misma dirección y un mismo propósito.</p>
       </div>
       <div>
         <div class="k">1:1</div>
@@ -553,7 +681,7 @@
       <div class="mod-copy">
         <span class="eyebrow">Qué hago y cómo lo hago</span>
         <h3>La música primero.<br>Todo lo demás se construye desde ahí.</h3>
-        <p><b>Produzco, compongo y dirijo proyectos musicales desde la idea hasta su versión final.</b></p>
+        <p><b>Produzco, compongo y dirijo proyectos musicales</b> desde la idea hasta su versión final.</p>
         <p>Primero entiendo qué quiere decir el artista. Después construimos el sonido, la estructura y las decisiones que hacen que esa música tenga identidad.</p>
         <ul class="mod-list">
           <li>Idea</li>
@@ -564,7 +692,7 @@
           <li>Master</li>
           <li>Dirección</li>
         </ul>
-        <p class="mod-close"><b>Un mismo proceso. Una misma dirección. Una obra que puede sostenerse fuera del estudio.</b></p>
+        <p class="mod-close"><b>Un mismo proceso, una misma dirección.</b> Una obra con propósito, capaz de sostenerse fuera del estudio.</p>
       </div>
     </div>
 
@@ -702,7 +830,7 @@
           <li>Ejercicios y actividades entre sesiones</li>
           <li>Ruta rápida para resolver una necesidad concreta</li>
         </ul>
-        <a class="btn" href="#aplicar" data-oferta="Focus 4">Aplicar al 1:1</a>
+        <a class="btn" href="#aplicar" data-oferta="Focus 4">Aplicar a Focus 4</a>
       </article>
     </div>
 
@@ -751,7 +879,7 @@
       </div>
 
       <div class="btn-row">
-        <a class="btn btn--solid" href="#aplicar" data-oferta="PRO90">Aplicar al 1:1</a>
+        <a class="btn btn--solid" href="#aplicar" data-oferta="PRO90">Aplicar a PRO 90</a>
       </div>
     </div>
   </div>
@@ -861,7 +989,7 @@
         <span class="eyebrow">04 · Sobre Oldtape</span>
         <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 4px">Quién está<br>del otro lado</h2>
         <p><b>Oldtape es el proyecto de Pedro Querales:</b> productor, compositor y director artístico. Un catálogo propio, un estudio y años de oficio puestos al servicio de artistas que quieren dejar de improvisar su carrera.</p>
-        <p>La forma de trabajo es simple: primero entender al artista, después construir la música y por último preparar la salida. Nada se deja suelto y nada depende de la inspiración del día.</p>
+        <p>La forma de trabajo es simple: primero entender al artista, después construir la música y por último preparar la salida. Nada se deja suelto y nada depende de la inspiración del día: cada decisión tiene una dirección y un propósito.</p>
       </div>
     </div>
 
@@ -872,19 +1000,49 @@
         <a class="contact-mail" href="mailto:hola@oldtapemusic.com">hola@oldtapemusic.com</a>
         <!-- Solo logos. Falta pegar la URL real de cada perfil en el href. -->
         <div class="socials">
-          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en Instagram" title="Instagram">
+          <a href="https://www.instagram.com/oldtapeoficial/" target="_blank" rel="noopener" aria-label="Oldtape en Instagram" title="Instagram">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg>
           </a>
-          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en Spotify" title="Spotify">
+          <a href="https://open.spotify.com/artist/2rMNgpqzircdgLQo0thnOf" target="_blank" rel="noopener" aria-label="Oldtape en Spotify" title="Spotify">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
           </a>
-          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en YouTube" title="YouTube">
+          <a href="https://www.youtube.com/channel/UCVqee-trTtYHOwFXebnNq2g" target="_blank" rel="noopener" aria-label="Oldtape en YouTube" title="YouTube">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.9a3 3 0 00-2.12-2.13C19.5 4.25 12 4.25 12 4.25s-7.5 0-9.38.52A3 3 0 00.5 6.9C0 8.79 0 12 0 12s0 3.21.5 5.1a3 3 0 002.12 2.13c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3 3 0 002.12-2.13C24 15.21 24 12 24 12s0-3.21-.5-5.1zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
           </a>
-          <a href="#" target="_blank" rel="noopener" aria-label="Oldtape en TikTok" title="TikTok">
+          <a href="https://www.tiktok.com/@oldtapeoficial" target="_blank" rel="noopener" aria-label="Oldtape en TikTok" title="TikTok">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5 2.59 2.59 0 01-2.59-2.59 2.59 2.59 0 013.36-2.47V9.7a5.68 5.68 0 00-.77-.05A5.69 5.69 0 004.17 15.3 5.69 5.69 0 009.86 21a5.69 5.69 0 005.69-5.69V9.01a7.35 7.35 0 004.3 1.38V7.3a4.29 4.29 0 01-3.25-1.48z"/></svg>
           </a>
         </div>
+        <div class="share">
+          <span class="share-lbl">Comparte Oldtape</span>
+          <div class="share-row">
+            <a href="https://wa.me/?text=M%C3%BAsica%20con%20direcci%C3%B3n%20y%20prop%C3%B3sito%20%E2%80%94%20OLDTAPE%20https%3A%2F%2Foldtapemusic.com%2F"
+               target="_blank" rel="noopener" aria-label="Compartir Oldtape en WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5v-.5c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4 2.5 1 3 .8 3.6.8.5 0 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.6A12 12 0 1012 0zm0 22c-1.9 0-3.7-.5-5.2-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.9 9.9 0 1122 12 10 10 0 0112 22z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=M%C3%BAsica%20con%20direcci%C3%B3n%20y%20prop%C3%B3sito%20%E2%80%94%20OLDTAPE&url=https%3A%2F%2Foldtapemusic.com%2F"
+               target="_blank" rel="noopener" aria-label="Compartir Oldtape en X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.96 6.82H1.68l7.73-8.84L1.25 2.25h6.82l4.71 6.23 5.46-6.23zm-1.16 17.52h1.83L7.02 4.13H5.05l12.03 15.64z"/></svg>
+              X
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Foldtapemusic.com%2F"
+               target="_blank" rel="noopener" aria-label="Compartir Oldtape en Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12a12 12 0 10-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0024 12z"/></svg>
+              Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Foldtapemusic.com%2F"
+               target="_blank" rel="noopener" aria-label="Compartir Oldtape en LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 013.38-1.86c3.61 0 4.28 2.38 4.28 5.47v6.28zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+              LinkedIn
+            </a>
+            <button type="button" class="share-copy" data-url="https://oldtapemusic.com/" aria-label="Copiar el enlace de Oldtape">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12a5.1 5.1 0 015.1-5.1h3.2v1.95H9a3.15 3.15 0 100 6.3h3.2V17H9A5.1 5.1 0 013.9 12zm4.35-.98h7.5v1.96h-7.5v-1.96zM15 6.9h-3.2v1.95H15a3.15 3.15 0 110 6.3h-3.2V17H15A5.1 5.1 0 1015 6.9z"/></svg>
+              <span>Copiar enlace</span>
+            </button>
+          </div>
+        </div>
+
         <div class="btn-row">
           <a class="btn" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
         </div>
@@ -1044,6 +1202,30 @@ document.querySelectorAll('form.pf').forEach(form => {
       btn.disabled = false;
       btn.classList.remove('is-blue');
       btn.textContent = textoOriginal;
+    }
+  });
+});
+</script>
+
+<script>
+/* Copiar enlace del bloque "Comparte Oldtape" */
+document.querySelectorAll('.share-copy').forEach(function(btn){
+  var label = btn.querySelector('span');
+  var original = label ? label.textContent : '';
+  btn.addEventListener('click', function(){
+    var url = btn.dataset.url || location.href;
+    var done = function(){
+      if(!label) return;
+      label.textContent = 'Enlace copiado';
+      setTimeout(function(){ label.textContent = original; }, 2000);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done).catch(function(){});
+    } else {
+      var t = document.createElement('textarea');
+      t.value = url; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+      document.body.removeChild(t);
     }
   });
 });
