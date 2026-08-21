@@ -1111,7 +1111,19 @@
         </div>
 
         <div class="btn-row">
-          <a class="btn" href="https://pquerales.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
+          <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
+        </div>
+
+        <!-- Reserva directa por servicio. El parámetro `fijar=<id>` deja el
+             servicio elegido y bloqueado: el visitante no puede cambiarlo, ni
+             desde el formulario ni editando el POST. Los IDs son los de las
+             entidades Producto/Servicio en PerfectFlow (Station: ecosphere);
+             si se recrean las seeds, hay que volver a sacarlos. -->
+        <div class="btn-row">
+          <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=648" target="_blank" rel="noopener">Reservar PRO90</a>
+          <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=649" target="_blank" rel="noopener">Reservar Focus 4</a>
+          <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=650" target="_blank" rel="noopener">Reservar sesión individual</a>
+          <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=651" target="_blank" rel="noopener">Lista de espera grupal</a>
         </div>
       </div>
 
@@ -1157,12 +1169,17 @@
 
 <script>
 /* ============================================================
-   PerfectFlow — endpoint del CRM.
-   Coloca aquí la URL del webhook/endpoint de PerfectFlow.
-   Mientras esté vacío, el formulario no pierde el lead:
-   valida y abre el correo con los datos ya formateados.
+   PerfectFlow — entrada de leads al CRM.
+
+   Apunta al webhook de Activepieces, no directo a PerfectFlow: la API del CRM
+   exige un token por cliente, y un formulario en el navegador no puede guardarlo
+   sin exponerlo a cualquiera que abra el inspector. Activepieces recibe esto,
+   crea el contacto firmando del lado servidor, y manda el acuse de recibo.
+
+   Si el envío falla, el formulario NO pierde el lead: abre el correo con los
+   datos ya formateados.
    ============================================================ */
-const PF_ENDPOINT = ""; // p.ej. "https://pquerales.perfectflow.cloud/api/leads"
+const PF_ENDPOINT = "https://cloud.activepieces.com/api/v1/webhooks/W8i3ivXnraLwdUS8KOVJo";
 const PF_FALLBACK_MAIL = "hola@oldtapemusic.com";
 
 /* ---- Nav activo por sección ---- */
