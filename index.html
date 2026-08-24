@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="OLDTAPE — Pedro Querales. Música con dirección y propósito: producción musical, mezcla y master, y acompañamiento artístico 1:1.">
+<meta name="description" content="OLDTAPE — Pedro Querales. Música con dirección y propósito: producción musical, mezcla y master, y acompañamiento artístico cercano.">
 <title>OLDTAPE — Producción musical y acompañamiento artístico</title>
 
 <link rel="canonical" href="https://oldtapemusic.com/">
@@ -14,10 +14,11 @@
 <meta property="og:image" content="https://oldtapemusic.com/assets/img/home-hero.jpg">
 <meta property="og:site_name" content="OLDTAPE">
 <meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image:alt" content="Pedro Querales en el estudio Oldtape">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="OLDTAPE — Producción musical y acompañamiento artístico">
-<meta name="twitter:description" content="Música con dirección y propósito: producción musical, mezcla y master, y acompañamiento artístico 1:1 con Pedro Querales.">
+<meta name="twitter:description" content="Música con dirección y propósito: producción musical, mezcla y master, y acompañamiento artístico cercano con Pedro Querales.">
 <meta name="twitter:image" content="https://oldtapemusic.com/assets/img/home-hero.jpg">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Pedro Querales">
@@ -25,11 +26,14 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/img/home-hero.jpg" fetchpriority="high">
 <meta name="theme-color" content="#000000">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"></noscript>
 
 <style>
   /* ============================================================
@@ -130,6 +134,19 @@
   }
   header.nav .nav-cta:hover{ background:var(--gold); border-color:var(--gold); color:var(--ink) }
   header.nav .nav-cta:active{ background:var(--blue); border-color:var(--blue); color:#fff }
+  /* ---- Selector de idioma ES / EN ---- */
+  .lang{ order:1; flex:none; display:flex; align-items:center; gap:4px; padding-left:28px }
+  .lang span{ color:#5a5a5a; font-size:11px }
+  .lang button{
+    background:transparent; border:0; cursor:pointer; padding:6px 4px;
+    font:inherit; font-size:11px; font-weight:800; letter-spacing:.14em;
+    color:#8a8a8a; transition:color .18s;
+  }
+  .lang button:hover{ color:#fff }
+  .lang button[aria-pressed="true"]{ color:#fff; text-decoration:underline; text-underline-offset:5px }
+  .nav-toggle{ order:2 }
+  @media (max-width:760px){ .lang{ padding-left:0; margin-right:14px } }
+
   @media (max-width:1180px){ header.nav nav{ gap:26px } }
   @media (max-width:1040px){ header.nav .nav-cta{ display:none } }
 
@@ -573,7 +590,7 @@
       "@id": "https://oldtapemusic.com/#webpage",
       "url": "https://oldtapemusic.com/",
       "name": "OLDTAPE \u2014 Producci\u00f3n musical y acompa\u00f1amiento art\u00edstico",
-      "description": "M\u00fasica con direcci\u00f3n y prop\u00f3sito: producci\u00f3n musical, mezcla y master, y acompa\u00f1amiento art\u00edstico 1:1.",
+      "description": "M\u00fasica con direcci\u00f3n y prop\u00f3sito: producci\u00f3n musical, mezcla y master, y acompa\u00f1amiento art\u00edstico cercano.",
       "isPartOf": { "@id": "https://oldtapemusic.com/#website" },
       "inLanguage": "es",
       "primaryImageOfPage": "https://oldtapemusic.com/assets/img/home-hero.jpg"
@@ -611,17 +628,17 @@
         {
           "@type": "Offer",
           "name": "Focus 4",
-          "category": "Acompa\u00f1amiento art\u00edstico 1:1",
+          "category": "Acompa\u00f1amiento art\u00edstico",
           "itemOffered": {
             "@type": "Service",
             "name": "Focus 4",
-            "serviceType": "Acompa\u00f1amiento art\u00edstico 1:1"
+            "serviceType": "Acompa\u00f1amiento art\u00edstico"
           }
         },
         {
           "@type": "Offer",
           "name": "PRO 90",
-          "category": "Acompa\u00f1amiento art\u00edstico 1:1",
+          "category": "Acompa\u00f1amiento art\u00edstico",
           "itemOffered": {
             "@type": "Service",
             "name": "PRO 90",
@@ -662,12 +679,17 @@
 </head>
 <body>
 
-<a class="skip" href="#home">Saltar al contenido</a>
+<a data-i18n="skip" class="skip" href="#home">Saltar al contenido</a>
 
 <header class="nav">
   <a href="#home" class="brand" aria-label="OLDTAPE — inicio">
-    <img src="assets/brand/logo-oldtape-blanco.png" alt="OLDTAPE">
+    <img src="assets/brand/logo-oldtape-blanco.png" alt="OLDTAPE" width="2000" height="336">
   </a>
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button type="button" data-lang="es" aria-pressed="true">ES</button>
+    <span aria-hidden="true">/</span>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
   <button class="nav-toggle" type="button" aria-label="Abrir menú"
           aria-expanded="false" aria-controls="nav-principal">
     <span></span>
@@ -676,11 +698,11 @@
     <nav>
       <a href="#home" data-sec="home" class="active">Home</a>
       <a href="#music" data-sec="music">Music</a>
-      <a href="#sesiones" data-sec="sesiones">Sesiones</a>
-      <a href="#uno-a-uno" data-sec="uno-a-uno">1:1</a>
-      <a href="#contacto" data-sec="contacto">Contacto</a>
+      <a data-i18n="nav.sesiones" href="#sesiones" data-sec="sesiones">Sesiones</a>
+      <a data-i18n="nav.uno" href="#uno-a-uno" data-sec="uno-a-uno">Acompañamiento</a>
+      <a data-i18n="nav.contacto" href="#contacto" data-sec="contacto">Contacto</a>
     </nav>
-    <a class="nav-cta" href="#aplicar">Solicitar evaluación</a>
+    <a data-i18n="nav.cta" class="nav-cta" href="#aplicar">Solicitar evaluación</a>
   </div>
 </header>
 
@@ -688,43 +710,43 @@
 <main>
 <section class="hero" id="home">
   <div class="wordmark">
-    <img src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE" fetchpriority="high">
+    <img src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE" width="2000" height="336" fetchpriority="high">
   </div>
   <div class="wrap">
     <div class="tagline reveal d1">
-      <span><b>Productor</b> · Beats · Mezcla</span>
-      <span>Producción · Mezcla · Master</span>
+      <span data-i18n="hero.tag1"><b>Productor</b> · Beats · Mezcla</span>
+      <span data-i18n="hero.tag2">Producción · Mezcla · Master</span>
     </div>
   </div>
   <div class="plate reveal d2">
     <figure>
       <span class="cap">Oldtape Studio · 2026</span>
-      <img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" fetchpriority="high">
+      <img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" width="1800" height="1200" fetchpriority="high">
     </figure>
   </div>
 </section>
 
 <section class="home">
   <div class="wrap">
-    <h1 class="reveal">Música con <em>dirección</em> y propósito.</h1>
-    <p class="sub reveal d1">Pedro Querales · Oldtape. Producción musical y acompañamiento artístico para hacer música con dirección y propósito: convertir una idea en una obra terminada y lista para salir al mundo.</p>
+    <h1 data-i18n="home.h1" class="reveal">Música con <em>dirección</em> y propósito.</h1>
+    <p data-i18n="home.sub" class="sub reveal d1">Pedro Querales · Oldtape. Producción musical y acompañamiento artístico para hacer música con dirección y propósito: convertir una idea en una obra terminada y lista para salir al mundo.</p>
     <div class="btn-row reveal d2">
-      <a class="btn btn--solid" href="#aplicar">Empezar mi evaluación</a>
-      <a class="btn" href="#music">Escuchar la obra</a>
+      <a data-i18n="home.cta1" class="btn btn--solid" href="#aplicar">Empezar mi evaluación</a>
+      <a data-i18n="home.cta2" class="btn" href="#music">Escuchar la obra</a>
     </div>
 
     <div class="authority reveal">
       <div>
-        <div class="k">Obra real</div>
-        <p class="v">Catálogo publicado, regalías y contratos activos: proyectos que ya viven fuera del estudio.</p>
+        <div data-i18n="home.k1" class="k">Obra real</div>
+        <p data-i18n="home.v1" class="v">Catálogo publicado, regalías y contratos activos: proyectos que ya viven fuera del estudio.</p>
       </div>
       <div>
-        <div class="k">Oficio + dirección</div>
-        <p class="v">Producción, composición, grabación, mezcla y master bajo una misma dirección y un mismo propósito.</p>
+        <div data-i18n="home.k2" class="k">Oficio + dirección</div>
+        <p data-i18n="home.v2" class="v">Producción, composición, grabación, mezcla y master bajo una misma dirección y un mismo propósito.</p>
       </div>
       <div>
-        <div class="k">1:1</div>
-        <p class="v">Procesos privados para artistas que necesitan claridad, criterio y movimiento.</p>
+        <div data-i18n="home.k3" class="k">Acompañamiento</div>
+        <p data-i18n="home.v3" class="v">Procesos privados para artistas que necesitan claridad, criterio y movimiento.</p>
       </div>
     </div>
   </div>
@@ -734,32 +756,32 @@
 <section class="block dark" id="music">
   <div class="wrap">
     <div class="block-head">
-      <span class="eyebrow">01 · La obra</span>
+      <span data-i18n="mus.eye" class="eyebrow">01 · La obra</span>
       <h2 class="display">Music</h2>
-      <p class="lede">Antes de explicar lo que hago, prefiero que lo escuches. La obra es la carta de presentación.</p>
+      <p data-i18n="mus.lede" class="lede">Antes de explicar lo que hago, prefiero que lo escuches. La obra es la carta de presentación.</p>
     </div>
 
     <!-- Módulo 1 — imagen grande + qué hago y cómo lo hago -->
     <div class="mod-split reveal">
       <figure>
-        <img src="assets/img/music-dj.jpg" alt="Oldtape en cabina" loading="lazy">
-        <figcaption>Cabina · sets</figcaption>
+        <img src="assets/img/music-dj.jpg" alt="Oldtape en cabina" width="1800" height="1200" loading="lazy" decoding="async">
+        <figcaption data-i18n="mus.figcap">Cabina · sets</figcaption>
       </figure>
       <div class="mod-copy">
-        <span class="eyebrow">Qué hago y cómo lo hago</span>
-        <h3>La música primero.<br>Todo lo demás se construye desde ahí.</h3>
-        <p><b>Produzco, compongo y dirijo proyectos musicales</b> desde la idea hasta su versión final.</p>
-        <p>Primero entiendo qué quiere decir el artista. Después construimos el sonido, la estructura y las decisiones que hacen que esa música tenga identidad.</p>
+        <span data-i18n="mus.eye2" class="eyebrow">Qué hago y cómo lo hago</span>
+        <h3 data-i18n="mus.h3">La música primero.<br>Todo lo demás se construye desde ahí.</h3>
+        <p data-i18n="mus.p1"><b>Produzco, compongo y dirijo proyectos musicales</b> desde la idea hasta su versión final.</p>
+        <p data-i18n="mus.p2">Primero entiendo qué quiere decir el artista. Después construimos el sonido, la estructura y las decisiones que hacen que esa música tenga identidad.</p>
         <ul class="mod-list">
-          <li>Idea</li>
-          <li>Composición</li>
-          <li>Producción</li>
-          <li>Grabación</li>
-          <li>Mezcla</li>
-          <li>Master</li>
-          <li>Dirección</li>
+          <li data-i18n="mus.l1">Idea</li>
+          <li data-i18n="mus.l2">Composición</li>
+          <li data-i18n="mus.l3">Producción</li>
+          <li data-i18n="mus.l4">Grabación</li>
+          <li data-i18n="mus.l5">Mezcla</li>
+          <li data-i18n="mus.l6">Master</li>
+          <li data-i18n="mus.l7">Dirección</li>
         </ul>
-        <p class="mod-close"><b>Un mismo proceso, una misma dirección.</b> Una obra con propósito, capaz de sostenerse fuera del estudio.</p>
+        <p data-i18n="mus.close" class="mod-close"><b>Un mismo proceso, una misma dirección.</b> Una obra con propósito, capaz de sostenerse fuera del estudio.</p>
       </div>
     </div>
 
@@ -776,9 +798,9 @@
     <div class="player reveal">
       <div class="player-head">
         <div>
-          <span class="eyebrow">Escuchar</span>
-          <h3>Top de Spotify</h3>
-          <p class="hint">Los temas más escuchados del perfil de Oldtape.</p>
+          <span data-i18n="mus.listen" class="eyebrow">Escuchar</span>
+          <h3 data-i18n="mus.sp.h">Top de Spotify</h3>
+          <p data-i18n="mus.sp.hint" class="hint">Los temas más escuchados del perfil de Oldtape.</p>
         </div>
       </div>
       <div class="player-body">
@@ -793,19 +815,19 @@
   </div>
 
   <div class="bleed reveal">
-    <img src="assets/img/music-live.jpg" alt="Oldtape en vivo" loading="lazy">
-    <span class="cap">En vivo</span>
+    <img src="assets/img/music-live.jpg" alt="Oldtape en vivo" width="1800" height="1200" loading="lazy" decoding="async">
+    <span data-i18n="mus.cap.live" class="cap">En vivo</span>
   </div>
 
   <div class="wrap" style="padding-top:96px">
     <div class="credits reveal">
       <div>
-        <div class="k">Créditos</div>
-        <p class="v">Producción · composición · arreglos · grabación · mezcla y master. Dirección artística de proyectos propios y de terceros.</p>
+        <div data-i18n="mus.cred.k" class="k">Créditos</div>
+        <p data-i18n="mus.cred.v" class="v">Producción · composición · arreglos · grabación · mezcla y master. Dirección artística de proyectos propios y de terceros.</p>
       </div>
       <div>
-        <div class="k">Colaboraciones</div>
-        <p class="v">Artistas, sellos y proyectos audiovisuales. Para fichas completas, catálogo y licencias, escríbenos.</p>
+        <div data-i18n="mus.col.k" class="k">Colaboraciones</div>
+        <p data-i18n="mus.col.v" class="v">Artistas, sellos y proyectos audiovisuales. Para fichas completas, catálogo y licencias, escríbenos.</p>
       </div>
     </div>
   </div>
@@ -815,146 +837,146 @@
 <section class="block" id="sesiones">
   <div class="wrap">
     <div class="block-head">
-      <span class="eyebrow">02 · Servicios de estudio</span>
-      <h2 class="display">Sesiones</h2>
-      <p class="lede">Soluciones puntuales para avanzar. Traes una idea o un demo y sales con una canción terminada, con dirección de producción real detrás.</p>
+      <span data-i18n="ses.eye" class="eyebrow">02 · Servicios de estudio</span>
+      <h2 data-i18n="ses.h2" class="display">Sesiones</h2>
+      <p data-i18n="ses.lede" class="lede">Soluciones puntuales para avanzar. Traes una idea o un demo y sales con una canción terminada, con dirección de producción real detrás.</p>
     </div>
   </div>
 </section>
 
 <div class="bleed">
-  <img src="assets/img/sesiones-estudio.jpg" alt="Sesión de producción en el estudio" width="1800" height="1200" loading="lazy">
-  <span class="cap">Sesión de producción</span>
+  <img src="assets/img/sesiones-estudio.jpg" alt="Sesión de producción en el estudio" width="1800" height="1200" loading="lazy" decoding="async">
+  <span data-i18n="ses.cap" class="cap">Sesión de producción</span>
 </div>
 
 <section class="block soft">
   <div class="wrap">
     <div class="offers reveal">
       <article class="offer">
-        <span class="tag">Producción puntual</span>
+        <span data-i18n="ses.o1.tag" class="tag">Producción puntual</span>
         <h3 class="name">Track Session</h3>
         <div class="price">$280</div>
-        <p class="offer-lead">Un trabajo enfocado en llevar una idea, demo o canción al siguiente nivel.</p>
+        <p data-i18n="ses.o1.lead" class="offer-lead">Un trabajo enfocado en llevar una idea, demo o canción al siguiente nivel.</p>
         <ul>
-          <li>2 sesiones musicales de trabajo</li>
-          <li>Dirección de producción</li>
-          <li>Mix &amp; master limitado</li>
-          <li>Cupos mensuales</li>
+          <li data-i18n="ses.o1.l1">2 sesiones musicales de trabajo</li>
+          <li data-i18n="ses.o1.l2">Dirección de producción</li>
+          <li data-i18n="ses.o1.l3">Mix &amp; master limitado</li>
+          <li data-i18n="ses.o1.l4">Cupos mensuales</li>
         </ul>
-        <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=650" target="_blank" rel="noopener">Reservar sesión</a>
+        <a data-i18n="ses.o1.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=650" target="_blank" rel="noopener">Reservar sesión</a>
       </article>
 
       <!-- Mix & Master se retiró: Pedro lo considera el mismo servicio que Track Session.
            En su lugar va el plan a medida para artistas de disquera. -->
       <article class="offer">
-        <span class="tag">Proyectos de disquera</span>
-        <h3 class="name">Plan a medida</h3>
-        <div class="price">A medida</div>
-        <p class="offer-lead">Para artistas con sello o equipo detrás, donde el alcance, los tiempos y las entregas se definen proyecto por proyecto.</p>
+        <span data-i18n="ses.o2.tag" class="tag">Proyectos de disquera</span>
+        <h3 data-i18n="ses.o2.name" class="name">Plan a medida</h3>
+        <div data-i18n="ses.o2.price" class="price">A medida</div>
+        <p data-i18n="ses.o2.lead" class="offer-lead">Para artistas con sello o equipo detrás, donde el alcance, los tiempos y las entregas se definen proyecto por proyecto.</p>
         <ul>
-          <li>Alcance y cronograma acordados</li>
-          <li>Producción y dirección artística</li>
-          <li>Entregas listas para distribución</li>
-          <li>Presupuesto según formato y cantidad</li>
+          <li data-i18n="ses.o2.l1">Alcance y cronograma acordados</li>
+          <li data-i18n="ses.o2.l2">Producción y dirección artística</li>
+          <li data-i18n="ses.o2.l3">Entregas listas para distribución</li>
+          <li data-i18n="ses.o2.l4">Presupuesto según formato y cantidad</li>
         </ul>
-        <a class="btn" href="#aplicar" data-oferta="Plan a medida">Pedir presupuesto</a>
+        <a data-i18n="ses.o2.btn" class="btn" href="#aplicar" data-oferta="Plan a medida">Pedir presupuesto</a>
       </article>
     </div>
 
     <aside class="note reveal">
-      <span class="kicker">Entrada secundaria</span>
-      <p><b>Masterclass grupal:</b> encuentros intensivos para trabajar identidad, composición, producción y autogestión con otros artistas. <b>$90 por persona</b> · cupos por lista de espera.</p>
+      <span data-i18n="ses.note.k" class="kicker">Entrada secundaria</span>
+      <p data-i18n="ses.note.p"><b>Masterclass grupal:</b> encuentros intensivos para trabajar identidad, composición, producción y autogestión con otros artistas. <b>$90 por persona</b> · cupos por lista de espera.</p>
     </aside>
     <div class="btn-row">
-      <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=651" target="_blank" rel="noopener">Entrar a la lista</a>
+      <a data-i18n="ses.note.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=651" target="_blank" rel="noopener">Entrar a la lista</a>
     </div>
 
     <div class="closer reveal">
-      <h3>A veces no necesitas empezar de cero.</h3>
-      <p>Necesitas el oído correcto, una decisión clara y alguien que te ayude a terminar.</p>
+      <h3 data-i18n="ses.closer.h">A veces no necesitas empezar de cero.</h3>
+      <p data-i18n="ses.closer.p">Necesitas el oído correcto, una decisión clara y alguien que te ayude a terminar.</p>
     </div>
   </div>
 </section>
 
-<!-- ==================== 4 · ACOMPAÑAMIENTO 1:1 ==================== -->
+<!-- ==================== 4 · ACOMPAÑAMIENTO ==================== -->
 <section class="block dark" id="uno-a-uno">
   <div class="wrap">
     <div class="block-head">
-      <span class="eyebrow">03 · Oferta exclusiva</span>
-      <h2 class="display">No es solo hacer música.<br>Es saber qué hacer con ella.</h2>
-      <p class="lede">El acompañamiento 1:1 está pensado para artistas que quieren dejar de avanzar a prueba y error. Trabajamos sobre tu música, tu identidad, tus decisiones y tu próxima etapa. Es un proceso privado y con cupo limitado: se entra por evaluación.</p>
+      <span data-i18n="uno.eye" class="eyebrow">03 · Oferta exclusiva</span>
+      <h2 data-i18n="uno.h2" class="display">No es solo hacer música.<br>Es saber qué hacer con ella.</h2>
+      <p data-i18n="uno.lede" class="lede">El acompañamiento está pensado para artistas que quieren dejar de avanzar a prueba y error. Trabajamos sobre tu música, tu identidad, tus decisiones y tu próxima etapa. Es un proceso privado y con cupo limitado: se entra por evaluación.</p>
     </div>
 
     <div class="offers one reveal">
       <article class="offer">
-        <span class="tag">Intensivo creativo 1:1</span>
+        <span data-i18n="uno.o1.tag" class="tag">Intensivo creativo</span>
         <h3 class="name">Focus 4</h3>
         <div class="price">$480</div>
-        <p class="offer-lead">4 semanas para destrabar una decisión, ordenar una idea o resolver un punto crítico de tu proyecto.</p>
+        <p data-i18n="uno.o1.lead" class="offer-lead">4 semanas para destrabar una decisión, ordenar una idea o resolver un punto crítico de tu proyecto.</p>
         <ul>
-          <li>4 semanas · 4 sesiones privadas</li>
-          <li>Diagnóstico inicial del punto de partida</li>
-          <li>Ejercicios y actividades entre sesiones</li>
-          <li>Ruta rápida para resolver una necesidad concreta</li>
+          <li data-i18n="uno.o1.l1">4 semanas · 4 sesiones privadas</li>
+          <li data-i18n="uno.o1.l2">Diagnóstico inicial del punto de partida</li>
+          <li data-i18n="uno.o1.l3">Ejercicios y actividades entre sesiones</li>
+          <li data-i18n="uno.o1.l4">Ruta rápida para resolver una necesidad concreta</li>
         </ul>
-        <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=649" target="_blank" rel="noopener">Agendar Focus 4</a>
+        <a data-i18n="uno.o1.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=649" target="_blank" rel="noopener">Agendar Focus 4</a>
       </article>
     </div>
 
     <div class="pro90 reveal">
-      <span class="eyebrow">Programa principal</span>
-      <h3>PRO 90: experiencia completa</h3>
-      <p class="lede">90 días para mover tu proyecto de verdad: de la idea al lanzamiento, con dirección artística y musical semana a semana.</p>
+      <span data-i18n="pro.eye" class="eyebrow">Programa principal</span>
+      <h3 data-i18n="pro.h3">PRO 90: experiencia completa</h3>
+      <p data-i18n="pro.lede" class="lede">90 días para mover tu proyecto de verdad: de la idea al lanzamiento, con dirección artística y musical semana a semana.</p>
 
       <div class="price-row">
         <div>
-          <span class="eyebrow">Desde</span>
-          <div class="amt">$600<small> /mes</small></div>
+          <span data-i18n="pro.from" class="eyebrow">Desde</span>
+          <div class="amt">$600<small data-i18n="pro.month"> /mes</small></div>
         </div>
         <div class="terms">
-          <span>3 cuotas mensuales de $600</span>
-          <span class="save">Pago completo: $1.600 · <em>ahorro de $200</em></span>
+          <span data-i18n="pro.t1">3 cuotas mensuales de $600</span>
+          <span data-i18n="pro.t2" class="save">Pago completo: $1.600 · <em>ahorro de $200</em></span>
         </div>
       </div>
 
       <div class="months">
         <div class="month">
-          <span class="n">Mes 1</span>
-          <span class="t">Identidad + diagnóstico</span>
-          <ul><li>ADN creativo</li><li>Repertorio</li><li>Bloqueos</li><li>Ruta inicial</li></ul>
+          <span data-i18n="pro.m1.n" class="n">Mes 1</span>
+          <span data-i18n="pro.m1.t" class="t">Identidad + diagnóstico</span>
+          <ul data-i18n="pro.m1.ul"><li>ADN creativo</li><li>Repertorio</li><li>Bloqueos</li><li>Ruta inicial</li></ul>
         </div>
         <div class="month">
-          <span class="n">Mes 2</span>
-          <span class="t">Composición + producción</span>
-          <ul><li>Estructura</li><li>Letra</li><li>Beat</li><li>Grabación guía</li></ul>
+          <span data-i18n="pro.m2.n" class="n">Mes 2</span>
+          <span data-i18n="pro.m2.t" class="t">Composición + producción</span>
+          <ul data-i18n="pro.m2.ul"><li>Estructura</li><li>Letra</li><li>Beat</li><li>Grabación guía</li></ul>
         </div>
         <div class="month">
-          <span class="n">Mes 3</span>
-          <span class="t">Cierre + lanzamiento</span>
-          <ul><li>Mezcla/master</li><li>Metadata</li><li>Arte</li><li>Continuidad</li></ul>
+          <span data-i18n="pro.m3.n" class="n">Mes 3</span>
+          <span data-i18n="pro.m3.t" class="t">Cierre + lanzamiento</span>
+          <ul data-i18n="pro.m3.ul"><li>Mezcla/master</li><li>Metadata</li><li>Arte</li><li>Continuidad</li></ul>
         </div>
       </div>
 
-      <p class="lede" style="margin-top:28px;max-width:80ch">
+      <p data-i18n="pro.detail" class="lede" style="margin-top:28px;max-width:80ch">
         <b style="color:#fff">12 sesiones privadas</b> + dirección artística y musical + actividades entre sesiones + seguimiento semanal +
         <b style="color:#fff">2-3 producciones</b> estimadas según la etapa del artista.
       </p>
 
       <div class="gift">
-        <span class="g-lbl">Incluye · Regalo digital PRO</span>
-        <span class="g-txt"><b>PRO Artist Kit:</b> plantillas, checklists y mapa personal de 90 días.</span>
+        <span data-i18n="pro.gift.l" class="g-lbl">Incluye · Regalo digital PRO</span>
+        <span data-i18n="pro.gift.t" class="g-txt"><b>PRO Artist Kit:</b> plantillas, checklists y mapa personal de 90 días.</span>
       </div>
 
       <div class="btn-row">
-        <a class="btn btn--solid" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=648" target="_blank" rel="noopener">Agendar PRO 90</a>
+        <a data-i18n="pro.btn" class="btn btn--solid" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=648" target="_blank" rel="noopener">Agendar PRO 90</a>
       </div>
     </div>
   </div>
 </section>
 
 <div class="bleed">
-  <img src="assets/img/sesiones-mesa.jpg" alt="Trabajo de producción en sesión privada" width="1800" height="1200" loading="lazy">
-  <span class="cap">Proceso 1:1</span>
+  <img src="assets/img/sesiones-mesa.jpg" alt="Trabajo de producción en sesión privada" width="1800" height="1200" loading="lazy" decoding="async">
+  <span data-i18n="uno.cap" class="cap">Proceso privado</span>
 </div>
 
 <!-- ==================== FORMULARIO DE APLICACIÓN ==================== -->
@@ -962,9 +984,9 @@
   <div class="wrap">
     <div class="form-grid">
       <div>
-        <span class="eyebrow">Aplicación</span>
-        <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 20px">Empecemos por entender dónde estás.</h2>
-        <p class="lede">Cuéntanos qué estás construyendo, qué te está frenando y qué quieres conseguir. Revisamos cada solicitud personalmente y te recomendamos el proceso que tenga más sentido para tu momento.</p>
+        <span data-i18n="apl.eye" class="eyebrow">Aplicación</span>
+        <h2 data-i18n="apl.h2" class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 20px">Empecemos por entender dónde estás.</h2>
+        <p data-i18n="apl.lede" class="lede">Cuéntanos qué estás construyendo, qué te está frenando y qué quieres conseguir. Revisamos cada solicitud personalmente y te recomendamos el proceso que tenga más sentido para tu momento.</p>
 
         <!-- Flujo interno de CRM: oculto al público por pedido de Pedro.
              Se conserva el marcado por si más adelante se quiere una versión
@@ -979,8 +1001,8 @@
         </div>
 
         <ul class="aside-list">
-          <li><b>Cupos limitados</b>Trabajamos con un número reducido de artistas para cuidar la profundidad de cada proceso.</li>
-          <li><b>Sin compromiso</b>Aplicar no te obliga a contratar. Primero vemos si existe un buen punto de encuentro.</li>
+          <li data-i18n="apl.l1"><b>Cupos limitados</b>Trabajamos con un número reducido de artistas para cuidar la profundidad de cada proceso.</li>
+          <li data-i18n="apl.l2"><b>Sin compromiso</b>Aplicar no te obliga a contratar. Primero vemos si existe un buen punto de encuentro.</li>
         </ul>
       </div>
 
@@ -991,56 +1013,56 @@
         <input type="hidden" name="pagina" value="">
 
         <div class="field">
-          <label for="a-nombre">Nombre y apellido *</label>
+          <label data-i18n="apl.f.nombre" for="a-nombre">Nombre y apellido *</label>
           <input id="a-nombre" name="nombre" type="text" autocomplete="name" required>
         </div>
 
         <div class="field-2">
           <div class="field">
-            <label for="a-email">Email *</label>
+            <label data-i18n="apl.f.email" for="a-email">Email *</label>
             <input id="a-email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="field">
-            <label for="a-tel">WhatsApp *</label>
+            <label data-i18n="apl.f.tel" for="a-tel">WhatsApp *</label>
             <input id="a-tel" name="telefono" type="tel" autocomplete="tel" required>
           </div>
         </div>
 
         <div class="field-2">
           <div class="field">
-            <label for="a-pais">País / ciudad</label>
+            <label data-i18n="apl.f.pais" for="a-pais">País / ciudad</label>
             <input id="a-pais" name="pais" type="text" autocomplete="country-name">
           </div>
           <div class="field">
-            <label for="a-perfil">Perfil artístico (link)</label>
-            <input id="a-perfil" name="perfil" type="url" placeholder="Spotify, Instagram, YouTube…">
+            <label data-i18n="apl.f.perfil" for="a-perfil">Perfil artístico (link)</label>
+            <input id="a-perfil" name="perfil" type="url" placeholder="Spotify, Instagram, YouTube…" data-i18n-ph="ph.perfil">
           </div>
         </div>
 
         <div class="field">
-          <label for="a-oferta">¿Qué te interesa? *</label>
+          <label data-i18n="apl.f.oferta" for="a-oferta">¿Qué te interesa? *</label>
           <select id="a-oferta" name="oferta" required>
-            <option value="">Selecciona una opción</option>
+            <option data-i18n="apl.f.sel" value="">Selecciona una opción</option>
             <option>PRO90</option>
             <option>Focus 4</option>
             <option>Track Session</option>
-            <option>Plan a medida</option>
-            <option>Masterclass grupal</option>
-            <option>Todavía no lo sé</option>
+            <option value="Plan a medida" data-i18n="apl.f.opt.custom">Plan a medida</option>
+            <option value="Masterclass grupal" data-i18n="apl.f.opt.mc">Masterclass grupal</option>
+            <option value="Todavía no lo sé" data-i18n="apl.f.opt.idk">Todavía no lo sé</option>
           </select>
         </div>
 
         <div class="field">
-          <label for="a-momento">¿Dónde estás hoy y qué quieres lograr en los próximos 90 días? *</label>
-          <textarea id="a-momento" name="mensaje" required placeholder="Qué estás construyendo, qué te está frenando y qué quieres conseguir."></textarea>
+          <label data-i18n="apl.f.momento" for="a-momento">¿Dónde estás hoy y qué quieres lograr en los próximos 90 días? *</label>
+          <textarea id="a-momento" name="mensaje" required placeholder="Qué estás construyendo, qué te está frenando y qué quieres conseguir." data-i18n-ph="ph.momento"></textarea>
         </div>
 
         <label class="consent">
           <input type="checkbox" name="consentimiento" required>
-          <span>Acepto que Oldtape use estos datos para responder mi solicitud y darle seguimiento.</span>
+          <span data-i18n="apl.f.consent">Acepto que Oldtape use estos datos para responder mi solicitud y darle seguimiento.</span>
         </label>
 
-        <button class="btn btn--solid" type="submit">Enviar solicitud</button>
+        <button data-i18n="apl.f.submit" class="btn btn--solid" type="submit">Enviar solicitud</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -1051,19 +1073,19 @@
 <section class="block dark" id="contacto" style="padding-top:0">
   <div class="wrap">
     <div class="about-grid" style="padding-bottom:96px">
-      <img class="reveal" src="assets/img/sobre-retrato.jpg" alt="Pedro Querales — Oldtape" width="1800" height="1200" loading="lazy">
+      <img class="reveal" src="assets/img/sobre-retrato.jpg" alt="Pedro Querales — Oldtape" width="1800" height="1200" loading="lazy" decoding="async">
       <div class="about-copy">
-        <span class="eyebrow">04 · Sobre Oldtape</span>
-        <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 4px">Quién está<br>del otro lado</h2>
-        <p><b>Oldtape es el proyecto de Pedro Querales:</b> productor, compositor y director artístico. Un catálogo propio, un estudio y años de oficio puestos al servicio de artistas que quieren dejar de improvisar su carrera.</p>
-        <p>La forma de trabajo es simple: primero entender al artista, después construir la música y por último preparar la salida. Nada se deja suelto y nada depende de la inspiración del día: cada decisión tiene una dirección y un propósito.</p>
+        <span data-i18n="ab.eye" class="eyebrow">04 · Sobre Oldtape</span>
+        <h2 data-i18n="ab.h2" class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 4px">Quién está<br>del otro lado</h2>
+        <p data-i18n="ab.p1"><b>Oldtape es el proyecto de Pedro Querales:</b> productor, compositor y director artístico. Un catálogo propio, un estudio y años de oficio puestos al servicio de artistas que quieren dejar de improvisar su carrera.</p>
+        <p data-i18n="ab.p2">La forma de trabajo es simple: primero entender al artista, después construir la música y por último preparar la salida. Nada se deja suelto y nada depende de la inspiración del día: cada decisión tiene una dirección y un propósito.</p>
       </div>
     </div>
 
     <div class="form-grid">
       <div>
-        <span class="eyebrow">Contacto</span>
-        <h2 class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 24px">Hablemos</h2>
+        <span data-i18n="ct.eye" class="eyebrow">Contacto</span>
+        <h2 data-i18n="ct.h2" class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 24px">Hablemos</h2>
         <a class="contact-mail" href="mailto:hola@oldtapemusic.com">hola@oldtapemusic.com</a>
         <!-- Solo logos. Falta pegar la URL real de cada perfil en el href. -->
         <div class="socials">
@@ -1081,7 +1103,7 @@
           </a>
         </div>
         <div class="share">
-          <span class="share-lbl">Comparte Oldtape</span>
+          <span data-i18n="ct.share" class="share-lbl">Comparte Oldtape</span>
           <div class="share-row">
             <a href="https://wa.me/?text=M%C3%BAsica%20con%20direcci%C3%B3n%20y%20prop%C3%B3sito%20%E2%80%94%20OLDTAPE%20https%3A%2F%2Foldtapemusic.com%2F"
                target="_blank" rel="noopener" aria-label="Compartir Oldtape en WhatsApp">
@@ -1105,13 +1127,13 @@
             </a>
             <button type="button" class="share-copy" data-url="https://oldtapemusic.com/" aria-label="Copiar el enlace de Oldtape">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12a5.1 5.1 0 015.1-5.1h3.2v1.95H9a3.15 3.15 0 100 6.3h3.2V17H9A5.1 5.1 0 013.9 12zm4.35-.98h7.5v1.96h-7.5v-1.96zM15 6.9h-3.2v1.95H15a3.15 3.15 0 110 6.3h-3.2V17H15A5.1 5.1 0 1015 6.9z"/></svg>
-              <span>Copiar enlace</span>
+              <span data-i18n="ct.copy">Copiar enlace</span>
             </button>
           </div>
         </div>
 
         <div class="btn-row">
-          <a class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
+          <a data-i18n="ct.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
         </div>
       </div>
 
@@ -1121,28 +1143,28 @@
         <input type="hidden" name="pagina" value="">
 
         <div class="field">
-          <label for="c-nombre">Nombre *</label>
+          <label data-i18n="ct.f.nombre" for="c-nombre">Nombre *</label>
           <input id="c-nombre" name="nombre" type="text" autocomplete="name" required>
         </div>
         <div class="field-2">
           <div class="field">
-            <label for="c-email">Email *</label>
+            <label data-i18n="ct.f.email" for="c-email">Email *</label>
             <input id="c-email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="field">
-            <label for="c-tel">WhatsApp</label>
+            <label data-i18n="ct.f.tel" for="c-tel">WhatsApp</label>
             <input id="c-tel" name="telefono" type="tel" autocomplete="tel">
           </div>
         </div>
         <div class="field">
-          <label for="c-msg">Mensaje *</label>
-          <textarea id="c-msg" name="mensaje" required placeholder="Cuéntanos qué necesitas."></textarea>
+          <label data-i18n="ct.f.msg" for="c-msg">Mensaje *</label>
+          <textarea id="c-msg" name="mensaje" required placeholder="Cuéntanos qué necesitas." data-i18n-ph="ph.msg"></textarea>
         </div>
         <label class="consent">
           <input type="checkbox" name="consentimiento" required>
-          <span>Acepto que Oldtape use estos datos para responder mi mensaje.</span>
+          <span data-i18n="ct.f.consent">Acepto que Oldtape use estos datos para responder mi mensaje.</span>
         </label>
-        <button class="btn btn--solid" type="submit">Enviar mensaje</button>
+        <button data-i18n="ct.f.submit" class="btn btn--solid" type="submit">Enviar mensaje</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -1154,6 +1176,209 @@
   </div>
 </section>
 </main>
+
+<script>
+/* ============================================================
+   Idiomas ES / EN — una sola URL, sin duplicar el HTML.
+   El español vive en el marcado; aquí solo va el inglés.
+   Para editar un texto en español: se edita directo en el HTML.
+   Para editar uno en inglés: se busca su clave en I18N_EN.
+   ============================================================ */
+const I18N_EN = {
+  "ab.eye": "04 · About Oldtape",
+  "ab.h2": "Who is on<br>the other side",
+  "ab.p1": "<b>Oldtape is Pedro Querales’ project:</b> producer, songwriter and artistic director. His own catalogue, a studio and years of craft, put at the service of artists who want to stop improvising their career.",
+  "ab.p2": "The way of working is simple: first understand the artist, then build the music and finally prepare the release. Nothing is left loose and nothing depends on the inspiration of the day: every decision has a direction and a purpose.",
+  "apl.eye": "Application",
+  "apl.f.consent": "I agree that Oldtape may use this data to respond to and follow up on my application.",
+  "apl.f.email": "Email *",
+  "apl.f.momento": "Where are you today and what do you want to achieve in the next 90 days? *",
+  "apl.f.nombre": "Full name *",
+  "apl.f.oferta": "What are you interested in? *",
+  "apl.f.opt.custom": "Custom plan",
+  "apl.f.opt.idk": "I'm not sure yet",
+  "apl.f.opt.mc": "Group masterclass",
+  "apl.f.pais": "Country / city",
+  "apl.f.perfil": "Artist profile (link)",
+  "apl.f.sel": "Select an option",
+  "apl.f.submit": "Send application",
+  "apl.f.tel": "WhatsApp *",
+  "apl.h2": "Let's start by understanding where you are.",
+  "apl.l1": "<b>Limited places</b>We work with a small number of artists to protect the depth of each process.",
+  "apl.l2": "<b>No commitment</b>Applying does not oblige you to hire. First we see whether there is a good fit.",
+  "apl.lede": "Tell us what you are building, what is holding you back and what you want to achieve. We review every application personally and recommend the process that makes the most sense for your moment.",
+  "ct.btn": "See available slots",
+  "ct.copy": "Copy link",
+  "ct.eye": "Contact",
+  "ct.f.consent": "I agree that Oldtape may use this data to respond to my message.",
+  "ct.f.email": "Email *",
+  "ct.f.msg": "Message *",
+  "ct.f.nombre": "Name *",
+  "ct.f.submit": "Send message",
+  "ct.f.tel": "WhatsApp",
+  "ct.h2": "Let's talk",
+  "ct.share": "Share Oldtape",
+  "hero.tag1": "<b>Producer</b> · Beats · Mixing",
+  "hero.tag2": "Production · Mixing · Mastering",
+  "home.cta1": "Start my evaluation",
+  "home.cta2": "Listen to the work",
+  "home.h1": "Music with <em>direction</em> and purpose.",
+  "home.k1": "Real catalogue",
+  "home.k2": "Craft + direction",
+  "home.k3": "Coaching",
+  "home.sub": "Pedro Querales · Oldtape. Music production and artist coaching to make music with direction and purpose: turning an idea into a finished record, ready to go out into the world.",
+  "home.v1": "Released catalogue, royalties and active contracts: projects that already live outside the studio.",
+  "home.v2": "Production, songwriting, recording, mixing and mastering under one direction and one purpose.",
+  "home.v3": "Private processes for artists who need clarity, judgement and momentum.",
+  "mus.cap.live": "Live",
+  "mus.close": "<b>One process, one direction.</b> Work with purpose, able to stand on its own outside the studio.",
+  "mus.col.k": "Collaborations",
+  "mus.col.v": "Artists, labels and audiovisual projects. For full credits, catalogue and licensing, get in touch.",
+  "mus.cred.k": "Credits",
+  "mus.cred.v": "Production · songwriting · arrangement · recording · mixing and mastering. Artistic direction for own and third-party projects.",
+  "mus.eye": "01 · The work",
+  "mus.eye2": "What I do and how I do it",
+  "mus.figcap": "Booth · sets",
+  "mus.h3": "Music first.<br>Everything else is built from there.",
+  "mus.l1": "Idea",
+  "mus.l2": "Songwriting",
+  "mus.l3": "Production",
+  "mus.l4": "Recording",
+  "mus.l5": "Mixing",
+  "mus.l6": "Mastering",
+  "mus.l7": "Direction",
+  "mus.lede": "Before I explain what I do, I would rather you heard it. The work speaks first.",
+  "mus.listen": "Listen",
+  "mus.p1": "<b>I produce, write and direct music projects</b> from the first idea to the final master.",
+  "mus.p2": "First I understand what the artist wants to say. Then we build the sound, the structure and the decisions that give that music its identity.",
+  "mus.sp.h": "Spotify Top Tracks",
+  "mus.sp.hint": "The most played tracks from Oldtape's profile.",
+  "nav.contacto": "Contact",
+  "nav.cta": "Request an evaluation",
+  "nav.sesiones": "Sessions",
+  "nav.uno": "Coaching",
+  "ph.momento": "What you are building, what is holding you back and what you want to achieve.",
+  "ph.msg": "Tell us what you need.",
+  "ph.perfil": "Spotify, Instagram, YouTube…",
+  "pro.btn": "Book PRO 90",
+  "pro.detail": "<b style=\"color:#fff\">12 private sessions</b> + artistic and musical direction + assignments between sessions + weekly follow-up + <b style=\"color:#fff\">2-3 productions</b>, estimated according to the artist’s stage.",
+  "pro.eye": "Flagship programme",
+  "pro.from": "From",
+  "pro.gift.l": "Included · PRO digital gift",
+  "pro.gift.t": "<b>PRO Artist Kit:</b> templates, checklists and a personal 90-day map.",
+  "pro.h3": "PRO 90: the full experience",
+  "pro.lede": "90 days to really move your project: from idea to release, with artistic and musical direction week by week.",
+  "pro.m1.n": "Month 1",
+  "pro.m1.t": "Identity + diagnosis",
+  "pro.m1.ul": "<li>Creative DNA</li><li>Repertoire</li><li>Blocks</li><li>Initial roadmap</li>",
+  "pro.m2.n": "Month 2",
+  "pro.m2.t": "Songwriting + production",
+  "pro.m2.ul": "<li>Structure</li><li>Lyrics</li><li>Beat</li><li>Guide recording</li>",
+  "pro.m3.n": "Month 3",
+  "pro.m3.t": "Finishing + release",
+  "pro.m3.ul": "<li>Mix/master</li><li>Metadata</li><li>Artwork</li><li>Continuity</li>",
+  "pro.month": " /month",
+  "pro.t1": "3 monthly payments of $600",
+  "pro.t2": "Pay in full: $1,600 · <em>save $200</em>",
+  "ses.cap": "Production session",
+  "ses.closer.h": "Sometimes you don't need to start from scratch.",
+  "ses.closer.p": "You need the right ear, one clear decision and someone to help you finish.",
+  "ses.eye": "02 · Studio services",
+  "ses.h2": "Sessions",
+  "ses.lede": "Focused solutions to move forward. You bring an idea or a demo and leave with a finished song, backed by real production direction.",
+  "ses.note.btn": "Join the waiting list",
+  "ses.note.k": "Secondary entry point",
+  "ses.note.p": "<b>Group masterclass:</b> intensive sessions on identity, songwriting, production and self-management alongside other artists. <b>$90 per person</b> · places by waiting list.",
+  "ses.o1.btn": "Book a session",
+  "ses.o1.l1": "2 working music sessions",
+  "ses.o1.l2": "Production direction",
+  "ses.o1.l3": "Limited mix &amp; master",
+  "ses.o1.l4": "Limited monthly slots",
+  "ses.o1.lead": "Focused work to take an idea, demo or song to the next level.",
+  "ses.o1.tag": "One-off production",
+  "ses.o2.btn": "Request a quote",
+  "ses.o2.l1": "Agreed scope and schedule",
+  "ses.o2.l2": "Production and artistic direction",
+  "ses.o2.l3": "Delivery ready for distribution",
+  "ses.o2.l4": "Quote based on format and volume",
+  "ses.o2.lead": "For artists with a label or team behind them, where scope, timing and deliverables are defined project by project.",
+  "ses.o2.name": "Custom plan",
+  "ses.o2.price": "Custom",
+  "ses.o2.tag": "Label projects",
+  "skip": "Skip to content",
+  "uno.cap": "Private process",
+  "uno.eye": "03 · Exclusive offer",
+  "uno.h2": "It's not just making music.<br>It's knowing what to do with it.",
+  "uno.lede": "Coaching is for artists who want to stop moving by trial and error. We work on your music, your identity, your decisions and your next stage. It is a private process with limited places: entry is by evaluation.",
+  "uno.o1.btn": "Book Focus 4",
+  "uno.o1.l1": "4 weeks · 4 private sessions",
+  "uno.o1.l2": "Initial diagnosis of where you stand",
+  "uno.o1.l3": "Exercises and assignments between sessions",
+  "uno.o1.l4": "A fast track to solve one concrete need",
+  "uno.o1.lead": "Four weeks to unblock a decision, sharpen an idea or solve a critical point in your project.",
+  "uno.o1.tag": "Creative intensive"
+};
+
+const I18N_META = {
+  es: {
+    title: document.title,
+    desc: (document.querySelector('meta[name=description]') || {}).content || ''
+  },
+  en: {
+    title: 'OLDTAPE — Pedro Querales · Music producer and artist coaching',
+    desc: 'Music with direction and purpose: music production, mixing and mastering, and close artist coaching with Pedro Querales.'
+  }
+};
+
+(function(){
+  const KEY  = 'oldtape-lang';
+  const nodes = document.querySelectorAll('[data-i18n]');
+  const phs   = document.querySelectorAll('[data-i18n-ph]');
+
+  /* El español se toma del propio DOM: no hay que mantenerlo dos veces. */
+  const ES = {}, ES_PH = {};
+  nodes.forEach(el => { ES[el.dataset.i18n] = el.innerHTML; });
+  phs.forEach(el => { ES_PH[el.dataset.i18nPh] = el.getAttribute('placeholder'); });
+
+  const btns = document.querySelectorAll('.lang button[data-lang]');
+
+  function apply(lang){
+    const en = lang === 'en';
+    nodes.forEach(el => {
+      const k = el.dataset.i18n;
+      const v = en ? I18N_EN[k] : ES[k];
+      if (v != null) el.innerHTML = v;
+    });
+    phs.forEach(el => {
+      const k = el.dataset.i18nPh;
+      const v = en ? I18N_EN[k] : ES_PH[k];
+      if (v != null) el.setAttribute('placeholder', v);
+    });
+
+    document.documentElement.lang = lang;
+    const meta = I18N_META[lang];
+    if (meta) {
+      document.title = meta.title;
+      const md = document.querySelector('meta[name=description]');
+      if (md) md.content = meta.desc;
+    }
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    try { localStorage.setItem(KEY, lang); } catch(e){}
+  }
+
+  /* Preferencia guardada > ?lang= en la URL > idioma del navegador. */
+  let inicial = null;
+  try { inicial = localStorage.getItem(KEY); } catch(e){}
+  const url = new URLSearchParams(location.search).get('lang');
+  if (url === 'es' || url === 'en') inicial = url;
+  if (inicial !== 'es' && inicial !== 'en') {
+    inicial = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+  }
+  apply(inicial);
+
+  btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+})();
+</script>
 
 <script>
 /* ============================================================
@@ -1225,7 +1450,7 @@ function mailtoFallback(data){
     .filter(([, v]) => v !== '' && v != null)
     .map(([k, v]) => `${k}: ${v}`).join('\n');
   const asunto = data.formulario === 'aplicacion-1a1'
-    ? `Solicitud 1:1 — ${data.nombre || ''} (${data.oferta || 'sin definir'})`
+    ? `Solicitud de acompañamiento — ${data.nombre || ''} (${data.oferta || 'sin definir'})`
     : `Contacto web — ${data.nombre || ''}`;
   location.href = `mailto:${PF_FALLBACK_MAIL}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
 }
