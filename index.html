@@ -26,7 +26,10 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/img/home-hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp"
+      href="assets/img/home-hero-1800.webp"
+      imagesrcset="assets/img/home-hero-900.webp 900w, assets/img/home-hero-1200.webp 1200w, assets/img/home-hero-1800.webp 1800w"
+      imagesizes="100vw" fetchpriority="high">
 <meta name="theme-color" content="#000000">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -203,6 +206,10 @@
   .block-head .display{ margin:14px 0 20px }
 
   /* Imagen full-bleed, sin separadores animados */
+  /* <picture> solo aporta las variantes WebP: no debe existir para el layout,
+     asi las reglas que ya apuntan a img siguen aplicando igual. */
+  picture{ display:contents }
+
   .bleed{ width:100%; background:var(--ink); position:relative }
   .bleed img{
     width:100%; height:clamp(320px,52vh,620px); object-fit:cover;
@@ -683,7 +690,7 @@
 
 <header class="nav">
   <a href="#home" class="brand" aria-label="OLDTAPE — inicio">
-    <img src="assets/brand/logo-oldtape-blanco.png" alt="OLDTAPE" width="2000" height="336">
+    <picture><source type="image/webp" srcset="assets/brand/logo-oldtape-blanco.webp"><img src="assets/brand/logo-oldtape-blanco.png" alt="OLDTAPE" width="2000" height="336"></picture>
   </a>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-lang="es" aria-pressed="true">ES</button>
@@ -710,7 +717,7 @@
 <main>
 <section class="hero" id="home">
   <div class="wordmark">
-    <img src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE" width="2000" height="336" fetchpriority="high">
+    <picture><source type="image/webp" srcset="assets/brand/logo-oldtape-negro.webp"><img src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE" width="2000" height="336" fetchpriority="high"></picture>
   </div>
   <div class="wrap">
     <div class="tagline reveal d1">
@@ -721,7 +728,7 @@
   <div class="plate reveal d2">
     <figure>
       <span class="cap">Oldtape Studio · 2026</span>
-      <img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" width="1800" height="1200" fetchpriority="high">
+      <picture><source type="image/webp" srcset="assets/img/home-hero-900.webp 900w, assets/img/home-hero-1200.webp 1200w, assets/img/home-hero-1800.webp 1800w" sizes="100vw"><img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" width="1800" height="1200" fetchpriority="high"></picture>
     </figure>
   </div>
 </section>
@@ -764,7 +771,7 @@
     <!-- Módulo 1 — imagen grande + qué hago y cómo lo hago -->
     <div class="mod-split reveal">
       <figure>
-        <img src="assets/img/music-dj.jpg" alt="Oldtape en cabina" width="1800" height="1200" loading="lazy" decoding="async">
+        <picture><source type="image/webp" srcset="assets/img/music-dj-900.webp 900w, assets/img/music-dj-1200.webp 1200w, assets/img/music-dj-1800.webp 1800w" sizes="(max-width:900px) 100vw, 48vw"><img src="assets/img/music-dj.jpg" alt="Oldtape en cabina" width="1800" height="1200" loading="lazy" decoding="async"></picture>
         <figcaption data-i18n="mus.figcap">Cabina · sets</figcaption>
       </figure>
       <div class="mod-copy">
@@ -785,37 +792,34 @@
       </div>
     </div>
 
-    <!-- Módulo 2 — selección principal de Spotify
+    <!-- Módulo 2 — top del artista en Spotify
          ────────────────────────────────────────────────────────────────
-         PARA MOSTRAR LOS TEMAS PRINCIPALES DEL PERFIL OFICIAL:
-         reemplazar el src del iframe por el embed de ARTISTA:
-           https://open.spotify.com/embed/artist/<ID_ARTISTA>?utm_source=generator&theme=0
-         El <ID_ARTISTA> se saca desde el perfil de Oldtape en Spotify:
-           Compartir → Copiar enlace del artista → el ID va después de /artist/
-         Mientras tanto queda "This Is Oldtape", la selección oficial que
-         Spotify genera para el perfil del artista.
+         Es el embed de ARTISTA (no una playlist): Spotify muestra ahí los
+         temas más escuchados del perfil, que es justo lo que anuncia el
+         título. El ID sale del perfil de Oldtape:
+           Compartir → Copiar enlace del artista → va después de /artist/
          ──────────────────────────────────────────────────────────────── -->
     <div class="player reveal">
       <div class="player-head">
         <div>
           <span data-i18n="mus.listen" class="eyebrow">Escuchar</span>
-          <h3 data-i18n="mus.sp.h">Top de Spotify</h3>
+          <h3 data-i18n="mus.sp.h">Top 10 de Spotify</h3>
           <p data-i18n="mus.sp.hint" class="hint">Los temas más escuchados del perfil de Oldtape.</p>
         </div>
       </div>
       <div class="player-body">
         <iframe class="sp-main"
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1oR1u0?utm_source=generator&theme=0"
+                src="https://open.spotify.com/embed/artist/2rMNgpqzircdgLQo0thnOf?utm_source=generator&theme=0"
                 loading="lazy"
                 allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 allowfullscreen
-                title="Selección principal de Oldtape en Spotify"></iframe>
+                title="Top de Oldtape en Spotify"></iframe>
       </div>
     </div>
   </div>
 
   <div class="bleed reveal">
-    <img src="assets/img/music-live.jpg" alt="Oldtape en vivo" width="1800" height="1200" loading="lazy" decoding="async">
+    <picture><source type="image/webp" srcset="assets/img/music-live-900.webp 900w, assets/img/music-live-1200.webp 1200w, assets/img/music-live-1800.webp 1800w" sizes="100vw"><img src="assets/img/music-live.jpg" alt="Oldtape en vivo" width="1800" height="1200" loading="lazy" decoding="async"></picture>
     <span data-i18n="mus.cap.live" class="cap">En vivo</span>
   </div>
 
@@ -845,7 +849,7 @@
 </section>
 
 <div class="bleed">
-  <img src="assets/img/sesiones-estudio.jpg" alt="Sesión de producción en el estudio" width="1800" height="1200" loading="lazy" decoding="async">
+  <picture><source type="image/webp" srcset="assets/img/sesiones-estudio-900.webp 900w, assets/img/sesiones-estudio-1200.webp 1200w, assets/img/sesiones-estudio-1800.webp 1800w" sizes="100vw"><img src="assets/img/sesiones-estudio.jpg" alt="Sesión de producción en el estudio" width="1800" height="1200" loading="lazy" decoding="async"></picture>
   <span data-i18n="ses.cap" class="cap">Sesión de producción</span>
 </div>
 
@@ -975,7 +979,7 @@
 </section>
 
 <div class="bleed">
-  <img src="assets/img/sesiones-mesa.jpg" alt="Trabajo de producción en sesión privada" width="1800" height="1200" loading="lazy" decoding="async">
+  <picture><source type="image/webp" srcset="assets/img/sesiones-mesa-900.webp 900w, assets/img/sesiones-mesa-1200.webp 1200w, assets/img/sesiones-mesa-1800.webp 1800w" sizes="100vw"><img src="assets/img/sesiones-mesa.jpg" alt="Trabajo de producción en sesión privada" width="1800" height="1200" loading="lazy" decoding="async"></picture>
   <span data-i18n="uno.cap" class="cap">Proceso privado</span>
 </div>
 
@@ -1073,7 +1077,7 @@
 <section class="block dark" id="contacto" style="padding-top:0">
   <div class="wrap">
     <div class="about-grid" style="padding-bottom:96px">
-      <img class="reveal" src="assets/img/sobre-retrato.jpg" alt="Pedro Querales — Oldtape" width="1800" height="1200" loading="lazy" decoding="async">
+      <picture><source type="image/webp" srcset="assets/img/sobre-retrato-900.webp 900w, assets/img/sobre-retrato-1200.webp 1200w, assets/img/sobre-retrato-1800.webp 1800w" sizes="(max-width:980px) 100vw, 45vw"><img class="reveal" src="assets/img/sobre-retrato.jpg" alt="Pedro Querales — Oldtape" width="1800" height="1200" loading="lazy" decoding="async"></picture>
       <div class="about-copy">
         <span data-i18n="ab.eye" class="eyebrow">04 · Sobre Oldtape</span>
         <h2 data-i18n="ab.h2" class="display" style="font-size:clamp(30px,4.4vw,52px);margin:14px 0 4px">Quién está<br>del otro lado</h2>
@@ -1251,7 +1255,7 @@ const I18N_EN = {
   "mus.listen": "Listen",
   "mus.p1": "<b>I produce, write and direct music projects</b> from the first idea to the final master.",
   "mus.p2": "First I understand what the artist wants to say. Then we build the sound, the structure and the decisions that give that music its identity.",
-  "mus.sp.h": "Spotify Top Tracks",
+  "mus.sp.h": "Spotify Top 10",
   "mus.sp.hint": "The most played tracks from Oldtape's profile.",
   "nav.contacto": "Contact",
   "nav.cta": "Request an evaluation",
