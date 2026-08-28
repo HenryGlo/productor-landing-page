@@ -89,6 +89,10 @@
   }
   .dark .eyebrow{ color:#9a9a9a }
   .lede{ font-size:clamp(16px,1.5vw,19px); line-height:1.7; color:var(--gray-text); max-width:60ch }
+  /* Enlaces dentro de un lede: el cierre de contacto lleva "escribenos"
+     subrayado, como pide el documento aprobado. */
+  .lede a{ color:#fff; text-decoration:underline; text-underline-offset:3px; transition:color .18s }
+  .lede a:hover{ color:var(--gold) }
   .dark .lede{ color:#b9b9b9 }
 
   /* ---------------- Header ---------------- */
@@ -207,8 +211,11 @@
 
   /* Imagen full-bleed, sin separadores animados */
   /* <picture> solo aporta las variantes WebP: no debe existir para el layout,
-     asi las reglas que ya apuntan a img siguen aplicando igual. */
+     asi las reglas que ya apuntan a img siguen aplicando igual. Hay que apagar
+     el <source> a mano: al disolver el picture, dejaria de heredar su display
+     y pasaria a contar como celda de la rejilla o item del flex. */
   picture{ display:contents }
+  picture > source{ display:none }
 
   .bleed{ width:100%; background:var(--ink); position:relative }
   .bleed img{
@@ -342,14 +349,11 @@
     .player-body iframe{ height:560px }
   }
 
-  /* ---------------- Destacado · piezas del catalogo ---------------- */
-  .spgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px }
-  .spcard .top{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; min-height:50px }
-  .spcard .lbl{ font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#9a9a9a }
-  .spcard .lbl b{ display:block; font-size:22px; letter-spacing:-.01em; text-transform:none; color:#fff; margin-top:4px }
-  .spcard .spot{ width:22px; height:22px; color:#fff; flex:none }
-  .spcard iframe{ border:0; border-radius:12px; width:100%; height:352px; display:block; background:#121212 }
-  @media (max-width:900px){ .spgrid{ grid-template-columns:1fr } }
+
+  /* La banda de cierre respira igual que el resto de bloques: no debe
+     pegarse al boton de enviar del formulario. */
+  .marquee--manifesto{ margin-top:96px }
+  @media (max-width:820px){ .marquee--manifesto{ margin-top:64px } }
 
   /* ---------------- Bandas de texto en movimiento ----------------
      Tres bandas que cierran cada tramo de la pagina: la primera dice lo que
@@ -837,10 +841,10 @@
     <div class="mod-split reveal">
       <figure>
         <picture><source type="image/webp" srcset="assets/img/music-dj-900.webp 900w, assets/img/music-dj-1200.webp 1200w, assets/img/music-dj-1800.webp 1800w" sizes="(max-width:900px) 100vw, 48vw"><img src="assets/img/music-dj.jpg" alt="Oldtape en cabina" width="1800" height="1200" loading="lazy" decoding="async"></picture>
-        <figcaption data-i18n="mus.figcap">Cabina · sets</figcaption>
+        <figcaption data-i18n="mus.figcap">Lil Supa' &amp; Oldtape en vivo</figcaption>
       </figure>
       <div class="mod-copy">
-        <span data-i18n="mus.eye2" class="eyebrow">Cabina · sets</span>
+        <span data-i18n="mus.eye2" class="eyebrow">Del estudio al escenario</span>
         <h3 data-i18n="mus.h3">La música primero,<br>el resto después.</h3>
         <p data-i18n="mus.p1"><b>Produzco, compongo y dirijo proyectos musicales</b> de principio a fin.</p>
         <p data-i18n="mus.p2">No trabajo por encargo suelto. Entro en el proceso del artista, entiendo qué quiere decir y construyo el sonido que lo sostiene.</p>
@@ -882,7 +886,9 @@
       </div>
     </div>
 
-    <div class="award reveal">
+    <span data-i18n="dest.eye" class="eyebrow" style="display:block;margin-top:96px">Destacado</span>
+
+    <div class="award reveal" style="margin-top:24px">
       <span data-i18n="award.eye" class="eyebrow">Reconocimiento</span>
       <p class="amount"><b>2×</b> <span data-i18n="award.h">nominado al Latin GRAMMY®</span></p>
       <ul class="award-list">
@@ -902,6 +908,17 @@
         <span data-i18n="award.foot">2 nominaciones</span>
       </p>
     </div>
+
+    <div class="credits reveal" style="margin:24px 0 96px">
+      <div>
+        <div data-i18n="mus.cred.k" class="k">Créditos</div>
+        <p data-i18n="mus.cred.v" class="v">Producción · composición · arreglos · grabación · mezcla · masterización. Dirección artística de proyectos propios y de terceros.</p>
+      </div>
+      <div>
+        <div data-i18n="mus.col.k" class="k">Colaboraciones</div>
+        <p data-i18n="mus.col.v" class="v">Artistas · sellos · proyectos audiovisuales. Para fichas completas, catálogo y licencias, escríbenos.</p>
+      </div>
+    </div>
   </div>
 
 <!-- Banda 02 · con quien lo ha hecho -->
@@ -917,49 +934,7 @@
     <span data-i18n="mus.cap.live" class="cap">En vivo</span>
   </div>
 
-  <div class="wrap" style="padding-top:96px">
-    <!-- DESTACADO · seleccion de obras del catalogo -->
-    <span data-i18n="dest.eye" class="eyebrow">Destacado</span>
-    <p data-i18n="dest.lede" class="lede" style="margin-top:14px;max-width:60ch">Una selección de obras, colaboraciones y producciones que recorren distintas etapas del catálogo.</p>
-    <div class="spgrid" style="margin-top:32px">
-      <article class="spcard reveal">
-        <div class="top">
-          <div class="lbl"><span data-i18n="dest.l1">This is</span><b>Oldtape</b></div>
-          <svg class="spot" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
-        </div>
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1oR1u0?utm_source=generator&theme=0" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="This is Oldtape"></iframe>
-      </article>
 
-      <article class="spcard reveal d1">
-        <div class="top">
-          <div class="lbl"><span data-i18n="dest.l2">Radio</span><b>Oldtape</b></div>
-          <svg class="spot" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
-        </div>
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1E4zgvdcN2KXP6?utm_source=generator&theme=0" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Radio Oldtape"></iframe>
-      </article>
-
-      <article class="spcard reveal d2">
-        <div class="top">
-          <div class="lbl"><span data-i18n="dest.l3">Álbum</span><b>Ciudad Caribbean</b></div>
-          <svg class="spot" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 100 24 12 12 0 000-24zm5.5 17.3a.75.75 0 01-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 11-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 01-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 11-.54-1.8c4.37-1.32 9.79-.67 13.5 1.6.44.27.58.85.3 1.29zm.13-3.4C15.8 8.35 9.35 8.13 5.66 9.25a1.12 1.12 0 11-.65-2.15c4.24-1.28 11.36-1.03 15.85 1.63a1.12 1.12 0 01-1.15 1.93z"/></svg>
-        </div>
-        <iframe src="https://open.spotify.com/embed/album/4YxTDdc0UiJqDo0ERr9jV2?utm_source=generator&theme=0" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Ciudad Caribbean"></iframe>
-      </article>
-    </div>
-  </div>
-
-  <div class="wrap" style="padding-top:96px">
-    <div class="credits reveal">
-      <div>
-        <div data-i18n="mus.cred.k" class="k">Créditos</div>
-        <p data-i18n="mus.cred.v" class="v">Producción · composición · arreglos · grabación · mezcla · masterización. Dirección artística de proyectos propios y de terceros.</p>
-      </div>
-      <div>
-        <div data-i18n="mus.col.k" class="k">Colaboraciones</div>
-        <p data-i18n="mus.col.v" class="v">Artistas · sellos · proyectos audiovisuales. Para fichas completas, catálogo y licencias, escríbenos.</p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ==================== 3 · SESIONES ==================== -->
@@ -1289,7 +1264,7 @@
   </div>
 
 <!-- Banda 03 · lo que representa · cierra la pagina antes del pie -->
-  <div class="marquee" aria-label="Principios de Oldtape">
+  <div class="marquee marquee--manifesto" aria-label="Principios de Oldtape">
     <div class="marquee-track" data-i18n="mq.mani">
       <div class="marquee-seq"><span>Identidad</span><span>·</span><span>Criterio</span><span>·</span><span>Obra</span><span>·</span><span>Catálogo</span><span>·</span><span>Legado</span><span>·</span></div>
       <div class="marquee-seq" aria-hidden="true"><span>Identidad</span><span>·</span><span>Criterio</span><span>·</span><span>Obra</span><span>·</span><span>Catálogo</span><span>·</span><span>Legado</span><span>·</span></div>
@@ -1364,8 +1339,8 @@ const I18N_EN = {
   "mus.cred.k": "Credits",
   "mus.cred.v": "Production · songwriting · arrangement · recording · mixing · mastering. Artistic direction for own and third-party projects.",
   "mus.eye": "01 · The work",
-  "mus.eye2": "Booth · sets",
-  "mus.figcap": "Booth · sets",
+  "mus.eye2": "From the studio to the stage",
+  "mus.figcap": "Lil Supa' &amp; Oldtape live",
   "mus.h3": "Music first,<br>everything else after.",
   "mus.l1": "Production",
   "mus.l2": "Songwriting",
@@ -1388,10 +1363,6 @@ const I18N_EN = {
   "award.foot": "2 nominations",
   "ct.lede": "If you have a project, a song or an idea you want to take further, <a href=\"mailto:hola@oldtapemusic.com\">get in touch</a>.",
   "dest.eye": "Featured",
-  "dest.lede": "A selection of works, collaborations and productions spanning different stages of the catalogue.",
-  "dest.l1": "This is",
-  "dest.l2": "Radio",
-  "dest.l3": "Album",
   "mus.sp.h": "The catalogue, on your platform",
   "mus.sp.hint": "Choose where you usually listen. The music is the same; only the player changes.",
   "nav.contacto": "Contact",
