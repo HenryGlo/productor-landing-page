@@ -431,6 +431,9 @@
 
   /* Cierre de sección */
   .closer{ margin-top:64px; padding-top:34px; border-top:2px solid var(--ink) }
+  /* Cuando el cierre abre la seccion (Sesiones), el borde superior sobra
+     y el aire tiene que ir por debajo, no por encima. */
+  .closer:first-child{ margin-top:0; padding-top:0; border-top:0; margin-bottom:48px }
   .dark .closer{ border-top-color:#fff }
   .closer h3{
     font-stretch:110%; font-weight:900; font-size:clamp(22px,3vw,32px);
@@ -562,7 +565,8 @@
   .contact-mail{
     display:inline-block; max-width:100%; overflow-wrap:anywhere;
     font-stretch:110%; font-weight:900;
-    font-size:clamp(20px,3.4vw,54px); letter-spacing:-.03em; line-height:1.1;
+    font-size:clamp(15px,2.15vw,34px); letter-spacing:-.02em; line-height:1.15;
+    white-space:nowrap; overflow-wrap:normal;
     border-bottom:3px solid currentColor; padding-bottom:6px; transition:color .18s;
   }
   .contact-mail:hover{ color:var(--gray) }
@@ -637,7 +641,7 @@
   @media (max-width:720px){
     /* la variable expandida no cabe en pantallas chicas: se pasa a ancho normal */
     .display{ font-stretch:100%; font-size:clamp(30px,8.6vw,46px) }
-    .contact-mail{ font-stretch:100%; font-size:clamp(20px,5.6vw,54px) }
+    .contact-mail{ font-stretch:100%; font-size:clamp(14px,4.6vw,26px) }
     .home h1{ font-stretch:100% }
   }
 </style>
@@ -696,11 +700,11 @@
         },
         {
           "@type": "Offer",
-          "name": "Impulso 4",
+          "name": "Impulso PRO",
           "category": "Acompa\u00f1amiento art\u00edstico",
           "itemOffered": {
             "@type": "Service",
-            "name": "Impulso 4",
+            "name": "Impulso PRO",
             "serviceType": "Acompa\u00f1amiento art\u00edstico"
           }
         },
@@ -788,7 +792,7 @@
   </div>
   <div class="plate reveal d2">
     <figure>
-      <span class="cap">Oldtape Studio · 2026</span>
+      <span data-i18n="hero.cap" class="cap">Oldtape en el estudio</span>
       <picture><source type="image/webp" srcset="assets/img/home-hero-900.webp 900w, assets/img/home-hero-1200.webp 1200w, assets/img/home-hero-1800.webp 1800w" sizes="100vw"><img src="assets/img/home-hero.jpg" alt="Pedro Querales en el estudio Oldtape" width="1800" height="1200" fetchpriority="high"></picture>
     </figure>
   </div>
@@ -845,8 +849,8 @@
       </figure>
       <div class="mod-copy">
         <span data-i18n="mus.eye2" class="eyebrow">Del estudio al escenario</span>
-        <h3 data-i18n="mus.h3">La música primero,<br>el resto después.</h3>
-        <p data-i18n="mus.p1"><b>Produzco, compongo y dirijo proyectos musicales</b> de principio a fin.</p>
+        <h3 data-i18n="mus.h3">Música y obra<br>para siempre.</h3>
+        <p data-i18n="mus.p1"><b>Compongo, produzco y dirijo proyectos musicales</b> de principio a fin.</p>
         <p data-i18n="mus.p2">No trabajo por encargo suelto. Entro en el proceso del artista, entiendo qué quiere decir y construyo el sonido que lo sostiene.</p>
         <ul class="mod-list">
           <li data-i18n="mus.l1">Producción</li>
@@ -872,7 +876,7 @@
       <div class="player-head">
         <div>
           <span data-i18n="mus.listen" class="eyebrow">Escuchar</span>
-          <h3 data-i18n="mus.sp.h">El catálogo, en tu plataforma</h3>
+          <h3 data-i18n="mus.sp.h">Catálogo musical</h3>
           <p data-i18n="mus.sp.hint" class="hint">Elige dónde escuchas habitualmente. La música es la misma; cambia solo el reproductor.</p>
         </div>
       </div>
@@ -955,6 +959,11 @@
 
 <section class="block soft">
   <div class="wrap">
+    <div class="closer reveal">
+      <h3 data-i18n="ses.closer.h">A veces no necesitas empezar de cero.</h3>
+      <p data-i18n="ses.closer.p">Necesitas el oído correcto, una decisión clara y alguien que te ayude a terminar.</p>
+    </div>
+
     <div class="offers one reveal">
       <article class="offer">
         <span data-i18n="ses.o1.tag" class="tag">Producción puntual</span>
@@ -982,10 +991,6 @@
       <a data-i18n="ses.note.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=651" target="_blank" rel="noopener">Unirme a la lista de espera</a>
     </div>
 
-    <div class="closer reveal">
-      <h3 data-i18n="ses.closer.h">A veces no necesitas empezar de cero.</h3>
-      <p data-i18n="ses.closer.p">Necesitas el oído correcto, una decisión clara y alguien que te ayude a terminar.</p>
-    </div>
   </div>
 </section>
 
@@ -993,15 +998,14 @@
 <section class="block dark" id="uno-a-uno">
   <div class="wrap">
     <div class="block-head">
-      <span data-i18n="uno.eye" class="eyebrow">03 · Oferta exclusiva</span>
+      <span data-i18n="uno.eye" class="eyebrow">03 · Oportunidad exclusiva</span>
       <h2 data-i18n="uno.h2" class="display">Acompañamiento artístico 1:1</h2>
-      <p data-i18n="uno.lede" class="lede">Esto no es una sesión suelta: es un proceso privado y con cupo limitado. Se entra por evaluación, para asegurar que el momento del artista y el programa coincidan.</p>
     </div>
 
     <div class="offers one reveal">
       <article class="offer">
         <span data-i18n="uno.o1.tag" class="tag">Intensivo creativo 1:1</span>
-        <h3 class="name">Impulso 4</h3>
+        <h3 class="name">Impulso PRO</h3>
         <div class="price">$480</div>
         <p data-i18n="uno.o1.lead" class="offer-lead">Cuatro semanas para destrabar una decisión, ordenar una idea o resolver un punto crítico del proyecto artístico.</p>
         <ul>
@@ -1011,7 +1015,7 @@
           <li data-i18n="uno.o1.l4">Actividades entre sesiones</li>
           <li data-i18n="uno.o1.l5">Ruta concreta para avanzar</li>
         </ul>
-        <a data-i18n="uno.o1.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=649" target="_blank" rel="noopener">Aplicar a Impulso 4</a>
+        <a data-i18n="uno.o1.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=649" target="_blank" rel="noopener">Aplicar a Impulso PRO</a>
       </article>
     </div>
 
@@ -1055,8 +1059,8 @@
       </p>
 
       <div class="gift">
-        <span data-i18n="pro.gift.l" class="g-lbl">Incluye · Regalo digital PRO</span>
-        <span data-i18n="pro.gift.t" class="g-txt"><b>PRO Artist Kit:</b> plantillas, checklists y mapa personal de 90 días.</span>
+        <span data-i18n="pro.gift.l" class="g-lbl">Incluye (regalo)</span>
+        <span data-i18n="pro.gift.t" class="g-txt"><b>Kit PRO:</b> plantilla, checklist y mapa personal de 90 días.</span>
       </div>
 
       <div class="btn-row">
@@ -1068,7 +1072,7 @@
 
 <div class="bleed">
   <picture><source type="image/webp" srcset="assets/img/sesiones-mesa-900.webp 900w, assets/img/sesiones-mesa-1200.webp 1200w, assets/img/sesiones-mesa-1800.webp 1800w" sizes="100vw"><img src="assets/img/sesiones-mesa.jpg" alt="Trabajo de producción en sesión privada" width="1800" height="1200" loading="lazy" decoding="async"></picture>
-  <span data-i18n="uno.cap" class="cap">Proceso privado</span>
+  <span data-i18n="uno.cap" class="cap">Proceso personalizado</span>
 </div>
 
 <!-- ==================== FORMULARIO DE APLICACIÓN ==================== -->
@@ -1136,7 +1140,7 @@
           <select id="a-oferta" name="oferta" required>
             <option data-i18n="apl.f.sel" value="">Selecciona una opción</option>
             <option>PRO-90</option>
-            <option>Impulso 4</option>
+            <option>Impulso PRO</option>
             <option>Track Session</option>
             <option value="Masterclass grupal" data-i18n="apl.f.opt.mc">Masterclass grupal</option>
             <option value="Todavía no lo sé" data-i18n="apl.f.opt.idk">Todavía no lo sé</option>
@@ -1321,6 +1325,7 @@ const I18N_EN = {
   "ct.h2": "Let's talk",
   "ct.share": "Share Oldtape",
   "hero.tag1": "<b>Producer</b> · Songwriter · Artistic director",
+  "hero.cap": "Oldtape in the studio",
   "hero.tag2": "Music production · Mixing · Mastering · 1:1",
   "home.cta1": "Request a 1:1 evaluation",
   "home.cta2": "Listen to the work",
@@ -1341,7 +1346,7 @@ const I18N_EN = {
   "mus.eye": "01 · The work",
   "mus.eye2": "From the studio to the stage",
   "mus.figcap": "Lil Supa' &amp; Oldtape live",
-  "mus.h3": "Music first,<br>everything else after.",
+  "mus.h3": "Music and a body of work<br>that lasts.",
   "mus.l1": "Production",
   "mus.l2": "Songwriting",
   "mus.l3": "Arrangement",
@@ -1351,7 +1356,7 @@ const I18N_EN = {
   "mus.l7": "Artistic direction",
   "mus.lede": "Production, songwriting and sonic direction. Listen before you read: the catalogue speaks first.",
   "mus.listen": "Listen",
-  "mus.p1": "<b>I produce, write and direct music projects</b> from beginning to end.",
+  "mus.p1": "<b>I write, produce and direct music projects</b> from beginning to end.",
   "mus.p2": "I don't take one-off commissions. I step into the artist's process, understand what they want to say and build the sound that carries it.",
   "mq.serv": "\n      <div class=\"marquee-seq\"><span>Music production</span><span>·</span><span>Songwriting</span><span>·</span><span>Artistic direction</span><span>·</span><span>Mixing</span><span>·</span><span>Mastering</span><span>·</span><span>1:1 coaching</span><span>·</span></div>\n      <div class=\"marquee-seq\" aria-hidden=\"true\"><span>Music production</span><span>·</span><span>Songwriting</span><span>·</span><span>Artistic direction</span><span>·</span><span>Mixing</span><span>·</span><span>Mastering</span><span>·</span><span>1:1 coaching</span><span>·</span></div>\n    ",
   "mq.art": "\n      <div class=\"marquee-seq\"><span>Akapellah</span><span>·</span><span>Lil Supa'</span><span>·</span><span>Canserbero</span><span>·</span><span>Apache</span><span>·</span><span>Micro TDH</span><span>·</span><span>Gona</span><span>·</span><span>El Dojo</span><span>·</span></div>\n      <div class=\"marquee-seq\" aria-hidden=\"true\"><span>Akapellah</span><span>·</span><span>Lil Supa'</span><span>·</span><span>Canserbero</span><span>·</span><span>Apache</span><span>·</span><span>Micro TDH</span><span>·</span><span>Gona</span><span>·</span><span>El Dojo</span><span>·</span></div>\n    ",
@@ -1363,7 +1368,7 @@ const I18N_EN = {
   "award.foot": "2 nominations",
   "ct.lede": "If you have a project, a song or an idea you want to take further, <a href=\"mailto:contacto@oldtapemusic.com\">get in touch</a>.",
   "dest.eye": "Featured",
-  "mus.sp.h": "The catalogue, on your platform",
+  "mus.sp.h": "Music catalogue",
   "mus.sp.hint": "Choose where you usually listen. The music is the same; only the player changes.",
   "nav.contacto": "Contact",
   "nav.cta": "Request an evaluation",
@@ -1376,8 +1381,8 @@ const I18N_EN = {
   "pro.detail": "<b style=\"color:#fff\">12 private sessions</b> + artistic and musical direction + activities between sessions + weekly follow-up + <b style=\"color:#fff\">2-3 music productions</b>, according to the artist’s stage and the agreed scope.",
   "pro.eye": "Flagship programme",
   "pro.from": "From",
-  "pro.gift.l": "Included · PRO digital gift",
-  "pro.gift.t": "<b>PRO Artist Kit:</b> templates, checklists and a personal 90-day map.",
+  "pro.gift.l": "Included (gift)",
+  "pro.gift.t": "<b>PRO Kit:</b> template, checklist and a personal 90-day map.",
   "pro.h3": "PRO-90: the full experience",
   "pro.lede": "90 days to really move your project: from idea to release, with artistic and musical direction week by week.",
   "pro.m1.n": "Month 1",
@@ -1409,11 +1414,10 @@ const I18N_EN = {
   "ses.o1.lead": "Focused work to take an idea, demo or song to the next level.",
   "ses.o1.tag": "One-off production",
   "skip": "Skip to content",
-  "uno.cap": "Private process",
-  "uno.eye": "03 · Exclusive offer",
+  "uno.cap": "Personalised process",
+  "uno.eye": "03 · Exclusive opportunity",
   "uno.h2": "1:1 artistic coaching",
-  "uno.lede": "This is not a one-off session: it is a private process with limited places. Entry is by evaluation, to make sure the artist’s moment and the programme line up.",
-  "uno.o1.btn": "Apply to Impulso 4",
+  "uno.o1.btn": "Apply to Impulso PRO",
   "uno.o1.l1": "4 weeks",
   "uno.o1.l2": "4 private sessions",
   "uno.o1.l3": "Initial diagnosis",
