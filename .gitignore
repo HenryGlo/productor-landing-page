@@ -2,3 +2,7 @@
 OLDTAPE LANDING PAGE/
 demo/
 .DS_Store
+
+# Pack de marca: se genera para enviarlo, no para publicarlo en el sitio
+marca-oldtape/
+marca-oldtape.zip
