@@ -8,10 +8,10 @@ const LEAD_KEY = "oldtape-lead";
 
 /* Pegá aquí la URL Catch webhook de cada escenario de evaluación en Activepieces. */
 const EVAL_ENDPOINTS = {
-  "Track Session": "",
-  "PRO90": "",
-  "Impulso PRO": "",
-  "Lista de espera grupal": ""
+  "Track Session": "https://cloud.activepieces.com/api/v1/webhooks/CFWtsnwopZ6oSkTQ3QOET",
+  "PRO90": "https://cloud.activepieces.com/api/v1/webhooks/CfJoJtaQKIMVgVQbzibna",
+  "Impulso PRO": "https://cloud.activepieces.com/api/v1/webhooks/MVK2lB95KgzPnvFMI6hU3",
+  "Lista de espera grupal": "https://cloud.activepieces.com/api/v1/webhooks/j2eDDxKCAULimdCdkWNPq"
 };
 
 const SERVICIOS = {
