@@ -717,16 +717,6 @@
             "name": "PRO-90",
             "serviceType": "Programa de acompa\u00f1amiento art\u00edstico de 90 d\u00edas"
           }
-        },
-        {
-          "@type": "Offer",
-          "name": "Masterclass grupal",
-          "availability": "https://schema.org/PreOrder",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Masterclass grupal",
-            "serviceType": "Formaci\u00f3n grupal para participantes"
-          }
         }
       ]
     },
@@ -976,7 +966,7 @@
           <li data-i18n="ses.o1.l3">Mix &amp; master limitado</li>
           <li data-i18n="ses.o1.l4">Cupos mensuales</li>
         </ul>
-        <a data-i18n="ses.o1.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=657" target="_blank" rel="noopener">Reservar Track Session</a>
+        <a data-i18n="ses.o1.btn" class="btn" href="reservar.html?servicio=track-session">Reservar Track Session</a>
       </article>
 
       <!-- Mix & Master se retiró: Pedro lo considera el mismo servicio que Track Session.
@@ -984,12 +974,9 @@
     </div>
 
     <aside class="note reveal">
-      <span data-i18n="ses.note.k" class="kicker">Próximamente</span>
-      <p data-i18n="ses.note.p"><b>Masterclass (grupal).</b> Una modalidad grupal para participantes interesados en fortalecer su proceso artístico. Las próximas fechas y condiciones serán anunciadas a quienes formen parte de la lista de espera.</p>
+      <span data-i18n="ses.note.k" class="kicker">Lista de espera</span>
+      <p data-i18n="ses.note.p"><b>Grupal.</b> Una modalidad grupal para participantes interesados en fortalecer su proceso artístico. Las fechas y condiciones se anunciarán cuando se active.</p>
     </aside>
-    <div class="btn-row">
-      <a data-i18n="ses.note.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=658" target="_blank" rel="noopener">Unirme a la lista de espera</a>
-    </div>
 
   </div>
 </section>
@@ -1015,7 +1002,7 @@
           <li data-i18n="uno.o1.l4">Actividades entre sesiones</li>
           <li data-i18n="uno.o1.l5">Ruta concreta para avanzar</li>
         </ul>
-        <a data-i18n="uno.o1.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=656" target="_blank" rel="noopener">Aplicar a Impulso PRO</a>
+        <a data-i18n="uno.o1.btn" class="btn" href="reservar.html?servicio=impulso-pro">Aplicar a Impulso PRO</a>
       </article>
     </div>
 
@@ -1064,7 +1051,7 @@
       </div>
 
       <div class="btn-row">
-        <a data-i18n="pro.btn" class="btn btn--solid" href="https://ecosphere.perfectflow.cloud/es/agendar?fijar=655" target="_blank" rel="noopener">Agendar PRO-90</a>
+        <a data-i18n="pro.btn" class="btn btn--solid" href="reservar.html?servicio=pro90">Entrar a PRO90</a>
       </div>
     </div>
   </div>
@@ -1142,7 +1129,6 @@
             <option>PRO-90</option>
             <option>Impulso PRO</option>
             <option>Track Session</option>
-            <option value="Masterclass grupal" data-i18n="apl.f.opt.mc">Masterclass grupal</option>
             <option value="Todavía no lo sé" data-i18n="apl.f.opt.idk">Todavía no lo sé</option>
           </select>
         </div>
@@ -1229,7 +1215,7 @@
         </div>
 
         <div class="btn-row">
-          <a data-i18n="ct.btn" class="btn" href="https://ecosphere.perfectflow.cloud/es/agendar" target="_blank" rel="noopener">Ver agenda disponible</a>
+          <a data-i18n="ct.btn" class="btn" href="#aplicar">Solicitar evaluación</a>
         </div>
       </div>
 
@@ -1303,7 +1289,6 @@ const I18N_EN = {
   "apl.f.nombre": "Full name *",
   "apl.f.oferta": "What are you interested in? *",
   "apl.f.opt.idk": "I'm not sure yet",
-  "apl.f.opt.mc": "Group masterclass",
   "apl.f.pais": "Country / city",
   "apl.f.perfil": "Artist profile (link)",
   "apl.f.sel": "Select an option",
@@ -1313,7 +1298,7 @@ const I18N_EN = {
   "apl.l1": "<b>Limited places</b>We work with a small number of artists to protect the depth of each process.",
   "apl.l2": "<b>No commitment</b>Applying does not oblige you to hire. First we see whether there is a good fit.",
   "apl.lede": "Tell us what you are building, what is holding you back and what you want to achieve. We review every application personally and recommend the process that makes the most sense for your moment.",
-  "ct.btn": "See available slots",
+  "ct.btn": "Request an evaluation",
   "ct.copy": "Copy link",
   "ct.eye": "Contact",
   "ct.f.consent": "I agree that Oldtape may use this data to respond to my message.",
@@ -1377,7 +1362,7 @@ const I18N_EN = {
   "ph.momento": "What you are building, what is holding you back and what you want to achieve.",
   "ph.msg": "Tell us what you need.",
   "ph.perfil": "Spotify, Instagram, YouTube…",
-  "pro.btn": "Book PRO-90",
+  "pro.btn": "Enter PRO90",
   "pro.detail": "<b style=\"color:#fff\">12 private sessions</b> + artistic and musical direction + activities between sessions + weekly follow-up + <b style=\"color:#fff\">2-3 music productions</b>, according to the artist’s stage and the agreed scope.",
   "pro.eye": "Flagship programme",
   "pro.from": "From",
@@ -1403,9 +1388,8 @@ const I18N_EN = {
   "ses.eye": "02 · Studio services",
   "ses.h2": "Sessions",
   "ses.lede": "Focused solutions to move forward. You bring an idea or a demo and leave with a finished song, backed by real production direction.",
-  "ses.note.btn": "Join the waiting list",
-  "ses.note.k": "Coming soon",
-  "ses.note.p": "<b>Masterclass (group).</b> A group format for participants who want to strengthen their artistic process. Upcoming dates and conditions will be announced to those on the waiting list.",
+  "ses.note.k": "Waiting list",
+  "ses.note.p": "<b>Group.</b> A group format for participants who want to strengthen their artistic process. Dates and conditions will be announced when it opens.",
   "ses.o1.btn": "Book a Track Session",
   "ses.o1.l1": "2 working music sessions",
   "ses.o1.l2": "Production direction",
@@ -1488,20 +1472,12 @@ const I18N_META = {
 })();
 </script>
 
+<script src="js/crm.js"></script>
 <script>
 /* ============================================================
-   PerfectFlow — entrada de leads al CRM.
-
-   Apunta al webhook de Activepieces, no directo a PerfectFlow: la API del CRM
-   exige un token por cliente, y un formulario en el navegador no puede guardarlo
-   sin exponerlo a cualquiera que abra el inspector. Activepieces recibe esto,
-   crea el contacto firmando del lado servidor, y manda el acuse de recibo.
-
-   Si el envío falla, el formulario NO pierde el lead: abre el correo con los
-   datos ya formateados.
+   Nav, aparición y preselección de oferta.
+   El envío al CRM vive en js/crm.js (mismo webhook que reservar.html).
    ============================================================ */
-const PF_ENDPOINT = "https://cloud.activepieces.com/api/v1/webhooks/owBkjsQ3T1EImbHSkgMH9";
-const PF_FALLBACK_MAIL = "contacto@oldtapemusic.com";
 
 /* ---- Nav activo por sección ---- */
 const links = document.querySelectorAll('header.nav nav a[data-sec]');
@@ -1538,76 +1514,6 @@ document.querySelectorAll('[data-oferta]').forEach(el => {
     if (opt) selectOferta.value = opt.value || opt.text;
     el.classList.add('is-blue');
     setTimeout(() => el.classList.remove('is-blue'), 400);
-  });
-});
-
-/* ---- Envío de formularios al CRM ---- */
-function serialize(form){
-  const data = {};
-  new FormData(form).forEach((v, k) => {
-    data[k] = (k === 'consentimiento') ? true : v;
-  });
-  data.pagina = location.href;
-  data.utm = location.search.replace(/^\?/, '');
-  data.enviado_en = new Date().toISOString();
-  return data;
-}
-
-function mailtoFallback(data){
-  const cuerpo = Object.entries(data)
-    .filter(([, v]) => v !== '' && v != null)
-    .map(([k, v]) => `${k}: ${v}`).join('\n');
-  const asunto = data.formulario === 'aplicacion-1a1'
-    ? `Solicitud de acompañamiento — ${data.nombre || ''} (${data.oferta || 'sin definir'})`
-    : `Contacto web — ${data.nombre || ''}`;
-  location.href = `mailto:${PF_FALLBACK_MAIL}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
-}
-
-document.querySelectorAll('form.pf').forEach(form => {
-  const msg = form.querySelector('.form-msg');
-  const btn = form.querySelector('button[type=submit]');
-
-  form.addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    msg.className = 'form-msg';
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    const data = serialize(form);
-    const textoOriginal = btn.textContent;
-    btn.disabled = true;
-    btn.classList.add('is-blue');
-    btn.textContent = 'Enviando…';
-
-    try {
-      if (!PF_ENDPOINT) { mailtoFallback(data); throw new Error('sin-endpoint'); }
-
-      const res = await fetch(PF_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-
-      form.reset();
-      msg.textContent = 'Solicitud enviada. Te respondemos por correo o WhatsApp.';
-      msg.className = 'form-msg ok show';
-    } catch (err) {
-      if (err.message === 'sin-endpoint') {
-        msg.textContent = 'Abrimos tu correo con la solicitud lista para enviar.';
-        msg.className = 'form-msg ok show';
-      } else {
-        msg.textContent = 'No pudimos enviar el formulario. Escríbenos a ' + PF_FALLBACK_MAIL;
-        msg.className = 'form-msg err show';
-      }
-    } finally {
-      btn.disabled = false;
-      btn.classList.remove('is-blue');
-      btn.textContent = textoOriginal;
-    }
   });
 });
 </script>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="Deja tus datos para continuar. El lead entra a Oldtape antes del video y del pago.">
+<title>Tus datos · OLDTAPE</title>
+<link rel="canonical" href="https://oldtapemusic.com/reservar.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
+<style>
+  :root{
+    --ink:#000; --paper:#fff; --gray:#747474; --blue:#161733;
+    --gray-text:#5c5c5c; --line:#e2e2e2; --line-dk:rgba(255,255,255,.16);
+    --rust:#914926;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0 }
+  body{
+    background:#000; color:#fff;
+    font-family:'Archivo',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{ color:inherit; text-decoration:none }
+  :focus-visible{ outline:3px solid #fff; outline-offset:3px }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 40px; height:88px;
+  }
+  .nav img{ height:26px; width:auto }
+  .nav a.back{ font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#9a9a9a }
+  .nav a.back:hover{ color:#fff }
+  .wrap{ max-width:720px; margin:0 auto; padding:48px 40px 96px }
+  .eyebrow{ font-size:11px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; color:#9a9a9a }
+  h1{
+    font-weight:900; text-transform:uppercase;
+    font-size:clamp(30px,5vw,52px); line-height:.92; letter-spacing:-.03em;
+    margin:14px 0 20px;
+  }
+  .lede{ font-size:17px; line-height:1.7; color:#b9b9b9; max-width:52ch; margin-bottom:40px }
+  form.pf{ display:flex; flex-direction:column; gap:18px }
+  .field{ display:flex; flex-direction:column; gap:8px }
+  .field label{ font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#9a9a9a }
+  .field input, .field select{
+    font-family:inherit; font-size:15.5px; color:#fff; background:transparent;
+    border:0; border-bottom:2px solid var(--line-dk); padding:12px 2px;
+  }
+  .field input:focus, .field select:focus{ outline:none; border-bottom-color:#fff }
+  .field select{ appearance:none; border-radius:0; cursor:pointer }
+  .field select option{ background:#111; color:#fff }
+  .field-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px }
+  .consent{ display:flex; gap:12px; align-items:flex-start; font-size:13px; line-height:1.55; color:#9a9a9a }
+  .consent input{ margin-top:3px; width:17px; height:17px; accent-color:#fff; flex:none }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:18px 28px; border:2px solid #fff; background:#fff; color:#000;
+    font-family:inherit; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase;
+    cursor:pointer;
+  }
+  .btn:hover{ background:transparent; color:#fff }
+  .btn:disabled{ opacity:.6; cursor:wait }
+  .form-msg{ font-size:14px; font-weight:700; line-height:1.6; display:none; padding:14px 16px; border-left:4px solid #fff }
+  .form-msg.show{ display:block }
+  .form-msg.ok{ background:rgba(255,255,255,.08); color:#fff }
+  .form-msg.err{ border-left-color:var(--rust); background:rgba(145,73,38,.08); color:#c07a5a }
+  .nota{ margin-top:28px; font-size:13px; color:#8a8a8a; line-height:1.6 }
+  @media (max-width:640px){
+    .nav,.wrap{ padding-left:24px; padding-right:24px }
+    .field-2{ grid-template-columns:1fr }
+  }
+</style>
+</head>
+<body>
+<header class="nav">
+  <a href="/" aria-label="OLDTAPE — inicio">
+    <picture><source type="image/webp" srcset="assets/brand/logo-oldtape-blanco.webp"><img src="assets/brand/logo-oldtape-blanco.png" alt="OLDTAPE"></picture>
+  </a>
+  <a class="back" href="/">Volver</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow" id="paso-eye">Paso 2 · Tus datos</p>
+  <h1>Antes de ver el detalle, necesitamos saber quién eres.</h1>
+  <p class="lede">Formulario corto. Todavía no pagas ni agendas. Con esto entra tu contacto y te mostramos la página del servicio que elegiste.</p>
+
+  <form class="pf" id="form-reserva" novalidate>
+    <input type="hidden" name="origen" value="landing-oldtapemusic">
+    <input type="hidden" name="formulario" value="reserva-servicio">
+    <input type="hidden" name="utm" value="">
+    <input type="hidden" name="pagina" value="">
+
+    <div class="field">
+      <label for="r-nombre">Nombre y apellido *</label>
+      <input id="r-nombre" name="nombre" type="text" autocomplete="name" required>
+    </div>
+
+    <div class="field-2">
+      <div class="field">
+        <label for="r-email">Email *</label>
+        <input id="r-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="r-tel">WhatsApp *</label>
+        <input id="r-tel" name="telefono" type="tel" autocomplete="tel" required>
+      </div>
+    </div>
+
+    <div class="field-2">
+      <div class="field">
+        <label for="r-pais">País / ciudad *</label>
+        <input id="r-pais" name="pais" type="text" autocomplete="country-name" required>
+      </div>
+      <div class="field">
+        <label for="r-oferta">Servicio *</label>
+        <select id="r-oferta" name="oferta" required>
+          <option value="">Selecciona una opción</option>
+          <option>Track Session</option>
+          <option>PRO-90</option>
+          <option>Impulso PRO</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" name="consentimiento" required>
+      <span>Acepto que Oldtape use estos datos para responder mi solicitud y darle seguimiento.</span>
+    </label>
+
+    <button class="btn" type="submit">Continuar</button>
+    <p class="form-msg" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="nota">Después de enviar vas a la página del servicio (video, alcance y precio). El pago y el calendario vienen después, en ese orden.</p>
+</main>
+
+<script src="js/crm.js"></script>
+<script>
+(function(){
+  const sel = document.getElementById("r-oferta");
+  const slug = servicioDesdeURL();
+  if (slug && SERVICIOS[slug]) {
+    sel.value = SERVICIOS[slug].oferta;
+  }
+})();
+</script>
+</body>
+</html>
