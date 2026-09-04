@@ -472,6 +472,9 @@
   /* ---------------- Lista de espera (grupal) ---------------- */
   .le-modal{
     width:min(560px, calc(100vw - 32px)); max-height:calc(100dvh - 48px);
+    /* El reset `*{margin:0}` de arriba pisa el margin:auto que el navegador da
+       a los <dialog> modales, y sin esto la caja se va a la esquina superior. */
+    margin:auto;
     /* Sin esto, en ventanas bajas (o móvil apaisado) el formulario queda recortado. */
     overflow:auto; overscroll-behavior:contain;
     padding:0; border:none; background:var(--paper); color:var(--ink);
