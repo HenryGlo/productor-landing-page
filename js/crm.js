@@ -84,11 +84,25 @@ function serialize(form){
   return data;
 }
 
-function endpointPara(data){
-  if (data.formulario === "aplicacion-1a1") {
-    return EVAL_ENDPOINTS[data.interes_web] || "";
+function endpointEval(interes){
+  const k = String(interes || "").trim();
+  if (EVAL_ENDPOINTS[k]) return EVAL_ENDPOINTS[k];
+  if (k === "PRO-90") return EVAL_ENDPOINTS["PRO90"];
+  if (k === "Focus 4") return EVAL_ENDPOINTS["Impulso PRO"];
+  return "";
+}
+
+function esEvaluacion(data, form){
+  return data.formulario === "aplicacion-1a1" || (form && form.id === "form-aplicacion");
+}
+
+function endpointPara(data, form){
+  if (esEvaluacion(data, form)) {
+    return endpointEval(data.interes_web) || endpointEval(data.oferta) || "";
   }
-  if (data.formulario === "contacto") return CONTACTO_ENDPOINT;
+  if (data.formulario === "contacto" || (form && form.id === "form-contacto")) {
+    return CONTACTO_ENDPOINT;
+  }
   return COMPRA_ENDPOINT;
 }
 
@@ -112,7 +126,7 @@ function destinoTrasLead(data){
 
 function mensajeOk(data){
   if (data.formulario === "aplicacion-1a1") {
-    return "Solicitud enviada. Te escribimos a tu correo con información según lo que elegiste.";
+    return "Te hemos enviado un correo con toda la información. Revisá tu bandeja (y spam) en unos minutos.";
   }
   if (data.formulario === "contacto") {
     return "Mensaje enviado. Te respondemos por correo o WhatsApp.";
@@ -136,7 +150,7 @@ function cablearFormularios(){
       }
 
       const data = serialize(form);
-      const endpoint = endpointPara(data);
+      const endpoint = endpointPara(data, form);
       const textoOriginal = btn.textContent;
       btn.disabled = true;
       btn.classList.add("is-blue");

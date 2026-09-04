@@ -37,6 +37,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"></noscript>
+<link rel="stylesheet" href="css/cookies.css">
 
 <style>
   /* ============================================================
@@ -604,6 +605,8 @@
     margin-top:80px; padding-top:30px; border-top:1px solid var(--line-dk);
     font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#7c7c7c;
   }
+  .foot a{ color:#7c7c7c; text-decoration:underline; text-underline-offset:3px }
+  .foot a:hover{ color:#fff }
   .foot img{ height:18px; width:auto; opacity:.75 }
 
   /* ---------------- Animaciones de entrada (se quitaron solo las de decibeles) ---------------- */
@@ -1264,7 +1267,7 @@
   <div class="wrap">
     <div class="foot">
       <span>© OLDTAPE · Pedro Querales</span>
-      <span>oldtapemusic.com</span>
+      <span><a href="cookies.html">Cookies</a> · oldtapemusic.com</span>
     </div>
   </div>
 </section>
@@ -1574,5 +1577,6 @@ document.querySelectorAll('.share-copy').forEach(function(btn){
 });
 </script>
 
+<script src="js/cookies.js"></script>
 </body>
 </html>

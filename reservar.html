@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="css/cookies.css">
 <style>
   :root{
     --ink:#000; --paper:#fff; --gray:#747474; --blue:#161733;
@@ -67,6 +68,7 @@
   .form-msg.ok{ background:rgba(255,255,255,.08); color:#fff }
   .form-msg.err{ border-left-color:var(--rust); background:rgba(145,73,38,.08); color:#c07a5a }
   .nota{ margin-top:28px; font-size:13px; color:#8a8a8a; line-height:1.6 }
+  .nota a{ color:#8a8a8a; text-decoration:underline }
   @media (max-width:640px){
     .nav,.wrap{ padding-left:24px; padding-right:24px }
     .field-2{ grid-template-columns:1fr }
@@ -133,10 +135,11 @@
     <p class="form-msg" role="status" aria-live="polite"></p>
   </form>
 
-  <p class="nota">Después de enviar vas a la página del servicio (video, alcance y precio). El pago y el calendario vienen después, en ese orden.</p>
+  <p class="nota">Después de enviar vas a la página del servicio (video, alcance y precio). El pago y el calendario vienen después, en ese orden. <a href="cookies.html">Cookies</a></p>
 </main>
 
 <script src="js/crm.js"></script>
+<script src="js/cookies.js"></script>
 <script>
 (function(){
   const sel = document.getElementById("r-oferta");

@@ -1,0 +1,33 @@
+/* Aviso de cookies — barra fija, identidad OLDTAPE. */
+.ck-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:4000;
+  background:#000; color:#fff;
+  padding:18px 24px 22px;
+  box-shadow:0 -12px 40px rgba(0,0,0,.35);
+}
+.ck-bar .ck-inner{
+  max-width:1240px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.ck-bar p{
+  margin:0; font-size:13.5px; line-height:1.55; color:#c8c8c8; max-width:72ch;
+  font-family:'Archivo',system-ui,sans-serif;
+}
+.ck-bar p a{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+.ck-bar .ck-actions{ display:flex; flex-wrap:wrap; gap:10px; flex:none; }
+.ck-bar button{
+  font-family:'Archivo',system-ui,sans-serif;
+  font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+  padding:14px 20px; cursor:pointer; border:2px solid #fff;
+}
+.ck-bar .ck-ok{ background:#fff; color:#000; }
+.ck-bar .ck-ok:hover{ background:transparent; color:#fff; }
+.ck-bar .ck-no{ background:transparent; color:#fff; }
+.ck-bar .ck-no:hover{ background:#fff; color:#000; }
+html.ck-open{ padding-bottom:120px; }
+@media (max-width:720px){
+  .ck-bar .ck-inner{ flex-direction:column; align-items:stretch; }
+  .ck-bar .ck-actions{ width:100%; }
+  .ck-bar button{ flex:1; text-align:center; }
+  html.ck-open{ padding-bottom:200px; }
+}

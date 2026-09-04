@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cómo Oldtape usa cookies y datos en oldtapemusic.com.">
+<title>Cookies y privacidad · OLDTAPE</title>
+<link rel="canonical" href="https://oldtapemusic.com/cookies.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="css/cookies.css">
+<style>
+  :root{ --ink:#000; --paper:#fff; --gray:#5c5c5c; --line:#e2e2e2; }
+  *{ box-sizing:border-box; margin:0; padding:0 }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Archivo',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:88px; padding:0 40px; border-bottom:1px solid var(--line);
+  }
+  .nav img{ height:26px; width:auto }
+  .nav a.back{ font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#9a9a9a; text-decoration:none }
+  .wrap{ max-width:720px; margin:0 auto; padding:56px 40px 96px }
+  .eyebrow{ font-size:11px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; color:#9a9a9a }
+  h1{
+    font-weight:900; text-transform:uppercase;
+    font-size:clamp(28px,5vw,46px); line-height:.95; letter-spacing:-.03em;
+    margin:14px 0 28px;
+  }
+  h2{ font-size:15px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin:36px 0 12px }
+  p, li{ font-size:16px; line-height:1.7; color:var(--gray); margin:0 0 14px }
+  ul{ padding-left:1.2em; margin-bottom:14px }
+  .btn{
+    display:inline-flex; margin-top:12px; padding:16px 22px;
+    border:2px solid #000; background:#fff; color:#000;
+    font-family:inherit; font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    cursor:pointer;
+  }
+  .btn:hover{ background:#000; color:#fff }
+  @media (max-width:640px){ .nav,.wrap{ padding-left:24px; padding-right:24px } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <a href="/" aria-label="OLDTAPE — inicio">
+    <picture><source type="image/webp" srcset="assets/brand/logo-oldtape-negro.webp"><img src="assets/brand/logo-oldtape-negro.png" alt="OLDTAPE"></picture>
+  </a>
+  <a class="back" href="/">Volver</a>
+</header>
+<main class="wrap">
+  <p class="eyebrow">Legal</p>
+  <h1>Cookies y privacidad</h1>
+  <p>OldtapeMusic (Pedro Querales) opera oldtapemusic.com. Contacto: <a href="mailto:contacto@oldtapemusic.com">contacto@oldtapemusic.com</a>.</p>
+
+  <h2>Qué guardamos en tu navegador</h2>
+  <ul>
+    <li><b>Preferencia de cookies</b> — para no volver a mostrar el aviso.</li>
+    <li><b>Idioma</b> (ES/EN) — solo en la home, si lo cambias.</li>
+    <li><b>Datos del formulario en sesión</b> — para continuar al servicio que elegiste, sin pasarlos a anunciantes.</li>
+  </ul>
+  <p>Son cookies o almacenamiento técnico necesario para el sitio. No usamos redes de publicidad ni remarketing en estas páginas.</p>
+
+  <h2>Formularios</h2>
+  <p>Si envías una solicitud, tratamos nombre, correo, teléfono y lo que nos cuentes para responderte y dar seguimiento comercial. El envío va a nuestras herramientas de CRM (Activepieces / PerfectFlow). No vendemos esa información.</p>
+
+  <h2>Terceros</h2>
+  <ul>
+    <li><b>Google Fonts</b> — tipografía del sitio.</li>
+    <li><b>YouTube</b> — solo si reproduces el video en una landing de servicio (se carga al pulsar reproducir).</li>
+    <li><b>PerfectFlow</b> — pago y agenda, cuando sales al checkout.</li>
+  </ul>
+
+  <h2>Tu elección</h2>
+  <p><b>Aceptar</b> confirma el uso descrito. <b>Solo necesarias</b> guarda únicamente la preferencia del aviso y el idioma; el sitio sigue funcionando. Puedes cambiarla cuando quieras:</p>
+  <button class="btn" type="button" onclick="oldtapeResetCookies()">Volver a mostrar el aviso</button>
+
+  <h2>Más información</h2>
+  <p>Para acceder, corregir o borrar tus datos, escribe a <a href="mailto:contacto@oldtapemusic.com">contacto@oldtapemusic.com</a>.</p>
+</main>
+<script src="js/cookies.js"></script>
+</body>
+</html>
