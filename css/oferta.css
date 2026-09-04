@@ -205,10 +205,12 @@ footer img{width:150px;height:auto;display:block;margin-bottom:26px;}
 footer .fila{
   display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
   font-size:11px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.2em;color:#8A8A8A;
+  letter-spacing:0.2em;color:#A9A9A9;
   border-top:1px solid var(--linea-osc);padding-top:26px;
 }
-footer a{color:#8A8A8A;text-decoration:none;}
+/* El correo iba en gris y sin subrayado: no se leía y no parecía enlace.
+   Mismo color que el texto del pie, y subrayado para que se vea que lo es. */
+footer a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
 footer a:hover{color:var(--blanco);}
 
 @media (max-width:760px){

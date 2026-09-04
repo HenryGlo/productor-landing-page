@@ -38,6 +38,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"></noscript>
 <link rel="stylesheet" href="css/cookies.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/css/intlTelInput.min.css">
+<link rel="stylesheet" href="css/tel.css">
 
 <style>
   /* ============================================================
@@ -95,6 +97,8 @@
   .lede a{ color:#fff; text-decoration:underline; text-underline-offset:3px; transition:color .18s }
   .lede a:hover{ color:var(--gold) }
   .dark .lede{ color:#b9b9b9 }
+  .lede a{ color:inherit; text-decoration:underline; text-underline-offset:3px }
+  .lede a:hover{ color:var(--gold) }
 
   /* ---------------- Header ---------------- */
   header.nav{
@@ -462,6 +466,29 @@
   .dark .note p{ color:#b9b9b9 }
   .note b{ color:inherit; font-weight:800 }
   .dark .note b{ color:#fff }
+  .note-cta{ flex:none; align-self:center; margin-left:auto }
+  @media (max-width:640px){ .note-cta{ margin-left:0; width:100% ; text-align:center } }
+
+  /* ---------------- Lista de espera (grupal) ---------------- */
+  .le-modal{
+    width:min(560px, calc(100vw - 32px)); max-height:calc(100dvh - 48px);
+    /* Sin esto, en ventanas bajas (o móvil apaisado) el formulario queda recortado. */
+    overflow:auto; overscroll-behavior:contain;
+    padding:0; border:none; background:var(--paper); color:var(--ink);
+    box-shadow:0 40px 90px rgba(0,0,0,.35);
+  }
+  .le-modal::backdrop{ background:rgba(0,0,0,.62) }
+  .le-cuerpo{ padding:38px 34px 34px }
+  @media (max-width:640px){ .le-cuerpo{ padding:28px 20px 24px } }
+  .le-modal .kicker{ display:block; font-size:11px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:var(--gray) }
+  .le-modal h2{ margin:10px 0 0; font-size:clamp(23px,3.4vw,32px); font-weight:900; letter-spacing:-.02em; line-height:1.12 }
+  .le-modal .lede{ margin:14px 0 26px; font-size:15.5px }
+  .le-x{ position:sticky; top:0; display:flex; justify-content:flex-end; z-index:1; background:var(--paper) }
+  .le-x button{
+    width:44px; height:44px; border:none; background:none; cursor:pointer;
+    font-size:26px; line-height:1; color:var(--gray);
+  }
+  .le-x button:hover{ color:var(--ink) }
 
   /* ---------------- PRO-90 ---------------- */
   .pro90{ margin-top:64px; border:2px solid var(--line-dk); padding:48px 40px }
@@ -570,7 +597,7 @@
     white-space:nowrap; overflow-wrap:normal;
     border-bottom:3px solid currentColor; padding-bottom:6px; transition:color .18s;
   }
-  .contact-mail:hover{ color:var(--gray) }
+  .contact-mail:hover{ color:var(--gold) }
   .contact-mail:active{ color:#fff }
   .socials{ display:flex; gap:22px; flex-wrap:wrap; margin-top:36px }
   .socials a{
@@ -603,9 +630,10 @@
   .foot{
     display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
     margin-top:80px; padding-top:30px; border-top:1px solid var(--line-dk);
-    font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#7c7c7c;
+    font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#a9a9a9;
   }
-  .foot a{ color:#7c7c7c; text-decoration:underline; text-underline-offset:3px }
+  /* Mismo color que el texto del pie y subrayado visible: en gris oscuro no se leía. */
+  .foot a{ color:inherit; text-decoration:underline; text-underline-offset:3px }
   .foot a:hover{ color:#fff }
   .foot img{ height:18px; width:auto; opacity:.75 }
 
@@ -979,6 +1007,10 @@
     <aside class="note reveal">
       <span data-i18n="ses.note.k" class="kicker">Lista de espera</span>
       <p data-i18n="ses.note.p"><b>Grupal.</b> Una modalidad grupal para participantes interesados en fortalecer su proceso artístico. Las fechas y condiciones se anunciarán cuando se active.</p>
+      <!-- PENDIENTE (Nathaly): el texto "Unirme" está acordado; el destino no.
+           Hoy abre el modal de esta misma página. Para llevarlo a una sección
+           aparte basta con cambiar este href y quitar el atributo data-lista-espera. -->
+      <a class="btn note-cta" href="#lista-espera" data-lista-espera data-i18n="ses.note.btn">Unirme</a>
     </aside>
 
   </div>
@@ -1093,7 +1125,7 @@
       </div>
 
       <form class="pf" id="form-aplicacion" novalidate>
-        <input type="hidden" name="origen" value="landing-oldtapemusic">
+        <input type="hidden" name="origen" value="Formulario web">
         <input type="hidden" name="formulario" value="aplicacion-1a1">
         <input type="hidden" name="utm" value="">
         <input type="hidden" name="pagina" value="">
@@ -1114,15 +1146,11 @@
           </div>
         </div>
 
-        <div class="field-2">
-          <div class="field">
-            <label data-i18n="apl.f.pais" for="a-pais">País / ciudad</label>
-            <input id="a-pais" name="pais" type="text" autocomplete="country-name">
-          </div>
-          <div class="field">
-            <label data-i18n="apl.f.perfil" for="a-perfil">Perfil artístico (link)</label>
-            <input id="a-perfil" name="perfil" type="url" placeholder="Spotify, Instagram, YouTube…" data-i18n-ph="ph.perfil">
-          </div>
+        <!-- El país lo aporta ahora el selector de bandera del teléfono (js/tel.js),
+             que escribe `pais` en un campo oculto. Un solo campo, un solo significado. -->
+        <div class="field">
+          <label data-i18n="apl.f.perfil" for="a-perfil">Perfil artístico (link)</label>
+          <input id="a-perfil" name="perfil" type="url" placeholder="Spotify, Instagram, YouTube…" data-i18n-ph="ph.perfil">
         </div>
 
         <div class="field">
@@ -1132,7 +1160,7 @@
             <option value="Track Session">Track Session</option>
             <option value="PRO90">PRO90</option>
             <option value="Impulso PRO">Impulso PRO</option>
-            <option value="Lista de espera grupal" data-i18n="apl.f.opt.grupal">Grupal (lista de espera)</option>
+            <option value="Grupal (lista de espera)" data-i18n="apl.f.opt.grupal">Grupal (lista de espera)</option>
           </select>
         </div>
 
@@ -1223,7 +1251,7 @@
       </div>
 
       <form class="pf" id="form-contacto" novalidate>
-        <input type="hidden" name="origen" value="landing-oldtapemusic">
+        <input type="hidden" name="origen" value="Formulario web">
         <input type="hidden" name="formulario" value="contacto">
         <input type="hidden" name="pagina" value="">
 
@@ -1271,6 +1299,51 @@
     </div>
   </div>
 </section>
+<!-- ==================== LISTA DE ESPERA · GRUPAL ====================
+     No cobra y no agenda: sólo captura el contacto. El envío va al webhook
+     de Activepieces con oferta = "Grupal (lista de espera)". -->
+<dialog class="le-modal" id="lista-espera" aria-labelledby="le-h">
+  <form method="dialog" class="le-x">
+    <button value="cerrar" aria-label="Cerrar">&times;</button>
+  </form>
+
+  <div class="le-cuerpo">
+    <span data-i18n="le.k" class="kicker">Clases grupales</span>
+    <h2 id="le-h" data-i18n="le.h">Unirme a la lista de espera</h2>
+    <p data-i18n="le.p" class="lede">Todavía no hay fechas abiertas. Déjanos tus datos y te avisamos por correo en cuanto se activen. No es una compra ni una reserva.</p>
+
+    <form class="pf" id="form-lista-espera" novalidate>
+      <input type="hidden" name="formulario" value="lista-espera-grupal">
+      <input type="hidden" name="oferta" value="Grupal (lista de espera)">
+      <input type="hidden" name="origen" value="Formulario web">
+      <input type="hidden" name="pagina" value="">
+
+      <div class="field">
+        <label data-i18n="le.f.nombre" for="le-nombre">Nombre y apellido *</label>
+        <input id="le-nombre" name="nombre" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="field-2">
+        <div class="field">
+          <label data-i18n="le.f.email" for="le-email">Email *</label>
+          <input id="le-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label data-i18n="le.f.tel" for="le-tel">WhatsApp</label>
+          <input id="le-tel" name="telefono" type="tel" autocomplete="tel">
+        </div>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" name="consentimiento" required>
+        <span data-i18n="le.f.consent">Acepto que Oldtape use estos datos para avisarme cuando se abran fechas.</span>
+      </label>
+
+      <button data-i18n="le.f.submit" class="btn btn--solid" type="submit">Unirme a la lista</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
 </main>
 
 <script>
@@ -1292,7 +1365,15 @@ const I18N_EN = {
   "apl.f.nombre": "Full name *",
   "apl.f.oferta": "What are you interested in? *",
   "apl.f.opt.grupal": "Group (waiting list)",
-  "apl.f.pais": "Country / city",
+  "ses.note.btn": "Join",
+  "le.k": "Group classes",
+  "le.h": "Join the waiting list",
+  "le.p": "There are no open dates yet. Leave us your details and we\'ll email you as soon as they open. This is not a purchase or a booking.",
+  "le.f.nombre": "Full name *",
+  "le.f.email": "Email *",
+  "le.f.tel": "WhatsApp",
+  "le.f.consent": "I agree that Oldtape may use these details to let me know when dates open.",
+  "le.f.submit": "Join the list",
   "apl.f.perfil": "Artist profile (link)",
   "apl.f.sel": "Select an option",
   "apl.f.submit": "Send application",
@@ -1475,6 +1556,9 @@ const I18N_META = {
 })();
 </script>
 
+<script defer src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/js/intlTelInput.min.js"></script>
+<script src="js/utm.js"></script>
+<script defer src="js/tel.js"></script>
 <script src="js/crm.js"></script>
 <script>
 /* ============================================================
@@ -1507,6 +1591,22 @@ const rio = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => rio.observe(el));
+
+/* ---- Lista de espera grupal: abre el modal ---- */
+const leModal = document.getElementById('lista-espera');
+document.querySelectorAll('[data-lista-espera]').forEach(el => {
+  el.addEventListener('click', ev => {
+    if (!leModal || typeof leModal.showModal !== 'function') return; /* sin <dialog>: el href salta al bloque */
+    ev.preventDefault();
+    leModal.showModal();
+    const primero = leModal.querySelector('input:not([type=hidden])');
+    if (primero) primero.focus();
+  });
+});
+if (leModal) {
+  /* Clic fuera de la caja cierra, como espera la gente de un modal. */
+  leModal.addEventListener('click', ev => { if (ev.target === leModal) leModal.close(); });
+}
 
 /* ---- CTA por oferta: preselecciona el interés en el formulario ---- */
 const selectOferta = document.getElementById('a-oferta');

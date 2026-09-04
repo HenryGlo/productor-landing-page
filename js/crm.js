@@ -11,7 +11,7 @@ const EVAL_ENDPOINTS = {
   "Track Session": "https://cloud.activepieces.com/api/v1/webhooks/CFWtsnwopZ6oSkTQ3QOET",
   "PRO90": "https://cloud.activepieces.com/api/v1/webhooks/CfJoJtaQKIMVgVQbzibna",
   "Impulso PRO": "https://cloud.activepieces.com/api/v1/webhooks/MVK2lB95KgzPnvFMI6hU3",
-  "Lista de espera grupal": "https://cloud.activepieces.com/api/v1/webhooks/j2eDDxKCAULimdCdkWNPq"
+  "Grupal (lista de espera)": "https://cloud.activepieces.com/api/v1/webhooks/j2eDDxKCAULimdCdkWNPq"
 };
 
 const SERVICIOS = {
@@ -33,17 +33,37 @@ const SERVICIOS = {
 };
 window.SERVICIOS = SERVICIOS;
 
-/* PerfectFlow solo acepta las opciones de INTERESES (Activepieces).
-   Lo que no coincide se descarta y acaba en Notas como "Interés declarado". */
+/* Valores de `oferta` que acepta el CRM, carácter por carácter.
+   Lo que no coincide NO falla: el lead entra con Interés vacío y el texto
+   acaba en Notas, así que el error es invisible. De ahí el aviso en consola.
+   Actualizado el 2026-09-04: se retiraron Masterclass grupal, Focus 4,
+   Sesión individual y Plan a medida. */
+const OFERTAS_CRM = [
+  "Track Session",
+  "PRO90",
+  "Impulso PRO",
+  "Grupal (lista de espera)",
+  "Todavía no lo sé"
+];
+
+/* Alias históricos del sitio → valor vigente del CRM. */
 const INTERES_CRM = {
   "Track Session": "Track Session",
   "PRO-90": "PRO90",
   "PRO90": "PRO90",
-  "Impulso PRO": "Focus 4",
-  "Focus 4": "Focus 4",
-  "Lista de espera grupal": "Lista de espera grupal",
+  "Impulso PRO": "Impulso PRO",
+  "Focus 4": "Impulso PRO",
+  "Lista de espera grupal": "Grupal (lista de espera)",
+  "Grupal (lista de espera)": "Grupal (lista de espera)",
   "Todavía no lo sé": "Todavía no lo sé"
 };
+
+/* Origen: cualquier otra cosa el CRM la tira a "Formulario web".
+   La procedencia fina viaja en `utm`. */
+const ORIGENES_CRM = [
+  "Email", "Instagram", "Referido", "Anuncio pagado",
+  "Webinar", "Orgánico", "Formulario web", "Otro"
+];
 
 function slugDeOferta(oferta){
   const n = String(oferta || "").trim().toLowerCase();
@@ -69,18 +89,33 @@ function guardarLead(data){
 }
 
 function serialize(form){
+  /* Deja en el DOM el teléfono en E.164 y el país antes de leer el formulario. */
+  if (window.oldtapeTel) window.oldtapeTel.aplicar(form);
+
   const data = {};
   new FormData(form).forEach((v, k) => {
     data[k] = (k === "consentimiento") ? true : v;
   });
+
   data.pagina = location.href;
-  data.utm = location.search.replace(/^\?/, "");
+  /* UTMs capturados al aterrizar, no sólo los de la URL actual: la persona
+     llega por el anuncio y envía el formulario dos páginas después. */
+  data.utm = (window.oldtapeUTM && window.oldtapeUTM.cadena()) || location.search.replace(/^\?/, "");
   data.enviado_en = new Date().toISOString();
   data.interes_web = String(data.oferta || "").trim();
+
   if (data.formulario === "aplicacion-1a1") data.flujo = "evaluacion";
   else if (data.formulario === "reserva-servicio") data.flujo = "compra";
+  else if (data.formulario === "lista-espera-grupal") data.flujo = "lista-espera";
   else if (data.formulario === "contacto") data.flujo = "contacto";
+
   if (data.oferta && INTERES_CRM[data.oferta]) data.oferta = INTERES_CRM[data.oferta];
+  if (data.oferta && OFERTAS_CRM.indexOf(data.oferta) === -1) {
+    console.warn("[oldtape] `oferta` fuera de la lista del CRM:", data.oferta,
+                 "— el lead entra con Interés vacío. Valores válidos:", OFERTAS_CRM);
+  }
+  if (ORIGENES_CRM.indexOf(data.origen) === -1) data.origen = "Formulario web";
+
   return data;
 }
 
@@ -89,6 +124,7 @@ function endpointEval(interes){
   if (EVAL_ENDPOINTS[k]) return EVAL_ENDPOINTS[k];
   if (k === "PRO-90") return EVAL_ENDPOINTS["PRO90"];
   if (k === "Focus 4") return EVAL_ENDPOINTS["Impulso PRO"];
+  if (k === "Lista de espera grupal") return EVAL_ENDPOINTS["Grupal (lista de espera)"];
   return "";
 }
 
@@ -97,6 +133,11 @@ function esEvaluacion(data, form){
 }
 
 function endpointPara(data, form){
+  /* Lista de espera grupal: mismo escenario de Activepieces que su evaluación
+     (contacto + estado "Pendiente de responder" + acuse). No pasa por pago. */
+  if (data.formulario === "lista-espera-grupal") {
+    return EVAL_ENDPOINTS["Grupal (lista de espera)"] || CONTACTO_ENDPOINT;
+  }
   if (esEvaluacion(data, form)) {
     return endpointEval(data.interes_web) || endpointEval(data.oferta) || "";
   }
@@ -128,6 +169,9 @@ function mensajeOk(data){
   if (data.formulario === "aplicacion-1a1") {
     return "Te hemos enviado un correo con toda la información. Revisá tu bandeja (y spam) en unos minutos.";
   }
+  if (data.formulario === "lista-espera-grupal") {
+    return "Estás en la lista. Te avisamos por correo en cuanto se abran fechas.";
+  }
   if (data.formulario === "contacto") {
     return "Mensaje enviado. Te respondemos por correo o WhatsApp.";
   }
@@ -143,6 +187,10 @@ function cablearFormularios(){
     form.addEventListener("submit", async (ev) => {
       ev.preventDefault();
       msg.className = "form-msg";
+
+      /* Espera a la tabla de validación de teléfonos si aún no llegó, para no
+         mandar a WhatsApp un número normalizado a ojo. Resuelve igual si falla. */
+      if (window.oldtapeTel) await window.oldtapeTel.listo();
 
       if (!form.checkValidity()) {
         form.reportValidity();

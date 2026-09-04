@@ -1,0 +1,26 @@
+/* Ajustes del selector de país (intl-tel-input) a los formularios de Oldtape.
+   La librería trae su propio CSS; aquí sólo va lo que la integra al diseño. */
+.iti{ display:block; width:100% }
+.iti input[type=tel]{ width:100% }
+
+/* Fondo oscuro: el prefijo y el botón de bandera van con el mismo tono del campo. */
+.iti__country-container{ border-radius:0 }
+.iti--separate-dial-code .iti__selected-dial-code{ font-weight:600 }
+
+/* El desplegable se pinta sobre fondo claro para que los nombres se lean. */
+.iti__dropdown-content{
+  background:#fff; color:#111;
+  border:1px solid rgba(0,0,0,.18); border-radius:0;
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
+}
+.iti__search-input{
+  background:#fff; color:#111;
+  border-bottom:1px solid rgba(0,0,0,.12);
+  font:inherit; font-size:15px; padding:12px 14px;
+}
+.iti__country{ padding:10px 14px }
+.iti__country.iti__highlight{ background:rgba(0,0,0,.06) }
+.iti__dial-code{ color:#6d6d6d }
+
+/* En móvil la librería usa un panel a pantalla completa: por encima del aviso de cookies. */
+.iti--fullscreen-popup .iti__dropdown-content{ z-index:2147483000 }
