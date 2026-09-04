@@ -1,8 +1,18 @@
-/* Embudo comercial: lead → CRM (ActivePieces) → landing del servicio → checkout PerfectFlow.
-   El calendario no se abre desde la home: primero entra el contacto, después el VSL, después el pago. */
-const PF_ENDPOINT = "https://cloud.activepieces.com/api/v1/webhooks/owBkjsQ3T1EImbHSkgMH9";
+/* Dos flujos, dos destinos:
+   - Compra (reservar.html): un webhook → landing del servicio → PerfectFlow.
+   - Evaluación (#aplicar): un webhook por interés → correo de orientación. No va a landing ni a pago. */
+const COMPRA_ENDPOINT = "https://cloud.activepieces.com/api/v1/webhooks/owBkjsQ3T1EImbHSkgMH9";
+const CONTACTO_ENDPOINT = COMPRA_ENDPOINT;
 const PF_FALLBACK_MAIL = "contacto@oldtapemusic.com";
 const LEAD_KEY = "oldtape-lead";
+
+/* Pegá aquí la URL Catch webhook de cada escenario de evaluación en Activepieces. */
+const EVAL_ENDPOINTS = {
+  "Track Session": "",
+  "PRO90": "",
+  "Impulso PRO": "",
+  "Lista de espera grupal": ""
+};
 
 const SERVICIOS = {
   "track-session": {
@@ -11,7 +21,7 @@ const SERVICIOS = {
     checkout: "https://ecosphere.perfectflow.cloud/es/agendar?fijar=657"
   },
   "pro90": {
-    oferta: "PRO-90",
+    oferta: "PRO90",
     landing: "pro90.html",
     checkout: "https://ecosphere.perfectflow.cloud/es/agendar?fijar=655"
   },
@@ -23,11 +33,23 @@ const SERVICIOS = {
 };
 window.SERVICIOS = SERVICIOS;
 
+/* PerfectFlow solo acepta las opciones de INTERESES (Activepieces).
+   Lo que no coincide se descarta y acaba en Notas como "Interés declarado". */
+const INTERES_CRM = {
+  "Track Session": "Track Session",
+  "PRO-90": "PRO90",
+  "PRO90": "PRO90",
+  "Impulso PRO": "Focus 4",
+  "Focus 4": "Focus 4",
+  "Lista de espera grupal": "Lista de espera grupal",
+  "Todavía no lo sé": "Todavía no lo sé"
+};
+
 function slugDeOferta(oferta){
   const n = String(oferta || "").trim().toLowerCase();
   if (n === "track session") return "track-session";
   if (n === "pro-90" || n === "pro90") return "pro90";
-  if (n === "impulso pro") return "impulso-pro";
+  if (n === "impulso pro" || n === "focus 4") return "impulso-pro";
   return "";
 }
 
@@ -39,7 +61,7 @@ function servicioDesdeURL(){
 function guardarLead(data){
   try {
     sessionStorage.setItem(LEAD_KEY, JSON.stringify({
-      oferta: data.oferta || "",
+      oferta: data.interes_web || data.oferta || "",
       email: data.email || "",
       t: Date.now()
     }));
@@ -54,7 +76,20 @@ function serialize(form){
   data.pagina = location.href;
   data.utm = location.search.replace(/^\?/, "");
   data.enviado_en = new Date().toISOString();
+  data.interes_web = String(data.oferta || "").trim();
+  if (data.formulario === "aplicacion-1a1") data.flujo = "evaluacion";
+  else if (data.formulario === "reserva-servicio") data.flujo = "compra";
+  else if (data.formulario === "contacto") data.flujo = "contacto";
+  if (data.oferta && INTERES_CRM[data.oferta]) data.oferta = INTERES_CRM[data.oferta];
   return data;
+}
+
+function endpointPara(data){
+  if (data.formulario === "aplicacion-1a1") {
+    return EVAL_ENDPOINTS[data.interes_web] || "";
+  }
+  if (data.formulario === "contacto") return CONTACTO_ENDPOINT;
+  return COMPRA_ENDPOINT;
 }
 
 function mailtoFallback(data){
@@ -63,13 +98,26 @@ function mailtoFallback(data){
     .map(([k, v]) => `${k}: ${v}`).join("\n");
   const asunto = data.formulario === "contacto"
     ? `Contacto web — ${data.nombre || ""}`
-    : `Solicitud — ${data.nombre || ""} (${data.oferta || "sin definir"})`;
+    : `Solicitud — ${data.nombre || ""} (${data.interes_web || data.oferta || "sin definir"})`;
   location.href = `mailto:${PF_FALLBACK_MAIL}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
 }
 
 function destinoTrasLead(data){
-  const slug = slugDeOferta(data.oferta);
+  if (data.formulario !== "reserva-servicio") return "";
+  const fromUrl = servicioDesdeURL();
+  if (fromUrl) return SERVICIOS[fromUrl].landing;
+  const slug = slugDeOferta(data.interes_web || data.oferta);
   return slug ? SERVICIOS[slug].landing : "";
+}
+
+function mensajeOk(data){
+  if (data.formulario === "aplicacion-1a1") {
+    return "Solicitud enviada. Te escribimos a tu correo con información según lo que elegiste.";
+  }
+  if (data.formulario === "contacto") {
+    return "Mensaje enviado. Te respondemos por correo o WhatsApp.";
+  }
+  return "Solicitud enviada. Te respondemos por correo o WhatsApp.";
 }
 
 function cablearFormularios(){
@@ -88,17 +136,18 @@ function cablearFormularios(){
       }
 
       const data = serialize(form);
+      const endpoint = endpointPara(data);
       const textoOriginal = btn.textContent;
       btn.disabled = true;
       btn.classList.add("is-blue");
       btn.textContent = "Enviando…";
 
-      const irALanding = data.formulario !== "contacto" && destinoTrasLead(data);
+      const irALanding = destinoTrasLead(data);
 
       try {
-        if (!PF_ENDPOINT) { mailtoFallback(data); throw new Error("sin-endpoint"); }
+        if (!endpoint) { mailtoFallback(data); throw new Error("sin-endpoint"); }
 
-        const res = await fetch(PF_ENDPOINT, {
+        const res = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
@@ -111,7 +160,7 @@ function cablearFormularios(){
           location.href = irALanding;
           return;
         }
-        msg.textContent = "Solicitud enviada. Te respondemos por correo o WhatsApp.";
+        msg.textContent = mensajeOk(data);
         msg.className = "form-msg ok show";
       } catch (err) {
         if (err.message === "sin-endpoint") {
