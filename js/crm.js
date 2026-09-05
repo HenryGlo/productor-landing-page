@@ -14,21 +14,28 @@ const EVAL_ENDPOINTS = {
   "Grupal (lista de espera)": "https://cloud.activepieces.com/api/v1/webhooks/j2eDDxKCAULimdCdkWNPq"
 };
 
+/* Enlaces de reserva por slug, no por id numérico.
+   El id de la base no sobrevive a una limpieza y resiembra de datos: el servicio
+   vuelve con otro id y el enlace deja de fijar nada. No da error — la agenda
+   muestra el selector genérico — así que el fallo es invisible.
+   `sesion_servicio` es fijo: es el código de la relación en el CRM. */
+const AGENDA = "https://ecosphere.perfectflow.cloud/es/agendar?fijar=sesion_servicio:";
+
 const SERVICIOS = {
   "track-session": {
     oferta: "Track Session",
     landing: "track-session.html",
-    checkout: "https://ecosphere.perfectflow.cloud/es/agendar?fijar=657"
+    checkout: AGENDA + "track-session"
   },
   "pro90": {
     oferta: "PRO90",
     landing: "pro90.html",
-    checkout: "https://ecosphere.perfectflow.cloud/es/agendar?fijar=655"
+    checkout: AGENDA + "pro90"
   },
   "impulso-pro": {
     oferta: "Impulso PRO",
     landing: "impulso-pro.html",
-    checkout: "https://ecosphere.perfectflow.cloud/es/agendar?fijar=656"
+    checkout: AGENDA + "impulso-pro"
   }
 };
 window.SERVICIOS = SERVICIOS;
