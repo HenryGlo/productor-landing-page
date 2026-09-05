@@ -37,9 +37,9 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"></noscript>
-<link rel="stylesheet" href="css/cookies.css">
+<link rel="stylesheet" href="css/cookies.css?v=20260905">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/css/intlTelInput.min.css">
-<link rel="stylesheet" href="css/tel.css">
+<link rel="stylesheet" href="css/tel.css?v=20260905">
 
 <style>
   /* ============================================================
@@ -1559,10 +1559,14 @@ const I18N_META = {
 })();
 </script>
 
+<!-- El ?v= de los js/css propios rompe la caché al desplegar. GitHub Pages sirve
+     estos ficheros con max-age=14400, así que sin él un visitante recurrente
+     sigue ejecutando el JS viejo hasta 4 h después de publicar.
+     AL CAMBIAR CUALQUIER js/ o css/, subir la fecha del ?v= en las 6 páginas. -->
 <script defer src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/js/intlTelInput.min.js"></script>
-<script src="js/utm.js"></script>
-<script defer src="js/tel.js"></script>
-<script src="js/crm.js"></script>
+<script src="js/utm.js?v=20260905"></script>
+<script defer src="js/tel.js?v=20260905"></script>
+<script src="js/crm.js?v=20260905"></script>
 <script>
 /* ============================================================
    Nav, aparición y preselección de oferta.
@@ -1680,6 +1684,6 @@ document.querySelectorAll('.share-copy').forEach(function(btn){
 });
 </script>
 
-<script src="js/cookies.js"></script>
+<script src="js/cookies.js?v=20260905"></script>
 </body>
 </html>
