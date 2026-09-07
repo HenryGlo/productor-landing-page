@@ -37,9 +37,9 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"></noscript>
-<link rel="stylesheet" href="css/cookies.css?v=20260905">
+<link rel="stylesheet" href="css/cookies.css?v=20260907">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/css/intlTelInput.min.css">
-<link rel="stylesheet" href="css/tel.css?v=20260905">
+<link rel="stylesheet" href="css/tel.css?v=20260907">
 
 <style>
   /* ============================================================
@@ -575,6 +575,11 @@
   .dark .consent{ color:#9a9a9a }
   .consent input{ margin-top:3px; width:17px; height:17px; accent-color:var(--blue); flex:none }
   .dark .consent input{ accent-color:#fff }
+  /* El consentimiento de marketing es un propósito distinto del de servicio:
+     se separa visualmente para que no se lea como una sola aceptación. */
+  .consent--mkt{ padding-top:14px; border-top:1px solid var(--line) }
+  .dark .consent--mkt{ border-top-color:var(--line-dk) }
+  .consent a{ color:inherit; text-decoration:underline; text-underline-offset:2px }
   .form-msg{ font-size:14px; font-weight:700; line-height:1.6; display:none; padding:14px 16px; border-left:4px solid var(--blue) }
   .form-msg.show{ display:block }
   .form-msg.ok{ background:rgba(22,23,51,.06); color:var(--blue) }
@@ -1177,6 +1182,13 @@
           <span data-i18n="apl.f.consent">Acepto que Oldtape use estos datos para responder mi solicitud y darle seguimiento.</span>
         </label>
 
+        <!-- Consentimiento de marketing: propósito propio, separado del de servicio.
+             Opcional y sin marcar por defecto — no bloquea el envío del formulario. -->
+        <label class="consent consent--mkt">
+          <input type="checkbox" id="a-mkt" name="marketing" value="si">
+          <span data-i18n="f.marketing">Acepto recibir correos con novedades y promociones de OldtapeMusic. Puedo darme de baja en cualquier momento. Consulta la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+        </label>
+
         <button data-i18n="apl.f.submit" class="btn btn--solid" type="submit">Enviar solicitud</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
@@ -1280,6 +1292,13 @@
           <input type="checkbox" name="consentimiento" required>
           <span data-i18n="ct.f.consent">Acepto que Oldtape use estos datos para responder mi mensaje.</span>
         </label>
+
+        <!-- Consentimiento de marketing: propósito propio, separado del de servicio.
+             Opcional y sin marcar por defecto — no bloquea el envío del formulario. -->
+        <label class="consent consent--mkt">
+          <input type="checkbox" id="c-mkt" name="marketing" value="si">
+          <span data-i18n="f.marketing">Acepto recibir correos con novedades y promociones de OldtapeMusic. Puedo darme de baja en cualquier momento. Consulta la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+        </label>
         <button data-i18n="ct.f.submit" class="btn btn--solid" type="submit">Enviar mensaje</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
@@ -1342,6 +1361,13 @@
         <span data-i18n="le.f.consent">Acepto que Oldtape use estos datos para avisarme cuando se abran fechas.</span>
       </label>
 
+      <!-- Consentimiento de marketing: propósito propio, separado del de servicio.
+           Opcional y sin marcar por defecto — no bloquea el envío del formulario. -->
+      <label class="consent consent--mkt">
+        <input type="checkbox" id="le-mkt" name="marketing" value="si">
+        <span data-i18n="f.marketing">Acepto recibir correos con novedades y promociones de OldtapeMusic. Puedo darme de baja en cualquier momento. Consulta la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+      </label>
+
       <button data-i18n="le.f.submit" class="btn btn--solid" type="submit">Unirme a la lista</button>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </form>
@@ -1356,7 +1382,7 @@
    Para editar un texto en español: se edita directo en el HTML.
    Para editar uno en inglés: se busca su clave en I18N_EN.
    ============================================================ */
-const I18N_EN = {
+window.I18N_EN = {
   "ab.eye": "04 · About Oldtape",
   "ab.h2": "Who is on<br>the other side",
   "ab.p1": "<b>Pedro Querales · Oldtape.</b> Over two decades across production, songwriting, recording and artistic direction. From demo to release: music, judgement and coaching to turn an idea into a record ready to go out into the world.",
@@ -1389,6 +1415,7 @@ const I18N_EN = {
   "ct.copy": "Copy link",
   "ct.eye": "Contact",
   "ct.f.consent": "I agree that Oldtape may use this data to respond to my message.",
+  "f.marketing": "I agree to receive emails with news and promotions from OldtapeMusic. I can unsubscribe at any time. See our <a href=\"privacidad.html?lang=en\" target=\"_blank\" rel=\"noopener\">privacy policy</a>.",
   "ct.f.email": "Email *",
   "ct.f.msg": "Message *",
   "ct.f.nombre": "Name *",
@@ -1498,7 +1525,7 @@ const I18N_EN = {
   "uno.o1.tag": "1:1 creative intensive"
 };
 
-const I18N_META = {
+window.I18N_META = {
   es: {
     title: document.title,
     desc: (document.querySelector('meta[name=description]') || {}).content || ''
@@ -1509,64 +1536,17 @@ const I18N_META = {
   }
 };
 
-(function(){
-  const KEY  = 'oldtape-lang';
-  const nodes = document.querySelectorAll('[data-i18n]');
-  const phs   = document.querySelectorAll('[data-i18n-ph]');
-
-  /* El español se toma del propio DOM: no hay que mantenerlo dos veces. */
-  const ES = {}, ES_PH = {};
-  nodes.forEach(el => { ES[el.dataset.i18n] = el.innerHTML; });
-  phs.forEach(el => { ES_PH[el.dataset.i18nPh] = el.getAttribute('placeholder'); });
-
-  const btns = document.querySelectorAll('.lang button[data-lang]');
-
-  function apply(lang){
-    const en = lang === 'en';
-    nodes.forEach(el => {
-      const k = el.dataset.i18n;
-      const v = en ? I18N_EN[k] : ES[k];
-      if (v != null) el.innerHTML = v;
-    });
-    phs.forEach(el => {
-      const k = el.dataset.i18nPh;
-      const v = en ? I18N_EN[k] : ES_PH[k];
-      if (v != null) el.setAttribute('placeholder', v);
-    });
-
-    document.documentElement.lang = lang;
-    const meta = I18N_META[lang];
-    if (meta) {
-      document.title = meta.title;
-      const md = document.querySelector('meta[name=description]');
-      if (md) md.content = meta.desc;
-    }
-    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    try { localStorage.setItem(KEY, lang); } catch(e){}
-  }
-
-  /* Preferencia guardada > ?lang= en la URL > idioma del navegador. */
-  let inicial = null;
-  try { inicial = localStorage.getItem(KEY); } catch(e){}
-  const url = new URLSearchParams(location.search).get('lang');
-  if (url === 'es' || url === 'en') inicial = url;
-  if (inicial !== 'es' && inicial !== 'en') {
-    inicial = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
-  }
-  apply(inicial);
-
-  btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
-})();
 </script>
+<script defer src="js/i18n.js?v=20260907"></script>
 
 <!-- El ?v= de los js/css propios rompe la caché al desplegar. GitHub Pages sirve
      estos ficheros con max-age=14400, así que sin él un visitante recurrente
      sigue ejecutando el JS viejo hasta 4 h después de publicar.
      AL CAMBIAR CUALQUIER js/ o css/, subir la fecha del ?v= en las 6 páginas. -->
 <script defer src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/js/intlTelInput.min.js"></script>
-<script src="js/utm.js?v=20260905"></script>
-<script defer src="js/tel.js?v=20260905"></script>
-<script src="js/crm.js?v=20260905"></script>
+<script src="js/utm.js?v=20260907"></script>
+<script defer src="js/tel.js?v=20260907"></script>
+<script src="js/crm.js?v=20260907"></script>
 <script>
 /* ============================================================
    Nav, aparición y preselección de oferta.
@@ -1684,6 +1664,6 @@ document.querySelectorAll('.share-copy').forEach(function(btn){
 });
 </script>
 
-<script src="js/cookies.js?v=20260905"></script>
+<script src="js/cookies.js?v=20260907"></script>
 </body>
 </html>

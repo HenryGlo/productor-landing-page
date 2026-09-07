@@ -6,6 +6,11 @@ const CONTACTO_ENDPOINT = COMPRA_ENDPOINT;
 const PF_FALLBACK_MAIL = "contacto@oldtapemusic.com";
 const LEAD_KEY = "oldtape-lead";
 
+/* Versión del texto de consentimiento de marketing. Se envía con cada lead para
+   poder demostrar QUÉ texto aceptó cada persona.
+   AL CAMBIAR EL COPY DEL CHECKBOX HAY QUE INCREMENTAR ESTO. */
+const CONSENT_VERSION = "2026-09-07.v1";
+
 /* Pegá aquí la URL Catch webhook de cada escenario de evaluación en Activepieces. */
 const EVAL_ENDPOINTS = {
   "Track Session": "https://cloud.activepieces.com/api/v1/webhooks/CFWtsnwopZ6oSkTQ3QOET",
@@ -104,10 +109,34 @@ function serialize(form){
     data[k] = (k === "consentimiento") ? true : v;
   });
 
+  /* --- Registro de consentimiento de marketing (revisión de Mailjet) ---
+     Se manda siempre, marcado o no: "no consintió" también es un dato que hay
+     que poder demostrar. Se lee del DOM y no de FormData porque un checkbox
+     sin marcar no aparece en FormData, y aquí hace falta el false explícito. */
+  const mkt = form.querySelector('input[name="marketing"]');
+  data.marketing_consent = !!(mkt && mkt.checked);
+  data.marketing_consent_at = data.marketing_consent ? new Date().toISOString() : "";
+  data.marketing_consent_url = location.href;
+  data.marketing_consent_lang = (window.oldtapeLang && window.oldtapeLang())
+                                || document.documentElement.lang || "es";
+  data.marketing_consent_version = CONSENT_VERSION;
+  delete data.marketing;   /* el valor crudo del checkbox no aporta nada al CRM */
+
   data.pagina = location.href;
   /* UTMs capturados al aterrizar, no sólo los de la URL actual: la persona
      llega por el anuncio y envía el formulario dos páginas después. */
   data.utm = (window.oldtapeUTM && window.oldtapeUTM.cadena()) || location.search.replace(/^\?/, "");
+
+  /* Los campos marketing_consent_* son nuevos del lado del sitio. Hasta que el
+     flujo de Activepieces los guarde en el contacto, se replica un resumen en
+     `utm`, que el CRM vuelca en las notas: hoy es lo único consultable si un
+     revisor pide la prueba de consentimiento de una dirección concreta. */
+  const rastro = "consent_marketing=" + (data.marketing_consent ? "si" : "no")
+    + "; fecha=" + (data.marketing_consent_at || "-")
+    + "; url=" + data.marketing_consent_url
+    + "; idioma=" + data.marketing_consent_lang
+    + "; version=" + data.marketing_consent_version;
+  data.utm = data.utm ? (data.utm + " | " + rastro) : rastro;
   data.enviado_en = new Date().toISOString();
   data.interes_web = String(data.oferta || "").trim();
 

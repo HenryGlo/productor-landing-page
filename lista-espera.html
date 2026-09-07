@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lista de espera de las clases grupales de OldtapeMusic. No es una compra ni una reserva.">
+<title>Lista de espera · OLDTAPE</title>
+<link rel="canonical" href="https://oldtapemusic.com/lista-espera.html">
+<link rel="alternate" hreflang="es" href="https://oldtapemusic.com/lista-espera.html">
+<link rel="alternate" hreflang="en" href="https://oldtapemusic.com/lista-espera.html?lang=en">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="css/cookies.css?v=20260907">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/css/intlTelInput.min.css">
+<link rel="stylesheet" href="css/tel.css?v=20260907">
+<link rel="stylesheet" href="css/form.css?v=20260907">
+</head>
+<body>
+<header class="nav">
+  <a href="/" aria-label="OLDTAPE — inicio">
+    <picture><source type="image/webp" srcset="assets/brand/logo-oldtape-blanco.webp"><img src="assets/brand/logo-oldtape-blanco.png" alt="OLDTAPE"></picture>
+  </a>
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button type="button" data-lang="es" aria-pressed="true">ES</button>
+    <span aria-hidden="true">/</span>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+  <a class="back" href="/" data-i18n="p.back">Volver</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow" data-i18n="p.eye">Clases grupales</p>
+  <h1 data-i18n="p.h1">Unirme a la lista de espera.</h1>
+  <p class="lede" data-i18n="p.lede">Todavía no hay fechas abiertas. Déjanos tus datos y te avisamos por correo en cuanto se activen. No es una compra ni una reserva.</p>
+
+  <form class="pf" id="form-lista-espera" novalidate>
+    <input type="hidden" name="formulario" value="lista-espera-grupal">
+    <input type="hidden" name="oferta" value="Grupal (lista de espera)">
+    <input type="hidden" name="origen" value="Formulario web">
+    <input type="hidden" name="pagina" value="">
+
+    <div class="field">
+      <label for="k-nombre" data-i18n="p.f.nombre">Nombre y apellido *</label>
+      <input id="k-nombre" name="nombre" type="text" autocomplete="name" required>
+    </div>
+
+    <div class="field-2">
+      <div class="field">
+        <label for="k-email" data-i18n="p.f.email">Email *</label>
+        <input id="k-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="k-tel" data-i18n="p.f.tel">WhatsApp</label>
+        <input id="k-tel" name="telefono" type="tel" autocomplete="tel">
+      </div>
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" name="consentimiento" required>
+      <span data-i18n="p.f.consent">Acepto que Oldtape use estos datos para avisarme cuando se abran fechas.</span>
+    </label>
+
+    <!-- Consentimiento de marketing: propósito propio, separado del de servicio.
+         Opcional y sin marcar por defecto — no bloquea el envío. -->
+    <label class="consent consent--mkt">
+      <input type="checkbox" id="form-lista-espera-mkt" name="marketing" value="si">
+      <span data-i18n="f.marketing">Acepto recibir correos con novedades y promociones de OldtapeMusic. Puedo darme de baja en cualquier momento. Consulta la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+    </label>
+
+    <button class="btn" type="submit" data-i18n="p.f.submit">Unirme a la lista</button>
+    <p class="form-msg" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="nota" data-i18n="p.nota">Respondemos por correo o WhatsApp. <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></p>
+</main>
+
+<script>
+window.I18N_EN = {
+  "p.back": "Back",
+  "p.eye": "Group classes",
+  "p.h1": "Join the waiting list.",
+  "p.lede": "There are no open dates yet. Leave us your details and we will email you as soon as they open. This is not a purchase or a booking.",
+  "p.f.nombre": "Full name *",
+  "p.f.email": "Email *",
+  "p.f.tel": "WhatsApp",
+  "p.f.consent": "I agree that Oldtape may use these details to let me know when dates open.",
+  "p.f.submit": "Join the list",
+  "p.nota": "We reply by email or WhatsApp. <a href=\"privacidad.html?lang=en\">Privacy</a> · <a href=\"cookies.html\">Cookies</a>",
+  "f.marketing": "I agree to receive emails with news and promotions from OldtapeMusic. I can unsubscribe at any time. See our <a href=\"privacidad.html?lang=en\" target=\"_blank\" rel=\"noopener\">privacy policy</a>."
+};
+window.I18N_META = {
+  es: { title: document.title, desc: (document.querySelector('meta[name=description]')||{}).content || '' },
+  en: { title: "Waiting list · OLDTAPE", desc: "Waiting list for OldtapeMusic group classes. This is not a purchase or a booking." }
+};
+</script>
+<script defer src="js/i18n.js?v=20260907"></script>
+<script src="js/utm.js?v=20260907"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.2/build/js/intlTelInput.min.js"></script>
+<script defer src="js/tel.js?v=20260907"></script>
+<script src="js/crm.js?v=20260907"></script>
+<script src="js/cookies.js?v=20260907"></script>
+</body>
+</html>
