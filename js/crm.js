@@ -214,6 +214,21 @@ function mensajeOk(data){
   return "Solicitud enviada. Te respondemos por correo o WhatsApp.";
 }
 
+/* Conversión para la analítica. Solo tras un envío aceptado por el webhook:
+   un lead que falló no es una conversión. */
+function avisarConversion(data, form){
+  if (!window.oldtapeTrack) return;
+  const evento = data.formulario === "reserva-servicio" ? "begin_checkout"
+               : data.formulario === "contacto" ? "contacto"
+               : (form && form.id === "form-lista-espera") ? "lista_espera"
+               : "generate_lead";
+  window.oldtapeTrack(evento, {
+    formulario: data.formulario || (form && form.id) || "",
+    servicio: data.interes_web || data.oferta || "",
+    flujo: data.flujo || ""
+  });
+}
+
 function cablearFormularios(){
   document.querySelectorAll("form.pf").forEach(form => {
     const msg = form.querySelector(".form-msg");
@@ -253,6 +268,7 @@ function cablearFormularios(){
         if (!res.ok) throw new Error("HTTP " + res.status);
 
         guardarLead(data);
+        avisarConversion(data, form);
         form.reset();
         if (irALanding) {
           location.href = irALanding;

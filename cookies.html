@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap">
-<link rel="stylesheet" href="css/cookies.css?v=20260907">
+<link rel="stylesheet" href="css/cookies.css?v=20260907b">
 <style>
   :root{ --ink:#000; --paper:#fff; --gray:#5c5c5c; --line:#e2e2e2; }
   *{ box-sizing:border-box; margin:0; padding:0 }
@@ -45,6 +45,7 @@
   .btn:hover{ background:#000; color:#fff }
   @media (max-width:640px){ .nav,.wrap{ padding-left:24px; padding-right:24px } }
 </style>
+<script src="js/analytics.js?v=20260907b"></script>
 </head>
 <body>
 <header class="nav">
@@ -64,7 +65,10 @@
     <li><b>Idioma</b> (ES/EN) — solo en la home, si lo cambias.</li>
     <li><b>Datos del formulario en sesión</b> — para continuar al servicio que elegiste, sin pasarlos a anunciantes.</li>
   </ul>
-  <p>Son cookies o almacenamiento técnico necesario para el sitio. No usamos redes de publicidad ni remarketing en estas páginas.</p>
+  <p>Son cookies o almacenamiento técnico necesario para el sitio.</p>
+
+  <h2>Medición</h2>
+  <p>Usamos <b>Google Analytics 4</b> para saber qué páginas se visitan y qué formularios se envían, y así mejorar el sitio. Solo escribe sus cookies si pulsas <b>Aceptar</b>: con <b>Solo necesarias</b>, o mientras no elijas, funciona sin cookies ni identificador tuyo. La IP se recorta antes de guardarse y no enviamos tu nombre, correo ni teléfono a Google. No usamos redes de publicidad ni remarketing en estas páginas.</p>
 
   <h2>Formularios</h2>
   <p>Si envías una solicitud, tratamos nombre, correo, teléfono y lo que nos cuentes para responderte y dar seguimiento comercial. El envío va a nuestras herramientas de CRM (Activepieces / PerfectFlow). No vendemos esa información.</p>
@@ -72,12 +76,13 @@
   <h2>Terceros</h2>
   <ul>
     <li><b>Google Fonts</b> — tipografía del sitio.</li>
+    <li><b>Google Analytics</b> — medición de uso, solo si aceptas.</li>
     <li><b>YouTube</b> — solo si reproduces el video en una landing de servicio (se carga al pulsar reproducir).</li>
     <li><b>PerfectFlow</b> — pago y agenda, cuando sales al checkout.</li>
   </ul>
 
   <h2>Tu elección</h2>
-  <p><b>Aceptar</b> confirma el uso descrito. <b>Solo necesarias</b> guarda únicamente la preferencia del aviso y el idioma; el sitio sigue funcionando. Puedes cambiarla cuando quieras:</p>
+  <p><b>Aceptar</b> confirma el uso descrito, incluida la medición con cookies. <b>Solo necesarias</b> guarda únicamente la preferencia del aviso y el idioma; el sitio sigue funcionando. Puedes cambiarla cuando quieras:</p>
   <button class="btn" type="button" onclick="oldtapeResetCookies()">Volver a mostrar el aviso</button>
 
   <h2>Correos comerciales</h2>
@@ -86,7 +91,7 @@
   <h2>Más información</h2>
   <p>Para acceder, corregir o borrar tus datos, escribe a <a href="mailto:contacto@oldtapemusic.com">contacto@oldtapemusic.com</a>. Ver también la <a href="privacidad.html">política de privacidad</a>.</p>
 </main>
-<script src="js/utm.js?v=20260907"></script>
-<script src="js/cookies.js?v=20260907"></script>
+<script src="js/utm.js?v=20260907b"></script>
+<script src="js/cookies.js?v=20260907b"></script>
 </body>
 </html>

@@ -3,12 +3,12 @@
   const KEY = "oldtape-cookies";
   const COPY = {
     es: {
-      txt: 'Usamos cookies técnicas para que el sitio funcione y para recordar tu idioma y esta preferencia. Al enviar un formulario, tus datos van a Oldtape para atenderte. Más información en la <a href="cookies.html">política de cookies</a>.',
+      txt: 'Usamos cookies técnicas para que el sitio funcione y para recordar tu idioma y esta preferencia, y cookies de medición para entender cómo se usa el sitio. Al enviar un formulario, tus datos van a Oldtape para atenderte. Más información en la <a href="cookies.html">política de cookies</a>.',
       ok: "Aceptar",
       no: "Solo necesarias"
     },
     en: {
-      txt: 'We use essential cookies so the site works and to remember your language and this choice. When you submit a form, your details go to Oldtape so we can reply. See the <a href="cookies.html">cookie policy</a>.',
+      txt: 'We use essential cookies so the site works and to remember your language and this choice, plus analytics cookies to understand how the site is used. When you submit a form, your details go to Oldtape so we can reply. See the <a href="cookies.html">cookie policy</a>.',
       ok: "Accept",
       no: "Essential only"
     }
@@ -29,6 +29,8 @@
 
   function guardar(v){
     try { localStorage.setItem(KEY, v); } catch (e) {}
+    /* Aplica la decisión sin recargar: analytics.js espera este aviso. */
+    try { if (window.oldtapeConsent) window.oldtapeConsent(v); } catch (e) {}
     document.documentElement.classList.remove("ck-open");
     const bar = document.getElementById("ck-bar");
     if (bar) bar.remove();
