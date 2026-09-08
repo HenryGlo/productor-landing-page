@@ -74,7 +74,9 @@ const META_PIXEL_ID = "";
 
   /* cookies.js llama a esto al guardar la preferencia, para no obligar a
      recargar la página cuando alguien acepta. */
-  window.oldtapeConsent = function(valor){
+  window.oldtapeConsent = aplicar;
+
+  function aplicar(valor){
     const ok = valor === "all";
     gtag("consent", "update", {
       ad_storage: ok ? "granted" : "denied",
@@ -83,7 +85,12 @@ const META_PIXEL_ID = "";
       analytics_storage: ok ? "granted" : "denied"
     });
     if (ok) cargarMeta();
-  };
+  }
+
+  /* Quien ya aceptó en una visita anterior no vuelve a ver el banner, así que
+     nadie llamaría a aplicar() y el consentimiento se quedaría denegado para
+     siempre. Hay que restituir la decisión guardada en cada carga. */
+  if (acepta) aplicar("all");
 
   /* ---------- Eventos ---------- */
 
