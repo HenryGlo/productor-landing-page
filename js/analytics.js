@@ -4,7 +4,7 @@
    así que el sitio sigue funcionando igual si todavía no los tenés.
      - GA4: Admin → Flujos de datos → tu web  (G-XXXXXXXXXX)
      - Meta: Administrador de eventos → Orígenes de datos (15-16 dígitos) */
-const GA4_ID = "G-9WR2SB06PD";
+const GA4_ID = "G-2W38X0VBTJ";
 const META_PIXEL_ID = "";
 
 (function(){
